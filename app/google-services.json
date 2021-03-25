@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "33379837710",
+    "project_id": "fitcom-application",
+    "storage_bucket": "fitcom-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33379837710:android:9fc4557ffee7d08aead95f",
+        "android_client_info": {
+          "package_name": "com.FitCom.fitcomapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33379837710-7bhm548l3vubh7b28sifemeibd833d65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByap6zlUoNLVBg2ilgAHvxUpo4xbCuRdw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33379837710-7bhm548l3vubh7b28sifemeibd833d65.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
