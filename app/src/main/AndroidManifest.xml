@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitComApplication">
-        <activity android:name=".HomePageActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".ExerciseScreen.ExerciseActivity"></activity>
+        <activity android:name=".HomePageActivity" />
+        <activity android:name=".Registery.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
