@@ -9,7 +9,6 @@ public class AdapterForViewPager extends FragmentPagerAdapter {
 
     private final int TAB_COUNT;
 
-
     public AdapterForViewPager(@NonNull FragmentManager fm, int behavior) {
         super(fm);
         this.TAB_COUNT = behavior;
