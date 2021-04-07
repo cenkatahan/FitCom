@@ -28,3 +28,5 @@ public class HomePageActivity extends AppCompatActivity {
         });
     }
 }
+
+// this message was added by Osman.
