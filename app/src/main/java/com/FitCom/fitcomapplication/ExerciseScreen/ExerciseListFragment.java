@@ -74,12 +74,13 @@ public class ExerciseListFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        docRef = firebaseFirestore.document("Exercises/");
+        //docRef = firebaseFirestore.document("Exercises");
         //fillFromFB();
         //f();
         //omg(view);
     }
-/*
+
+    /*
     @Override
     public void onStart() {
         super.onStart();
