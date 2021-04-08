@@ -6,35 +6,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ExerciseScreen.ExerciseActivity">
+    tools:context=".NutritionScreen.NutritionsActivity">
+
+
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout_exercise"
+        android:id="@+id/tabLayout_nutrition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/purple_700"
         app:tabTextColor="@android:color/white"
         app:tabIndicatorColor="@color/black"
-        app:tabSelectedTextColor="@color/black">
+        app:tabSelectedTextColor="@color/black"
+        tools:ignore="MissingConstraints">
+
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_all_programs"
+            android:id="@+id/tab_all_nutrition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tab_item_all_exercises"/>
+            android:text="@string/tab_item_all_nutritions"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_my_programs"
+            android:id="@+id/tab_my_nutrition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tab_item_my_exercises" />
+            android:text="@string/tab_item_my_nutritions" />
 
     </com.google.android.material.tabs.TabLayout>
 
 
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_nutrition"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/viewpager_exercise"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -9,8 +9,14 @@
 
 
     <Button
-        android:id="@+id/buttonGO"
+        android:id="@+id/button_to_exercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go Exercise" />
+        android:text="@string/button_str_exercise" />
+
+    <Button
+        android:id="@+id/button_to_nutrition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_str_nutrition" />
 </LinearLayout>
