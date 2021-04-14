@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class ExerciseDetailFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore;
 
     private TextView exerciseName, exerciseDescription;
+    private ImageView imgExercise;
     private String exerciseDirectory;
     private String names[];
     private final String path = "Exercises/";
@@ -70,6 +72,7 @@ public class ExerciseDetailFragment extends Fragment {
 
         exerciseName = view.findViewById(R.id.detail_name);
         exerciseDescription = view.findViewById(R.id.detail_description);
+        imgExercise = view.findViewById(R.id.exercise_image);
 
 
 
@@ -102,9 +105,6 @@ public class ExerciseDetailFragment extends Fragment {
                     String imgUrl = (String) data.get("imgUrl");
 
 
-
-
-//                    //to be modified....
                     exerciseName.setText(name);
                     exerciseDescription.setText(description);
                 }
