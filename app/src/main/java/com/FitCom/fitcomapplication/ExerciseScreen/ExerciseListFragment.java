@@ -40,7 +40,6 @@ public class ExerciseListFragment extends Fragment {
     private RecAdaptorExercises adapter;
     private ArrayList<String> exercises;
     private ArrayList<String> categories;
-    DocumentReference docRef;
 
     public ExerciseListFragment() {}
 
@@ -74,16 +73,13 @@ public class ExerciseListFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        //docRef = firebaseFirestore.document("Exercises");
-        //fillFromFB();
-        //f();
-        //omg(view);
+        fetchDataFromFB();
+
     }
 
-    /*
-    @Override
-    public void onStart() {
-        super.onStart();
+
+
+    public void fetchDataFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -94,7 +90,6 @@ public class ExerciseListFragment extends Fragment {
 
                 if(value != null){
                     for(DocumentSnapshot snapshot : value.getDocuments()) {
-
                         Map <String,Object> data = snapshot.getData();
 
                         String name = (String) data.get("name");
@@ -105,89 +100,6 @@ public class ExerciseListFragment extends Fragment {
 
                         adapter.notifyDataSetChanged();
 
-                        //System.out.println(name);
-                        //System.out.println(category);
-                    }
-                }}
-        });
-    }
-*/
-
-    public void omg(View view){
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()){
-                    String name = documentSnapshot.getString("name");
-                    String category = documentSnapshot.getString("category");
-
-                    //Map <String,Object> data = documentSnapshot.getData();
-
-                    categories.add(category);
-                    exercises.add(name);
-                    adapter.notifyDataSetChanged();
-                }else{
-                    Toast.makeText(getContext(), "problem", Toast.LENGTH_LONG).show();
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-            }
-        });
-    }
-
-    public void f(){
-        Query query = firebaseFirestore.collection("Exercises");
-        ListenerRegistration registration = query.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error != null) {
-                    Toast.makeText(getContext(), error.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
-                }
-
-                if(value != null){
-                    for(DocumentSnapshot snapshot : value.getDocuments()) {
-                        Map <String,Object> data = snapshot.getData();
-
-                        String name = (String) data.get("name");
-                        String category = (String) data.get("category");
-
-                        categories.add(category);
-                        exercises.add(name);
-                        adapter.notifyDataSetChanged();
-                    }
-                }
-            }
-        });
-        registration.remove();
-    }
-
-    public void fillFromFB(){
-        CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
-        collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error != null) {
-                    Toast.makeText(getContext(), error.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
-                }
-
-                if(value != null){
-                    for(DocumentSnapshot snapshot : value.getDocuments()) {
-
-                        Map <String,Object> data = snapshot.getData();
-
-                        String name = (String) data.get("name");
-                        String category = (String) data.get("category");
-
-                        categories.add(category);
-                        exercises.add(name);
-
-                        adapter.notifyDataSetChanged();
-
-                        //System.out.println(name);
-                        //System.out.println(category);
                     }
                 }}
         });
