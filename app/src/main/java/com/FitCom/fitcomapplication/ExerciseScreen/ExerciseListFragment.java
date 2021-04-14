@@ -43,6 +43,8 @@ public class ExerciseListFragment extends Fragment {
 
     public ExerciseListFragment() {}
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

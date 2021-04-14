@@ -40,6 +40,8 @@ public class RecAdaptorExercises extends RecyclerView.Adapter<RecAdaptorExercise
         holder.title.setText(exercises.get(position));
         holder.category.setText(categories.get(position));
         holder.itemView.setOnClickListener(v -> {
+
+
             ExerciseListFragmentDirections.ActionExerciseListFragmentToExerciseDetailFragment navDir = ExerciseListFragmentDirections.actionExerciseListFragmentToExerciseDetailFragment(position);
             navDir.setExerciseId(position);
             Navigation.findNavController(v).navigate(navDir);
@@ -48,6 +50,7 @@ public class RecAdaptorExercises extends RecyclerView.Adapter<RecAdaptorExercise
 
     @Override
     public int getItemCount() {
+
         return exercises.size();
     }
 

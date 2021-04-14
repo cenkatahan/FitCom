@@ -36,9 +36,12 @@ public class ExerciseDetailFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore;
 
     private TextView exerciseName, exerciseDescription;
-    private String exerciseId;
     private String exerciseDirectory;
+    private String names[];
     private final String path = "Exercises/";
+
+    private String exerciseId;
+    private int id;
 
     public ExerciseDetailFragment() { }
 
@@ -63,64 +66,72 @@ public class ExerciseDetailFragment extends Fragment {
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
         exerciseName = view.findViewById(R.id.detail_name);
         exerciseDescription = view.findViewById(R.id.detail_description);
 
-        int id = ExerciseDetailFragmentArgs.fromBundle(getArguments()).getExerciseId();
+
+
+
+        id = ExerciseDetailFragmentArgs.fromBundle(getArguments()).getExerciseId();
         exerciseId = String.valueOf(id);
         exerciseDirectory = path + exerciseId;
         Toast.makeText(view.getContext(), exerciseId, Toast.LENGTH_SHORT).show();
 
-//        fillFromFB();
+        fillFromFB(view);
 
-        fetchAndSetView(view);
+//        fetchAndSetView(view);
     }
 
     //category = Fragment_tg_list_elementArgs.fromBundle(getArguments()).getRecordType()
 
-//    public void fillFromFB(){
-//        //this function will fill the listed rows
-//        CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
-//        collectionReference.addSnapshotListener((value, error) -> {
-//            if(error != null)
-//                Toast.makeText(getContext(), error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
-//
-//            if(value != null){
-//                for(DocumentSnapshot snapshot : value.getDocuments()) {
-//                    Map<String,Object> data = snapshot.getData();
-//                    String name = (String) data.get("name");
-//                    String category = (String) data.get("category");
-//                    String description = (String) data.get("description");
-//                    String imgUrl = (String) data.get("imgUrl");
-//
-////                    //to be modified....
-//                    exerciseName.setText(name);
-//                    exerciseDescription.setText(description);
-//                }
-//            }
-//
-//        });
-//    }
+    public void fillFromFB(View view){
+        //this function will fill the listed rows
+        CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
+        collectionReference.addSnapshotListener((value, error) -> {
+            if(error != null)
+                Toast.makeText(getContext(), error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
 
-    private void fetchAndSetView(View view){
-        DocumentReference docRef = firebaseFirestore.collection("Exercises").document(exerciseId);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
+            if(value != null){
+                for(DocumentSnapshot snapshot : value.getDocuments()) {
+                    Map<String,Object> data = snapshot.getData();
+                    String name = (String) data.get("name");
+                    String category = (String) data.get("category");
+                    String description = (String) data.get("description");
+                    String imgUrl = (String) data.get("imgUrl");
 
-                    if (document.exists()) {
-                        Toast.makeText(view.getContext(), document.getData().toString(), Toast.LENGTH_SHORT).show();
-                    } else {
 
-                    }
-                } else {
 
+
+//                    //to be modified....
+                    exerciseName.setText(name);
+                    exerciseDescription.setText(description);
                 }
             }
-        });
 
+        });
     }
+
+//    private void fetchAndSetView(){
+//        DocumentReference docRef = firebaseFirestore.collection("Exercises").document(exerciseId);
+//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    DocumentSnapshot document = task.getResult();
+//
+//                    if (document.exists()) {
+//                        Toast.makeText(view.getContext(), document.getData().toString(), Toast.LENGTH_SHORT).show();
+//                    } else {
+//
+//                    }
+//                } else {
+//
+//                }
+//            }
+//        });
+//
+//    }
 
 }
