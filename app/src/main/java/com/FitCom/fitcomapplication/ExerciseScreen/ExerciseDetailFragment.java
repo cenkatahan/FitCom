@@ -27,20 +27,18 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
 public class ExerciseDetailFragment extends Fragment {
 
     private FirebaseStorage firebaseStorage;
-    private StorageReference storageReference;
     private FirebaseFirestore firebaseFirestore;
+    private StorageReference storageReference;
 
     private TextView exerciseName, exerciseDescription;
     private ImageView imgExercise;
-    private String exerciseDirectory;
-    private String names[];
-    private final String path = "Exercises/";
 
     private String exerciseId;
     private int id;
@@ -49,20 +47,16 @@ public class ExerciseDetailFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_exercise_detail, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
         super.onViewCreated(view, savedInstanceState);
 
         firebaseStorage = FirebaseStorage.getInstance();
@@ -74,25 +68,16 @@ public class ExerciseDetailFragment extends Fragment {
         exerciseDescription = view.findViewById(R.id.detail_description);
         imgExercise = view.findViewById(R.id.exercise_image);
 
-
-
-
         id = ExerciseDetailFragmentArgs.fromBundle(getArguments()).getExerciseId();
         exerciseId = String.valueOf(id);
-        exerciseDirectory = path + exerciseId;
         Toast.makeText(view.getContext(), exerciseId, Toast.LENGTH_SHORT).show();
 
         fillFromFB(view);
-
-//        fetchAndSetView(view);
     }
 
-    //category = Fragment_tg_list_elementArgs.fromBundle(getArguments()).getRecordType()
-
     public void fillFromFB(View view){
-        //this function will fill the listed rows
         CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
-        collectionReference.addSnapshotListener((value, error) -> {
+        collectionReference.whereEqualTo("id",exerciseId).addSnapshotListener((value, error) -> {
             if(error != null)
                 Toast.makeText(getContext(), error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
 
@@ -104,34 +89,12 @@ public class ExerciseDetailFragment extends Fragment {
                     String description = (String) data.get("description");
                     String imgUrl = (String) data.get("imgUrl");
 
-
                     exerciseName.setText(name);
                     exerciseDescription.setText(description);
+                    //blog icin bu satiri adapterda cekicez.
+                    Picasso.get().load(imgUrl).into(imgExercise);
                 }
             }
-
         });
     }
-
-//    private void fetchAndSetView(){
-//        DocumentReference docRef = firebaseFirestore.collection("Exercises").document(exerciseId);
-//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//
-//                    if (document.exists()) {
-//                        Toast.makeText(view.getContext(), document.getData().toString(), Toast.LENGTH_SHORT).show();
-//                    } else {
-//
-//                    }
-//                } else {
-//
-//                }
-//            }
-//        });
-//
-//    }
-
 }
