@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.Executor;
 
-
 public class ExerciseListFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
@@ -43,17 +42,13 @@ public class ExerciseListFragment extends Fragment {
 
     public ExerciseListFragment() {}
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_exercise_list, container, false);
     }
 
@@ -63,8 +58,6 @@ public class ExerciseListFragment extends Fragment {
 
         exercises = new ArrayList<>();
         categories = new ArrayList<>();
-        exercises.add("osman");
-        categories.add("cinar");
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_exercise_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -76,10 +69,7 @@ public class ExerciseListFragment extends Fragment {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         fetchDataFromFB();
-
     }
-
-
 
     public void fetchDataFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
@@ -101,7 +91,6 @@ public class ExerciseListFragment extends Fragment {
                         exercises.add(name);
 
                         adapter.notifyDataSetChanged();
-
                     }
                 }}
         });
