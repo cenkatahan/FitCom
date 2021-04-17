@@ -21,7 +21,14 @@
         android:layout_height="wrap_content"
         android:text="@string/button_str_nutrition"
         android:layout_below="@id/button_to_exercise"/>
-    
+
+    <Button
+        android:id="@+id/button_to_signOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SIGN OUT"
+        android:layout_below="@id/button_to_nutrition"/>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

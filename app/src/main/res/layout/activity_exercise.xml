@@ -13,28 +13,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout_exercise"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple_700"
-        app:tabTextColor="@android:color/white"
-        app:tabIndicatorColor="@color/black"
-        app:tabSelectedTextColor="@color/black">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_all_programs"
-            android:layout_width="wrap_content"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout_exercise"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tab_item_all_exercises"/>
+            android:background="@color/purple_700"
+            app:tabTextColor="@android:color/white"
+            app:tabIndicatorColor="@color/black"
+            app:tabSelectedTextColor="@color/black">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_my_programs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tab_item_my_exercises" />
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_all_programs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_item_all_exercises"/>
 
-    </com.google.android.material.tabs.TabLayout>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab_my_programs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_item_my_exercises" />
+
+        </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:layout_width="match_parent"
