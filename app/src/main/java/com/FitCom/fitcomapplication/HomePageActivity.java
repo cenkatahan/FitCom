@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import com.FitCom.fitcomapplication.Blog.BlogActivity;
+import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

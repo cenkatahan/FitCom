@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitComApplication">
-        <activity android:name=".Blog.BlogActivity"></activity>
+        <activity android:name=".BlogScreen.BlogActivity"></activity>
         <activity android:name=".NutritionScreen.NutritionsActivity" />
         <activity android:name=".ExerciseScreen.ExerciseActivity" />
         <activity android:name=".HomePageActivity" />

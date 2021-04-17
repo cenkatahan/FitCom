@@ -1,4 +1,4 @@
-package com.FitCom.fitcomapplication.Blog;
+package com.FitCom.fitcomapplication.BlogScreen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

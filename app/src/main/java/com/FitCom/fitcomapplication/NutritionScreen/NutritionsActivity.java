@@ -6,7 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import com.FitCom.fitcomapplication.Blog.BlogActivity;
+import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.R;
