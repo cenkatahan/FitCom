@@ -2,54 +2,41 @@ package com.FitCom.fitcomapplication.Registery;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavAction;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.R;
-//import com.FitCom.fitcomapplication.SignInFragmentDirections;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.FitCom.fitcomapplication.Registery.SignInFragmentDirections;
-
-
 
 public class SignInFragment extends Fragment {
-
 
     private Button buttonSignUp, buttonSignIn;
     private EditText eMailField, passwordField;
     private String eMail, password;
     private FirebaseAuth firebaseAuth;
 
-    public SignInFragment() {
-        // Required empty public constructor
-    }
+    public SignInFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sign_in, container, false);
     }
 
@@ -71,12 +58,12 @@ public class SignInFragment extends Fragment {
         buttonSignIn.setOnClickListener(v -> {
             onClickToSignIn(view);
         });
-
-//        if(getArguments() != null){
-//            String deliveredEmail = SignInFragmentArgs.fromBundle(getArguments()).getEMail();
-//            eMailField.setText(deliveredEmail);
-//        }
-
+/*
+        if(getArguments() != null){
+            String deliveredEmail = SignInFragmentArgs.fromBundle(getArguments()).getEMail();
+            eMailField.setText(deliveredEmail);
+        }
+*/
     }
 
     private void onClickToSignUp(View view){
@@ -102,6 +89,5 @@ public class SignInFragment extends Fragment {
                 Toast.makeText(view.getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,7 +8,11 @@
     android:orientation="vertical"
     tools:context=".NutritionScreen.NutritionsActivity">
 
-
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout_nutrition"
@@ -19,7 +23,6 @@
         app:tabIndicatorColor="@color/black"
         app:tabSelectedTextColor="@color/black"
         tools:ignore="MissingConstraints">
-
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_all_nutrition"
@@ -35,10 +38,21 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_nutrition"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager_nutrition"
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_nav_ViewN"
+        app:itemBackground="@color/black"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/bottom_menu"
+        android:layout_alignParentBottom="true"/>
 
-</LinearLayout>
+</RelativeLayout>

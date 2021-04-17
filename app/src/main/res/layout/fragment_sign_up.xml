@@ -45,8 +45,5 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextSignUpPassword"/>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </ScrollView>
