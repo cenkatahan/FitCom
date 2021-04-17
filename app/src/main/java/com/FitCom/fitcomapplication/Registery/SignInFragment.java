@@ -58,12 +58,6 @@ public class SignInFragment extends Fragment {
         buttonSignIn.setOnClickListener(v -> {
             onClickToSignIn(view);
         });
-/*
-        if(getArguments() != null){
-            String deliveredEmail = SignInFragmentArgs.fromBundle(getArguments()).getEMail();
-            eMailField.setText(deliveredEmail);
-        }
-*/
     }
 
     private void onClickToSignUp(View view){
@@ -76,18 +70,21 @@ public class SignInFragment extends Fragment {
         eMail = eMailField.getText().toString();
         password = passwordField.getText().toString();
 
-        firebaseAuth.signInWithEmailAndPassword(eMail, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                Intent intent = new Intent(view.getContext(), HomePageActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(view.getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        if(eMail.isEmpty() || password.isEmpty()){
+            Toast.makeText(view.getContext(), "Some fields are empty!", Toast.LENGTH_SHORT).show();
+        }else {
+            firebaseAuth.signInWithEmailAndPassword(eMail, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                @Override
+                public void onSuccess(AuthResult authResult) {
+                    Intent intent = new Intent(view.getContext(), HomePageActivity.class);
+                    startActivity(intent);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(view.getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

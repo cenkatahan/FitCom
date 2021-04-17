@@ -16,12 +16,24 @@
             android:id="@+id/editTextSignUpEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="185dp"
+            android:layout_marginTop="100dp"
             android:ems="10"
             android:hint="E-mail"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Age"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="@+id/editTextSignUpEmail"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/editTextSignUpEmail"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSignUpEmail" />
 
         <EditText
             android:id="@+id/editTextSignUpPassword"
@@ -30,20 +42,45 @@
             android:layout_marginTop="4dp"
             android:ems="10"
             android:hint="Password"
-            android:inputType="numberPassword"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpEmail"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/editTextSignUpEmail"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSignUpEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextAge" />
+
+        <EditText
+            android:id="@+id/editTextSignUpPassword2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:hint="Reenter Password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/editTextSignUpEmail"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/editTextSignUpEmail"
+            app:layout_constraintTop_toBottomOf="@+id/editTextSignUpPassword" />
+
+        <CheckBox
+            android:id="@+id/termsCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Terms and Conditions"
+            app:layout_constraintEnd_toEndOf="@id/editTextSignUpEmail"
+            app:layout_constraintEnd_toStartOf="@id/editTextSignUpEmail"
+            app:layout_constraintTop_toBottomOf="@id/editTextSignUpPassword2" />
 
         <Button
             android:id="@+id/buttonSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:text="SİGN UP"
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpPassword"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSignUpPassword"/>
+            app:layout_constraintTop_toBottomOf="@+id/termsCheckBox"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
