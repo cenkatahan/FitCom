@@ -1,30 +1,19 @@
 package com.FitCom.fitcomapplication.ExerciseScreen;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import com.FitCom.fitcomapplication.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -70,7 +59,6 @@ public class ExerciseDetailFragment extends Fragment {
 
         id = ExerciseDetailFragmentArgs.fromBundle(getArguments()).getExerciseId();
         exerciseId = String.valueOf(id);
-        Toast.makeText(view.getContext(), exerciseId, Toast.LENGTH_SHORT).show();
 
         fillFromFB(view);
     }
@@ -91,7 +79,7 @@ public class ExerciseDetailFragment extends Fragment {
 
                     exerciseName.setText(name);
                     exerciseDescription.setText(description);
-                    //blog icin bu satiri adapterda cekicez.
+
                     Picasso.get().load(imgUrl).into(imgExercise);
                 }
             }

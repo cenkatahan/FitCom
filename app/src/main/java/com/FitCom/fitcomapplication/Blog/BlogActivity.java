@@ -1,60 +1,25 @@
-package com.FitCom.fitcomapplication.ExerciseScreen;
+package com.FitCom.fitcomapplication.Blog;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import com.FitCom.fitcomapplication.Blog.BlogActivity;
+import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.FitCom.fitcomapplication.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
 
-public class ExerciseActivity extends AppCompatActivity {
-
-    private TabLayout tabLayout;
-    private TabItem tabItemAllPrograms;
-    private TabItem tabItemMyPrograms;
-    private ViewPager viewPager;
-    private AdapterForViewPager adapterForViewPager;
+public class BlogActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise);
+        setContentView(R.layout.activity_blog);
 
-        tabLayout = findViewById(R.id.tabLayout_exercise);
-        tabItemAllPrograms = findViewById(R.id.tab_all_programs);
-        tabItemMyPrograms = findViewById(R.id.tab_my_programs);
-        viewPager = findViewById(R.id.viewpager_exercise);
-
-        adapterForViewPager = new AdapterForViewPager(getSupportFragmentManager(), tabLayout.getTabCount());
-
-        viewPager.setAdapter(adapterForViewPager);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-        BottomNavigationView bnv = findViewById(R.id.bottom_nav_ViewE);
-        bnv.setSelectedItemId(R.id.exercise);
+        BottomNavigationView bnv = findViewById(R.id.bottom_nav_ViewB);
+        bnv.setSelectedItemId(R.id.blog);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -66,12 +31,12 @@ public class ExerciseActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.exercise:
+                        startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
+                        overridePendingTransition(0, 0);
+                        finish();
                         return true;
 
                     case R.id.blog:
-                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        overridePendingTransition(0, 0);
-                        finish();
                         return true;
 
                     case R.id.home:
@@ -95,12 +60,12 @@ public class ExerciseActivity extends AppCompatActivity {
                         break;
 
                     case R.id.exercise:
+                        startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
+                        overridePendingTransition(0, 0);
+                        finish();
                         break;
 
                     case R.id.blog:
-                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        overridePendingTransition(0, 0);
-                        finish();
                         break;
 
                     case R.id.home:
