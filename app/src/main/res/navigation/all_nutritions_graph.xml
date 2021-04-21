@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/all_nutritions_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/all_nutritions_graph"
+    app:startDestination="@id/nutritionListFragment">
 
+    <fragment
+        android:id="@+id/nutritionListFragment"
+        android:name="com.FitCom.fitcomapplication.NutritionScreen.NutritionListFragment"
+        android:label="fragment_nutrition_list"
+        tools:layout="@layout/fragment_nutrition_list" />
 </navigation>
