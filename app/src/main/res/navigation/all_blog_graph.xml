@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/all_blog_graph"
+    app:startDestination="@id/articleListFragment">
+
+    <fragment
+        android:id="@+id/articleListFragment"
+        android:name="com.FitCom.fitcomapplication.BlogScreen.ArticleListFragment"
+        android:label="fragment_article_list"
+        tools:layout="@layout/fragment_article_list" >
+        <action
+            android:id="@+id/action_articleListFragment_to_articleDetailFragment"
+            app:destination="@id/articleDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleDetailFragment"
+        android:name="com.FitCom.fitcomapplication.BlogScreen.ArticleDetailFragment"
+        android:label="fragment_article_detail"
+        tools:layout="@layout/fragment_article_detail" >
+        <action
+            android:id="@+id/action_articleDetailFragment_to_articleListFragment2"
+            app:destination="@id/articleListFragment" />
+        <argument
+            android:name="article_id"
+            app:argType="integer" />
+    </fragment>
+</navigation>

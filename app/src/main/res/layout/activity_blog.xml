@@ -7,11 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".BlogScreen.BlogActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is our blog"
-        android:layout_centerInParent="true"/>
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="542dp"
+        android:layout_above="@+id/bottom_nav_ViewB"
+        android:layout_marginBottom="0dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/all_blog_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
