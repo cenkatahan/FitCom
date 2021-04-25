@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/programs_graph"
+    app:startDestination="@id/programListFragment">
+
+    <fragment
+        android:id="@+id/programListFragment"
+        android:name="com.FitCom.fitcomapplication.ExerciseScreen.ProgramListFragment"
+        android:label="fragment_program_list"
+        tools:layout="@layout/fragment_program_list" >
+        <action
+            android:id="@+id/action_programListFragment_to_programDetailFragment"
+            app:destination="@id/programDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/programDetailFragment"
+        android:name="com.FitCom.fitcomapplication.ExerciseScreen.ProgramDetailFragment"
+        android:label="fragment_program_detail"
+        tools:layout="@layout/fragment_program_detail" >
+        <action
+            android:id="@+id/action_programDetailFragment_to_programListFragment"
+            app:destination="@id/programListFragment" />
+        <argument
+            android:name="programId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
