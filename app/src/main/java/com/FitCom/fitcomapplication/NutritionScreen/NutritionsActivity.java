@@ -132,10 +132,10 @@ public class NutritionsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_logout) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             firebaseAuth.signOut();
-            startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             finish();
+            startActivity(intent);
             Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -159,8 +159,8 @@ public class NutritionsActivity extends AppCompatActivity {
             count = 0;
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             firebaseAuth.signOut();
-            startActivity(intent);
             finish();
+            startActivity(intent);
 
             Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
         }
