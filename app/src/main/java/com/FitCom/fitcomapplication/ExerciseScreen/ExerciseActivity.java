@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
@@ -37,9 +40,7 @@ public class ExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
-
         firebaseAuth = FirebaseAuth.getInstance();
-
         tabLayout = findViewById(R.id.tabLayout_exercise);
         tabItemAllPrograms = findViewById(R.id.tab_all_programs);
         tabItemMyPrograms = findViewById(R.id.tab_my_programs);
@@ -133,10 +134,10 @@ public class ExerciseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_logout) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             firebaseAuth.signOut();
-            startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             finish();
+            startActivity(intent);
             Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -160,11 +161,9 @@ public class ExerciseActivity extends AppCompatActivity {
             count = 0;
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             firebaseAuth.signOut();
-            startActivity(intent);
             finish();
-
+            startActivity(intent);
             Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
         }
     }
-
 }

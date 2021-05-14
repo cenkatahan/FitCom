@@ -77,6 +77,7 @@ public class SignInFragment extends Fragment {
                 @Override
                 public void onSuccess(AuthResult authResult) {
                     Intent intent = new Intent(view.getContext(), HomePageActivity.class);
+                    getActivity().finish();
                     startActivity(intent);
                 }
             }).addOnFailureListener(new OnFailureListener() {
