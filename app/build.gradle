@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-storage'
 
+    implementation 'com.google.firebase:firebase-database:19.7.0'
 
     // Java language implementation - navigation
     implementation "androidx.navigation:navigation-fragment:$nav_version"
