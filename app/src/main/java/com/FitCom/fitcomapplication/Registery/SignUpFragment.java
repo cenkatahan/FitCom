@@ -1,5 +1,12 @@
 package com.FitCom.fitcomapplication.Registery;
 
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.DocumentReference;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +24,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class SignUpFragment extends Fragment {
+
+    private DatabaseReference mDatabase;
+    private FirebaseFirestore firebaseFirestore;
     private EditText eMailField, passwordField, passwordField2, age;
     private Button buttonSignUp;
     private CheckBox terms;
@@ -57,6 +70,7 @@ public class SignUpFragment extends Fragment {
     }
 
     private void SignUp(View view){
+
         eMail = eMailField.getText().toString();
         password = passwordField.getText().toString();
         password2 = passwordField2.getText().toString();
@@ -86,6 +100,29 @@ public class SignUpFragment extends Fragment {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(view.getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            User user = new User(eMail, theAge,"1");
+            HashMap<String, Object> postData = new HashMap<>();
+            postData.put("email",eMail);
+            postData.put("age",theAge);
+            postData.put("trainer", "1");
+            firebaseFirestore.collection("Users").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>(){
+
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    Toast.makeText(view.getContext(), "Enter", Toast.LENGTH_SHORT).show();
+                    firebaseAuth.signOut();
+
+                    SignUpFragmentDirections.ActionSignUpFragmentToSignInFragment actionToSignIn = SignUpFragmentDirections.actionSignUpFragmentToSignInFragment();
+                    Navigation.findNavController(view).navigate(actionToSignIn);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(view.getContext(), "trtr", Toast.LENGTH_SHORT).show();
+
                 }
             });
         }
