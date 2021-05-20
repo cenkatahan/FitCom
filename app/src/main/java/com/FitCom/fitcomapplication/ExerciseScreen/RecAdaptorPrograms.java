@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.FitCom.fitcomapplication.R;
@@ -33,9 +34,11 @@ public class RecAdaptorPrograms extends RecyclerView.Adapter<RecAdaptorPrograms.
 
         holder.programTitle.setText(programTitles.get(position));
 
-//        holder.itemView.setOnClickListener(v -> {
-//
-//        });
+        holder.itemView.setOnClickListener(v -> {
+            ProgramListFragmentDirections.ActionProgramListFragmentToProgramDetailFragment navDir = ProgramListFragmentDirections.actionProgramListFragmentToProgramDetailFragment(position);
+            navDir.setProgramId(position);
+            Navigation.findNavController(v).navigate(navDir);
+        });
     }
 
     @Override
