@@ -50,9 +50,6 @@ public class ExerciseDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //firebaseStorage = FirebaseStorage.getInstance();
-        //storageReference = firebaseStorage.getReference();
-
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         exerciseName = view.findViewById(R.id.detail_name);

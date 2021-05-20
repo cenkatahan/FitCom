@@ -90,5 +90,5 @@ public class ProgramListFragment extends Fragment {
             }
         });
     }
-
 }
+
