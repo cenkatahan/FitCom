@@ -7,30 +7,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
-
 import java.util.Map;
 
 public class ExerciseDetailFragment extends Fragment {
 
-    private FirebaseStorage firebaseStorage;
     private FirebaseFirestore firebaseFirestore;
-    private StorageReference storageReference;
-
     private TextView exerciseName, exerciseDescription;
     private ImageView imgExercise;
-
     private String exerciseId;
     private int id;
 
@@ -51,14 +43,11 @@ public class ExerciseDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-
         exerciseName = view.findViewById(R.id.detail_name);
         exerciseDescription = view.findViewById(R.id.detail_description);
         imgExercise = view.findViewById(R.id.exercise_image);
-
         id = ExerciseDetailFragmentArgs.fromBundle(getArguments()).getExerciseId();
         exerciseId = String.valueOf(id);
-
         fillFromFB(view);
     }
 
@@ -70,15 +59,14 @@ public class ExerciseDetailFragment extends Fragment {
 
             if(value != null){
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
+
                     Map<String,Object> data = snapshot.getData();
                     String name = (String) data.get("name");
                     String category = (String) data.get("category");
                     String description = (String) data.get("description");
                     String imgUrl = (String) data.get("imgUrl");
-
                     exerciseName.setText(name);
                     exerciseDescription.setText(description);
-
                     Picasso.get().load(imgUrl).into(imgExercise);
                 }
             }

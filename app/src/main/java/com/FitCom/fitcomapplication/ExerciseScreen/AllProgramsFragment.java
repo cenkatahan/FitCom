@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.FitCom.fitcomapplication.R;
 
 public class AllProgramsFragment extends Fragment {

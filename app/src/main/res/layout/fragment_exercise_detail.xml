@@ -30,7 +30,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="NAME"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/exercise_image"
@@ -41,7 +40,6 @@
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="DESCRIPTION"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/detail_name"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -50,5 +48,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 </FrameLayout>

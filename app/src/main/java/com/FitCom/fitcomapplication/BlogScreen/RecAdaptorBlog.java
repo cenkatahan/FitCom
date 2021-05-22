@@ -37,7 +37,6 @@ public class RecAdaptorBlog extends RecyclerView.Adapter<RecAdaptorBlog.PlaceHol
             ArticleListFragmentDirections.ActionArticleListFragmentToArticleDetailFragment navigation = ArticleListFragmentDirections.actionArticleListFragmentToArticleDetailFragment(position);
             navigation.setArticleId(position);
             Navigation.findNavController(v).navigate(navigation);
-
         });
     }
 

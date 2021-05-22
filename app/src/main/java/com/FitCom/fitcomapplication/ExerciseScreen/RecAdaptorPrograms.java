@@ -4,13 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.FitCom.fitcomapplication.R;
-
 import java.util.ArrayList;
 
 public class RecAdaptorPrograms extends RecyclerView.Adapter<RecAdaptorPrograms.ProgramPlaceHolder> {
@@ -33,7 +30,6 @@ public class RecAdaptorPrograms extends RecyclerView.Adapter<RecAdaptorPrograms.
     public void onBindViewHolder(@NonNull ProgramPlaceHolder holder, int position) {
 
         holder.programTitle.setText(programTitles.get(position));
-
         holder.itemView.setOnClickListener(v -> {
             ProgramListFragmentDirections.ActionProgramListFragmentToProgramDetailFragment navDir = ProgramListFragmentDirections.actionProgramListFragmentToProgramDetailFragment(position);
             navDir.setProgramId(position);

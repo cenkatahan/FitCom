@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".NutritionScreen.NutritionListFragment">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_nutrition_list"
         android:layout_width="match_parent"

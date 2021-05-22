@@ -5,13 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,7 +17,6 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -30,9 +27,7 @@ public class ArticleListFragment extends Fragment {
     private ArrayList<String> titles;
     private RecyclerView recyclerView;
 
-    public ArticleListFragment() {
-        // Required empty public constructor
-    }
+    public ArticleListFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,9 +45,7 @@ public class ArticleListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         titles = new ArrayList<>();
-
         firebaseFirestore = FirebaseFirestore.getInstance();
-
         recyclerView = view.findViewById(R.id.recycler_blog_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -60,12 +53,8 @@ public class ArticleListFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recAdaptorBlog = new RecAdaptorBlog(titles);
         recyclerView.setAdapter(recAdaptorBlog);
-
         fetchFromFB();
-
     }
-
-
 
     private void fetchFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Article");
@@ -78,16 +67,13 @@ public class ArticleListFragment extends Fragment {
 
                 if(value != null){
                     for (DocumentSnapshot snapshot: value.getDocuments()){
+
                         Map<String, Object> data = snapshot.getData();
-
                         String title = (String) data.get("title");
-
                         titles.add(title);
-
                         recAdaptorBlog.notifyDataSetChanged();
                     }
                 }
-
             }
         });
     }

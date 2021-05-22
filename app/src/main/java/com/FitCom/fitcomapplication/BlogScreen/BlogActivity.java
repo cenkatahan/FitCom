@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
-
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
@@ -31,7 +29,6 @@ public class BlogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_blog);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
         BottomNavigationView bnv = findViewById(R.id.bottom_nav_ViewB);
         bnv.setSelectedItemId(R.id.blog);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

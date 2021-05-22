@@ -4,17 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
-
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
@@ -40,6 +35,7 @@ public class ExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
         firebaseAuth = FirebaseAuth.getInstance();
         tabLayout = findViewById(R.id.tabLayout_exercise);
         tabItemAllPrograms = findViewById(R.id.tab_all_programs);
@@ -47,7 +43,6 @@ public class ExerciseActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewpager_exercise);
 
         adapterForViewPager = new AdapterForViewPager(getSupportFragmentManager(), tabLayout.getTabCount());
-
         viewPager.setAdapter(adapterForViewPager);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -57,12 +52,10 @@ public class ExerciseActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
+            public void onTabUnselected(TabLayout.Tab tab) {}
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
+            public void onTabReselected(TabLayout.Tab tab) {}
         });
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -121,7 +114,6 @@ public class ExerciseActivity extends AppCompatActivity {
         });
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home_menu,menu);
@@ -155,7 +147,6 @@ public class ExerciseActivity extends AppCompatActivity {
         count++;
         if(count == 1){
             Toast.makeText(this,"Press back button one more time to go back to login screen!",Toast.LENGTH_SHORT).show();
-
         }
         else if(count == 2) {
             count = 0;

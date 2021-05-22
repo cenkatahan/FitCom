@@ -17,14 +17,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fragment_popup_progressbar"
-            android:layout_centerInParent="true"
-            />
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="title"
         android:layout_gravity="center"
         android:textSize="20sp"
         android:textAlignment="center"
@@ -33,7 +31,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="descriptionText"
         android:layout_gravity="center"
         android:textSize="20sp"
         android:textAlignment="center"
