@@ -5,13 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,10 +17,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.Map;
-
 
 public class NutritionListFragment extends Fragment {
 
@@ -31,9 +27,7 @@ public class NutritionListFragment extends Fragment {
     private RecAdaptorNutrition recAdaptorNutrition;
     private RecyclerView recyclerView;
 
-
     public NutritionListFragment() {}
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +37,6 @@ public class NutritionListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_nutrition_list, container, false);
     }
 
@@ -56,8 +49,6 @@ public class NutritionListFragment extends Fragment {
         carbs = new ArrayList<>();
         proteins = new ArrayList<>();
         fats = new ArrayList<>();
-
-
 
         recAdaptorNutrition = new RecAdaptorNutrition(names, calories, carbs, proteins, fats);
         recyclerView = view.findViewById(R.id.recycler_nutrition_list);
@@ -87,10 +78,9 @@ public class NutritionListFragment extends Fragment {
 
                         String name = (String) data.get("name");
                         String calorie = (String) data.get("Calorie");
-                        String carb = (String) data.get("Carb");
-                        String protein = (String) data.get("Protein");
-                        String fat = (String) data.get("Fat");
-
+                        String carb = "Carbs: " + data.get("Carb");
+                        String protein = "Protein: " + data.get("Protein");
+                        String fat = "Fat: " + data.get("Fat");
                         names.add(name);
                         calories.add(calorie);
                         carbs.add(carb);
@@ -98,13 +88,9 @@ public class NutritionListFragment extends Fragment {
                         fats.add(fat);
 
                         recAdaptorNutrition.notifyDataSetChanged();
-
                     }
-                    
                 }
-
             }
         });
-
     }
 }

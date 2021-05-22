@@ -12,7 +12,6 @@
         android:id="@+id/row_prg_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         tools:layout_editor_absoluteX="70dp"
         tools:layout_editor_absoluteY="25dp"
         android:layout_centerInParent="true"

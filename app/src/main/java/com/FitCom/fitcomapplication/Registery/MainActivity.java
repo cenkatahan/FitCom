@@ -1,10 +1,7 @@
 package com.FitCom.fitcomapplication.Registery;
 
 import android.os.Bundle;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.FitCom.fitcomapplication.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +13,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-
-    }
+    public void onBackPressed() {}
 }

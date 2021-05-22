@@ -1,17 +1,33 @@
 <resources>
     <string name="app_name">FitCom Application</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--BUTTON STRINGS-->
-    <string name="button_str_exercise">GO EXERCISE</string>
-    <string name="button_str_nutrition">GO NUTRITION</string>
+    <string name="button_str_exercise">EXERCISE</string>
+    <string name="button_str_nutrition">NUTRITION</string>
+    <string name="button_str_exit">SIGN OUT</string>
+    <string name="button_str_sign_in">SIGN IN</string>
+    <string name="button_str_nav_to_sign_up">CREATE A NEW USER</string>
+    <string name="button_str_nav_to_sign_in">TAKE ME TO SIGN IN</string>
+    <string name="button_str_sign_up">SIGN UP</string>
 
+    <!--HINT-->
+    <string name="hint_str_email">e-mail</string>
+    <string name="hint_str_password">password</string>
+    <string name="hint_str_age">age</string>
+
+    <!--STRINGS-->
+    <string name="str_article_name">NAME</string>
+    <string name="str_article_desc">DESCRIPTION</string>
+    <string name="str_terms">TERMS AND CONDITIONS</string>
+    <string name="str_account_type">TRAINER</string>
+    <string name="str_carb">Carbs: </string>
+    <string name="str_fat">Fat: </string>
+    <string name="str_protein">Protein: </string>
 
     <!--TAB ITEMS-->
-    <string name="tab_item_all_exercises">ALL EXERCISES</string>
-    <string name="tab_item_my_exercises">MY EXERCISES</string>
-    <string name="tab_item_all_nutritions">ALL NUTRITIONS</string>
-    <string name="tab_item_my_nutritions">MY PROGRAMS</string>
+    <string name="tab_item_all_exercises">EXERCISES</string>
+    <string name="tab_item_my_exercises">PROGRAMS</string>
+    <string name="tab_item_all_nutritions">NUTRITION</string>
+    <string name="tab_item_my_nutritions">MEALS</string>
 
 </resources>

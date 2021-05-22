@@ -16,7 +16,6 @@ public class RecAdaptorExercises extends RecyclerView.Adapter<RecAdaptorExercise
     ArrayList<String> categories;
 
     public RecAdaptorExercises(ArrayList<String> exercises, ArrayList<String> categories){
-
         this.categories = categories;
         this.exercises = exercises;
     }
@@ -32,9 +31,6 @@ public class RecAdaptorExercises extends RecyclerView.Adapter<RecAdaptorExercise
 
     @Override
     public void onBindViewHolder(@NonNull PlaceHolder holder, int position) {
-        // after some point in time, try to solve the difference between editing an existing exercise and creating a new one.
-        // Osman handled this by sending a string that indicates the operation is editing/creating by navigation component.
-
         holder.title.setText(exercises.get(position));
         holder.category.setText(categories.get(position));
         holder.itemView.setOnClickListener(v -> {

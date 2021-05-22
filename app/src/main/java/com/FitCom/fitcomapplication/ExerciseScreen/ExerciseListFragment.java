@@ -53,7 +53,6 @@ public class ExerciseListFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecAdaptorExercises(exercises,categories);
         recyclerView.setAdapter(adapter);
-
         firebaseFirestore = FirebaseFirestore.getInstance();
         fetchDataFromFB();
     }
@@ -73,10 +72,8 @@ public class ExerciseListFragment extends Fragment {
 
                         String name = (String) data.get("name");
                         String category = (String) data.get("category");
-
                         categories.add(category);
                         exercises.add(name);
-
                         adapter.notifyDataSetChanged();
                     }
                 }}

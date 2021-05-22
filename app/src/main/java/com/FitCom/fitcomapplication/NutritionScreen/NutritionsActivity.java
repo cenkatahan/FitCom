@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
 import androidx.viewpager.widget.ViewPager;
-
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.HomePageActivity;
@@ -38,14 +36,12 @@ public class NutritionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nutritions);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
         tabLayout = findViewById(R.id.tabLayout_nutrition);
         allNutr = findViewById(R.id.tab_all_nutrition);
         myNutr = findViewById(R.id.tab_my_nutrition);
         viewPager = findViewById(R.id.viewpager_nutrition);
 
         adapterForNutrViewPager = new AdapterForNutrViewPager(getSupportFragmentManager(), tabLayout.getTabCount());
-
         viewPager.setAdapter(adapterForNutrViewPager);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -54,14 +50,10 @@ public class NutritionsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabUnselected(TabLayout.Tab tab) {}
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) {}
         });
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -153,7 +145,6 @@ public class NutritionsActivity extends AppCompatActivity {
         count++;
         if(count == 1){
             Toast.makeText(this,"Press back button one more time to go back to login screen!",Toast.LENGTH_SHORT).show();
-
         }
         else if(count == 2) {
             count = 0;
@@ -161,9 +152,7 @@ public class NutritionsActivity extends AppCompatActivity {
             firebaseAuth.signOut();
             finish();
             startActivity(intent);
-
             Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
         }
     }
-
 }

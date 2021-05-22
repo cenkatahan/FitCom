@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="NAME"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="32sp"/>
@@ -23,18 +22,16 @@
         android:id="@+id/row_nutr_calorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="24dp"
-        android:text="CALORIE"
-        app:layout_constraintStart_toEndOf="@+id/row_nutr_name"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toEndOf="@id/row_nutr_name"
+        app:layout_constraintBottom_toTopOf="@id/row_nutr_fat"
+        android:layout_marginLeft="15dp"/>
 
     <TextView
         android:id="@+id/row_nutr_carb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="CARB"
+        android:text="@string/str_carb"
         app:layout_constraintStart_toStartOf="@+id/row_nutr_name"
         app:layout_constraintTop_toBottomOf="@+id/row_nutr_name" />
 
@@ -44,8 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="32dp"
-        android:text="PROTEIN"
-        app:layout_constraintEnd_toEndOf="@+id/row_nutr_calorie"
+        android:text="@string/str_protein"
         app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toEndOf="@+id/row_nutr_fat"
         app:layout_constraintTop_toBottomOf="@+id/row_nutr_calorie" />
@@ -56,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="32dp"
-        android:text="FAT"
+        android:text="@string/str_fat"
         app:layout_constraintStart_toEndOf="@+id/row_nutr_carb"
         app:layout_constraintTop_toBottomOf="@+id/row_nutr_calorie" />
 </androidx.constraintlayout.widget.ConstraintLayout>
