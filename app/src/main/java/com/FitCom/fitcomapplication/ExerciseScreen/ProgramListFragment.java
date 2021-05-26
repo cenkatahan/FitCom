@@ -26,7 +26,7 @@ public class ProgramListFragment extends Fragment {
     private RecAdaptorPrograms recAdaptorPrograms;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
-    private ArrayList<String> titles;
+    private ArrayList<String> titles, imgs;
 
     public ProgramListFragment() {}
 
@@ -47,8 +47,9 @@ public class ProgramListFragment extends Fragment {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         titles = new ArrayList<>();
+        imgs = new ArrayList<>();
         recyclerView = view.findViewById(R.id.recycler_program_list);
-        recAdaptorPrograms = new RecAdaptorPrograms(titles);
+        recAdaptorPrograms = new RecAdaptorPrograms(titles, imgs);
         gridLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(recAdaptorPrograms);
@@ -69,7 +70,9 @@ public class ProgramListFragment extends Fragment {
 
                         Map<String,Object> data = snapshot.getData();
                         String title = (String) data.get("title");
+                        String url = (String) data.get("img_src");
                         titles.add(title);
+                        imgs.add(url);
                         recAdaptorPrograms.notifyDataSetChanged();
                     }
                 }
