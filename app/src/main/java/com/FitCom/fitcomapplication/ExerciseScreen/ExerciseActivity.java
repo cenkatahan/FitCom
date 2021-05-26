@@ -143,18 +143,5 @@ public class ExerciseActivity extends AppCompatActivity {
         shareActionProvider.setShareIntent(intent);
     }
 
-    public void onBackPressed() {
-        count++;
-        if(count == 1){
-            Toast.makeText(this,"Press back button one more time to go back to login screen!",Toast.LENGTH_SHORT).show();
-        }
-        else if(count == 2) {
-            count = 0;
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            firebaseAuth.signOut();
-            finish();
-            startActivity(intent);
-            Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
-        }
-    }
+    public void onBackPressed() {}
 }

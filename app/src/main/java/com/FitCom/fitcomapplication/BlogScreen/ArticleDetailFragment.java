@@ -4,11 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -16,16 +21,16 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.Map;
 
 public class ArticleDetailFragment extends Fragment {
 
-    //private FirebaseStorage firebaseStorage;
-    //private StorageReference storageReference;
     private FirebaseFirestore firebaseFirestore;
     private TextView articleTitle, articleDescription;
     private int id;
     private String articleId;
+    private ImageButton btnToList;
 
     public ArticleDetailFragment() {}
 
@@ -50,6 +55,11 @@ public class ArticleDetailFragment extends Fragment {
         id = ArticleDetailFragmentArgs.fromBundle(getArguments()).getArticleId();
         articleId = String.valueOf(id);
         fetchFromFB();
+
+        btnToList = view.findViewById(R.id.button_article_backToList);
+        btnToList.setOnClickListener(v -> {
+            goArticleList(v);
+        });
     }
 
     private void fetchFromFB(){
@@ -72,5 +82,11 @@ public class ArticleDetailFragment extends Fragment {
                 }
             }
         });
+    }
+
+
+    private void goArticleList(View view){
+        NavDirections actionToSignIn = ArticleDetailFragmentDirections.actionArticleDetailFragmentToArticleListFragment2();
+        Navigation.findNavController(view).navigate(actionToSignIn);
     }
 }

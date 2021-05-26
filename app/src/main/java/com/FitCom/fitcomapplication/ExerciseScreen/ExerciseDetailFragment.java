@@ -4,18 +4,22 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
+
 import java.util.Map;
 
 public class ExerciseDetailFragment extends Fragment {
@@ -25,6 +29,8 @@ public class ExerciseDetailFragment extends Fragment {
     private ImageView imgExercise;
     private String exerciseId;
     private int id;
+
+    private ImageButton btnBackToList;
 
     public ExerciseDetailFragment() { }
 
@@ -49,6 +55,10 @@ public class ExerciseDetailFragment extends Fragment {
         id = ExerciseDetailFragmentArgs.fromBundle(getArguments()).getExerciseId();
         exerciseId = String.valueOf(id);
         fillFromFB(view);
+
+        btnBackToList = view.findViewById(R.id.button_exercise_backToList);
+        btnBackToList.setOnClickListener(v -> goExerciseList(v));
+
     }
 
     public void fillFromFB(View view){
@@ -62,15 +72,18 @@ public class ExerciseDetailFragment extends Fragment {
 
                     Map<String,Object> data = snapshot.getData();
                     String name = (String) data.get("name");
-                    String category = (String) data.get("category");
                     String description = (String) data.get("description");
                     String imgUrl = (String) data.get("imgUrl");
                     exerciseName.setText(name);
                     exerciseDescription.setText(description);
-                    Picasso.get().load(imgUrl).into(imgExercise);
                 }
             }
         });
+    }
+
+    private void goExerciseList(View view){
+        NavDirections actionToSignIn = ExerciseDetailFragmentDirections.actionExerciseDetailFragmentToExerciseListFragment();
+        Navigation.findNavController(view).navigate(actionToSignIn);
     }
 
 }
