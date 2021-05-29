@@ -2,11 +2,12 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".BlogScreen.ArticleListFragment">
+    android:layout_height="490dp"
+    tools:context=".NutritionScreen.MealListFragment">
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_blog_list"
+        android:id="@+id/rec_view_meal"
         android:layout_width="match_parent"
-        android:layout_height="490dp" />
+        android:layout_height="match_parent" />
 </FrameLayout>

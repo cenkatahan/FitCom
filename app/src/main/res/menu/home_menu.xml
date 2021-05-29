@@ -10,9 +10,11 @@
         app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider" />
 
     <item
-        android:id="@+id/action_logout"
-        android:title="Sign Out"
-        android:icon="@drawable/ic_exit"
+        android:id="@+id/action_settings"
+        android:title="SETTINGS"
+        android:icon="@drawable/ic_baseline_settings_24"
         android:orderInCategory="2"
         app:showAsAction="always"/>
+
+
 </menu>

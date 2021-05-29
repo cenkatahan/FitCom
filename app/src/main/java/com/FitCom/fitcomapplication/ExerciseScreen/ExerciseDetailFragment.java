@@ -19,6 +19,7 @@ import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
@@ -76,6 +77,7 @@ public class ExerciseDetailFragment extends Fragment {
                     String imgUrl = (String) data.get("imgUrl");
                     exerciseName.setText(name);
                     exerciseDescription.setText(description);
+                    Picasso.get().load(imgUrl).into(imgExercise);
                 }
             }
         });

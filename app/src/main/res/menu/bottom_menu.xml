@@ -3,21 +3,21 @@
 
     <item
         android:id="@+id/home"
-        android:title="Home"
+        android:title="@string/tab_hom"
         android:icon="@drawable/ic_baseline_home_24" />
 
     <item
         android:id="@+id/exercise"
-        android:title="Exercises"
+        android:title="@string/tab_exercise"
         android:icon="@drawable/ic_baseline_emoji_people_24" />
 
     <item
         android:id="@+id/nutrition"
-        android:title="Nutrition"
+        android:title="@string/tab_nutr"
         android:icon="@drawable/ic_baseline_restaurant_menu_24"/>
 
     <item
         android:id="@+id/blog"
-        android:title="Blog"
+        android:title="@string/tab_blog"
         android:icon="@drawable/ic_baseline_menu_book_24"/>
 </menu>
