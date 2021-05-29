@@ -20,7 +20,7 @@ public class AdapterForNutrViewPager extends FragmentPagerAdapter {
         if(position == 0){
             return new AllNutritionsFragment();
         }else {
-            return new MyNutritionsFragment();
+            return new MealFragment();
         }
     }
 

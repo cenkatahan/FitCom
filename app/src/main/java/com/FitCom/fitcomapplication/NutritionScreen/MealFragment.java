@@ -1,15 +1,17 @@
 package com.FitCom.fitcomapplication.NutritionScreen;
 
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+
 import com.FitCom.fitcomapplication.R;
 
-public class MyNutritionsFragment extends Fragment {
+public class MealFragment extends Fragment {
 
-    public MyNutritionsFragment() {}
+    public MealFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,6 @@ public class MyNutritionsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_my_nutritions, container, false);
+        return inflater.inflate(R.layout.fragment_meal, container, false);
     }
 }

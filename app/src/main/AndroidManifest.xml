@@ -9,15 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitComApplication">
-        <activity android:name=".BlogScreen.BlogActivity"></activity>
+        <activity
+            android:name=".SettingScreen.SettingActivity"
+            android:parentActivityName=".HomePageActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomePageActivity"/>
+
+        </activity>
+        <activity android:name=".BlogScreen.BlogActivity" />
         <activity android:name=".NutritionScreen.NutritionsActivity" />
         <activity android:name=".ExerciseScreen.ExerciseActivity" />
         <activity android:name=".HomePageActivity" />
         <activity android:name=".Registery.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

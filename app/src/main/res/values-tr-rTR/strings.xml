@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FitCom Uygulaması</string>
+
+    <!--BUTTON STRINGS-->
+    <string name="button_str_exercise">EGZERSİZLER</string>
+    <string name="button_str_nutrition">BESİNLER</string>
+    <string name="button_str_exit">ÇIKIŞ YAP</string>
+    <string name="button_str_sign_in">GİRİŞ YAP</string>
+    <string name="button_str_nav_to_sign_up">YENİ HESAP OLUŞTUR</string>
+    <string name="button_str_nav_to_sign_in">GİRİŞ SAYFASINA GÖTÜR</string>
+    <string name="button_str_sign_up">KAYIT OL</string>
+
+    <!--HINT-->
+    <string name="hint_str_email">e-mail</string>
+    <string name="hint_str_password">şifre</string>
+    <string name="hint_str_age">yaş</string>
+
+    <!--STRINGS-->
+    <string name="str_article_name">İSİM</string>
+    <string name="str_article_desc">AÇIKLAMA</string>
+    <string name="str_terms">ŞARTLAR VE KOŞULLAR</string>
+    <string name="str_account_type">EĞİTMEN</string>
+    <string name="str_carb">Karbonhidrat:: </string>
+    <string name="str_fat">Yağ: </string>
+    <string name="str_protein">Protein: </string>
+
+    <!--TAB ITEMS-->
+    <string name="tab_item_all_exercises">EGZERSİZLER</string>
+    <string name="tab_item_my_exercises">PROGRAMLAR</string>
+    <string name="tab_item_all_nutritions">BESİNLER</string>
+    <string name="tab_item_my_nutritions">ÖĞÜNLER</string>
+
+    <!--TABS-->
+    <string name="tab_hom">ANA EKRAN</string>
+    <string name="tab_exercise">EGZERSİZLER</string>
+    <string name="tab_nutr">BESINLER</string>
+    <string name="tab_blog">BLOG</string>
+
+    <string name="tab_trainer">EĞITMEN</string>
+
+    <string name="lang">DİLLER</string>
+</resources>

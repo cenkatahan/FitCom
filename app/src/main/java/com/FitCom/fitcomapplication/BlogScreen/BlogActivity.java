@@ -4,16 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
+
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.FitCom.fitcomapplication.R;
-import com.FitCom.fitcomapplication.Registery.MainActivity;
+import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -94,12 +95,10 @@ public class BlogActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_logout) {
-            firebaseAuth.signOut();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        if (item.getItemId() == R.id.action_settings) {
+            Intent intent = new Intent(BlogActivity.this, SettingActivity.class);
             finish();
             startActivity(intent);
-            Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
             return true;
         }
         return super.onOptionsItemSelected(item);

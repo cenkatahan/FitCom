@@ -4,17 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
 import androidx.viewpager.widget.ViewPager;
+
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.FitCom.fitcomapplication.R;
-import com.FitCom.fitcomapplication.Registery.MainActivity;
+import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -27,7 +28,7 @@ public class ExerciseActivity extends AppCompatActivity {
     private TabItem tabItemMyPrograms;
     private ViewPager viewPager;
     private AdapterForViewPager adapterForViewPager;
-    private ShareActionProvider shareActionProvider;
+    ShareActionProvider shareActionProvider;
     private FirebaseAuth firebaseAuth;
     private int count = 0;
 
@@ -35,6 +36,7 @@ public class ExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         tabLayout = findViewById(R.id.tabLayout_exercise);
@@ -125,12 +127,10 @@ public class ExerciseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_logout) {
-            firebaseAuth.signOut();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        if (item.getItemId() == R.id.action_settings) {
+            Intent intent = new Intent(ExerciseActivity.this, SettingActivity.class);
             finish();
             startActivity(intent);
-            Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -144,4 +144,5 @@ public class ExerciseActivity extends AppCompatActivity {
     }
 
     public void onBackPressed() {}
+
 }

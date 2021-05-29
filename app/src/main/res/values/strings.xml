@@ -30,4 +30,14 @@
     <string name="tab_item_all_nutritions">NUTRITION</string>
     <string name="tab_item_my_nutritions">MEALS</string>
 
+    <!--TABS-->
+    <string name="tab_hom">HOME</string>
+    <string name="tab_exercise">EXERCISE</string>
+    <string name="tab_nutr">NUTRITION</string>
+    <string name="tab_blog">BLOG</string>
+
+    <string name="tab_trainer">TRAINER</string>
+
+
+    <string name="lang">LANGUAGES</string>
 </resources>
