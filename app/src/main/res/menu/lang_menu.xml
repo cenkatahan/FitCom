@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_tr"
+        android:title="tr"
+        android:orderInCategory="1"
+        android:icon="@drawable/tr_2"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_en"
+        android:title="en"
+        android:icon="@drawable/en_2"
+        android:orderInCategory="2"
+        app:showAsAction="always"/>
+
+</menu>

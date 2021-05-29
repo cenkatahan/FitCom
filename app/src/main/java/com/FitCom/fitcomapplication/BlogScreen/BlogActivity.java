@@ -15,6 +15,7 @@ import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.FitCom.fitcomapplication.R;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
+import com.FitCom.fitcomapplication.TrainerActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -53,6 +54,11 @@ public class BlogActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
+
+                    case R.id.trainer:
+                        startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
                 }
                 return false;
             }
@@ -73,6 +79,11 @@ public class BlogActivity extends AppCompatActivity {
                         break;
 
                     case R.id.blog:
+                        break;
+
+                    case R.id.trainer:
+                        startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                        overridePendingTransition(0, 0);
                         break;
 
                     case R.id.home:

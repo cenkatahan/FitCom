@@ -76,7 +76,10 @@ public class ProgramDetailFragment extends Fragment {
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
                     Map<String,Object> data = snapshot.getData();
                     String title = (String) data.get("title");
-                    String description = (String) data.get("desc");
+
+                    String trimmed = (String) data.get("desc");
+                    String description = trimmed.replace(",","\n");
+
                     String url = (String) data.get("img_src");
                     programName.setText(title);
                     programDescription.setText(description);
