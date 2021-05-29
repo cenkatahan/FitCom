@@ -1,22 +1,27 @@
 package com.FitCom.fitcomapplication.SettingScreen;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.FitCom.fitcomapplication.R;
+import com.FitCom.fitcomapplication.Registery.MainActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
 
 public class SettingActivity extends AppCompatActivity {
 
-    private ImageButton lang_tr, lang_eng;
+    private ImageButton lang_tr, lang_eng, exit;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +29,10 @@ public class SettingActivity extends AppCompatActivity {
         getCurrentLanguage();
         setContentView(R.layout.activity_setting);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         lang_tr = findViewById(R.id.settings_lang_tr);
         lang_eng = findViewById(R.id.settings_lang_eng);
+        exit = findViewById(R.id.imageButtonExit);
 
         lang_tr.setOnClickListener(v -> {
             setNewLanguage("tr");
@@ -34,6 +41,14 @@ public class SettingActivity extends AppCompatActivity {
         lang_eng.setOnClickListener(v -> {
             setNewLanguage("en");
             recreate();
+        });
+
+        exit.setOnClickListener(v -> {
+            firebaseAuth.signOut();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            finish();
+            startActivity(intent);
+            Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
         });
 
         ActionBar ab = getSupportActionBar();

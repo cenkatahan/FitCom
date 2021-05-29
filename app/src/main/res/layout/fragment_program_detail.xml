@@ -8,8 +8,6 @@
     android:orientation="vertical"
     android:background="#44000000">
 
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -80,15 +78,16 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_popup_title" />
+                app:layout_constraintTop_toBottomOf="@+id/fragment_popup_title"
+                android:maxLines="4"
+                android:minLines="1"/>
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="300dp"
-                android:text="TextView"
+                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_popup_description" />
 

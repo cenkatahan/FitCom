@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,7 +56,6 @@ public class SignUpFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
         eMailField = view.findViewById(R.id.editTextSignUpEmail);
         passwordField = view.findViewById(R.id.editTextSignUpPassword);
         passwordField2 = view.findViewById(R.id.editTextSignUpPassword2);
@@ -82,6 +84,7 @@ public class SignUpFragment extends Fragment {
         theAge = age.getText().toString();
         termsAndConditions = terms.isChecked();
         trainercheckbox=trainer.isChecked();
+
         if(eMail.isEmpty() || password.isEmpty() || password2.isEmpty() || theAge.isEmpty()) {
             Toast.makeText(view.getContext(), "Some fields are empty!", Toast.LENGTH_SHORT).show();
         }else if(Integer.parseInt(theAge) < 18){
@@ -129,7 +132,7 @@ public class SignUpFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(view.getContext(), "trtr", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "Error!", Toast.LENGTH_SHORT).show();
 
                 }
             });

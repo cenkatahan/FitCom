@@ -16,6 +16,7 @@ import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.FitCom.fitcomapplication.R;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
+import com.FitCom.fitcomapplication.TrainerActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
@@ -76,6 +77,11 @@ public class ExerciseActivity extends AppCompatActivity {
                     case R.id.exercise:
                         return true;
 
+                    case R.id.trainer:
+                        startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+
                     case R.id.blog:
                         startActivity(new Intent(getApplicationContext(), BlogActivity.class));
                         overridePendingTransition(0, 0);
@@ -100,6 +106,11 @@ public class ExerciseActivity extends AppCompatActivity {
                         break;
 
                     case R.id.exercise:
+                        break;
+
+                    case R.id.trainer:
+                        startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                        overridePendingTransition(0, 0);
                         break;
 
                     case R.id.blog:
