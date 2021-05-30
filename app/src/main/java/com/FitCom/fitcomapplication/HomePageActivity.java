@@ -18,6 +18,7 @@ import com.FitCom.fitcomapplication.Registery.MainActivity;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -25,7 +26,9 @@ public class HomePageActivity extends AppCompatActivity {
     private BottomNavigationView bnv;
     private ShareActionProvider shareActionProvider;
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser currentUser;
     private int count = 0;
+    private String currentEMail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class HomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        handleTrainerLayout();
 
         goToExercise = findViewById(R.id.button_to_exercise);
         goToExercise.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +124,10 @@ public class HomePageActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void handleTrainerLayout(){
+
     }
 
     @Override
