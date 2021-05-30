@@ -1,11 +1,9 @@
-package com.FitCom.fitcomapplication;
+package com.FitCom.fitcomapplication.TrainerScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,71 +12,23 @@ import androidx.core.view.MenuItemCompat;
 
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
+import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
+import com.FitCom.fitcomapplication.R;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-import java.util.Map;
-
-public class TrainerActivity extends AppCompatActivity {
+public class InsertDataActivity extends AppCompatActivity {
 
     private BottomNavigationView bnv;
     private ShareActionProvider shareActionProvider;
-    private FirebaseFirestore firebaseFirestore;
-    private TextView email,trainer;
-    private ArrayList<String> mails;
-    private ArrayList<String> train;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trainer);
+        setContentView(R.layout.activity_insert_data);
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        //email = findViewById(R.id.emailbox);
-        trainer =findViewById(R.id.textTrainer);
-        mails = new ArrayList<>();
-        train = new ArrayList<>();
-        String finalmail="";
-        String finaltrain="";
-        CollectionReference collectionReference = firebaseFirestore.collection("Users");
-        collectionReference.whereEqualTo("trainer","1").addSnapshotListener((value, error) -> {
-            if(error != null)
-                Toast.makeText(this, error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
-
-            if(value != null){
-                for(DocumentSnapshot snapshot : value.getDocuments()) {
-
-                    Map<String,Object> data = snapshot.getData();
-                    String em = (String) data.get("email");
-                    String tr = (String) data.get("trainer");;
-                    train.add(tr);
-                    mails.add(em);
-                }
-            }
-        });
-
-//        for (String em:mails
-//        ) {
-//            finalmail+=em;
-//            System.out.println(em);
-//        }
-//
-//
-//        for (String tr:train
-//        ) {
-//            finaltrain+=tr;
-//            System.out.println(tr);
-//        }
-//        //email.setText(finalmail);
-//        trainer.setText(finaltrain);
-
-
-        bnv = findViewById(R.id.bottom_nav_ViewT);
+        bnv = findViewById(R.id.bottom_nav_View_INS);
         bnv.setSelectedItemId(R.id.trainer);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -140,6 +90,7 @@ public class TrainerActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     @Override
@@ -154,7 +105,7 @@ public class TrainerActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_settings) {
-            Intent intent = new Intent(TrainerActivity.this, SettingActivity.class);
+            Intent intent = new Intent(InsertDataActivity.this, SettingActivity.class);
             finish();
             startActivity(intent);
             return true;
@@ -168,6 +119,4 @@ public class TrainerActivity extends AppCompatActivity {
         intent.putExtra(Intent.EXTRA_TEXT,text);
         shareActionProvider.setShareIntent(intent);
     }
-
-    public void onBackPressed() {}
 }
