@@ -109,6 +109,7 @@ public class InsertArticleFragment extends Fragment {
 
     }
 
+
     private void getArticleId(){
         counter_id = 0;
 
