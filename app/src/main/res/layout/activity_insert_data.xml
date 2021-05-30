@@ -5,19 +5,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrainerActivity">
+    tools:context=".TrainerScreen.InsertDataActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textTrainer"
-        android:layout_centerInParent="true"
-        android:text="ONLY FOR TRAINEE"/>
+
+    <fragment
+        android:id="@+id/fragment5"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="545dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/insertdata_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_nav_ViewT"
+        android:id="@+id/bottom_nav_View_INS"
         app:itemBackground="@color/black"
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"

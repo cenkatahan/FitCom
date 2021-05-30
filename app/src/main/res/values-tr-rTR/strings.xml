@@ -10,11 +10,25 @@
     <string name="button_str_nav_to_sign_up">YENİ HESAP OLUŞTUR</string>
     <string name="button_str_nav_to_sign_in">GİRİŞ SAYFASINA GÖTÜR</string>
     <string name="button_str_sign_up">KAYIT OL</string>
+    <string name="button_str_send_recipe">TARİFİ GÖNDER</string>
+    <string name="button_str_send_article">MAKALEYİ GÖNDER</string>
+    <string name="button_str_send_exercise">EGZERSİZİ GÖNDER</string>
+    <string name="button_str_insert_article">MAKALE GİR</string>
+    <string name="button_str_insert_exercise">EGZERSİZ GİR</string>
+    <string name="button_str_insert_recipe">TARİF GİR</string>
+
 
     <!--HINT-->
     <string name="hint_str_email">e-mail</string>
     <string name="hint_str_password">şifre</string>
     <string name="hint_str_age">yaş</string>
+    <string name="hint_str_recipe_title">TARİF ADI</string>
+    <string name="hint_str_recipe_desc">YAPILIŞ</string>
+    <string name="hint_str_article_title">MAKALE ADI</string>
+    <string name="hint_str_article_desc">MAKALE İÇERİĞİ</string>
+    <string name="hint_str_exercise_name">EGZERSİZ ADI</string>
+    <string name="hint_str_exercise_desc">EGZERSİZ AÇIKLAMASI</string>
+    <string name="hint_str_exercise_category">EGZERSİZ KATEGORİ</string>
 
     <!--STRINGS-->
     <string name="str_article_name">İSİM</string>

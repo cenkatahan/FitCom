@@ -9,11 +9,24 @@
     <string name="button_str_nav_to_sign_up">CREATE A NEW USER</string>
     <string name="button_str_nav_to_sign_in">TAKE ME TO SIGN IN</string>
     <string name="button_str_sign_up">SIGN UP</string>
+    <string name="button_str_send_recipe">SEND RECIPE</string>
+    <string name="button_str_send_article">SEND ARTICLE</string>
+    <string name="button_str_insert_article">INSERT ARTICLE</string>
+    <string name="button_str_insert_exercise">INSERT EXERCISE</string>
+    <string name="button_str_insert_recipe">INSERT RECIPE</string>
+    <string name="button_str_send_exercise">SEND EXERCISE</string>
 
     <!--HINT-->
     <string name="hint_str_email">e-mail</string>
     <string name="hint_str_password">password</string>
     <string name="hint_str_age">age</string>
+    <string name="hint_str_recipe_title">RECIPE TITLE</string>
+    <string name="hint_str_recipe_desc">RECIPE DESCRIPTION</string>
+    <string name="hint_str_article_title">ARTICLE TITLE</string>
+    <string name="hint_str_article_desc">ARTICLE CONTENT</string>
+    <string name="hint_str_exercise_name">EXERCISE NAME</string>
+    <string name="hint_str_exercise_desc">EXERCISE DESCRIPTION</string>
+    <string name="hint_str_exercise_category">EXERCISE CATEGORY</string>
 
     <!--STRINGS-->
     <string name="str_article_name">NAME</string>
@@ -38,6 +51,6 @@
 
     <string name="tab_trainer">TRAINER</string>
 
-
     <string name="lang">LANGUAGES</string>
+
 </resources>

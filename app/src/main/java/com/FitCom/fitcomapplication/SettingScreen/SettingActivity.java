@@ -78,4 +78,5 @@ public class SettingActivity extends AppCompatActivity {
         editor.putString("selected_lang" ,language);
         editor.apply();
     }
+
 }

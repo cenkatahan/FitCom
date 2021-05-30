@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.HomePageActivity;
+import com.FitCom.fitcomapplication.TrainerScreen.InsertDataActivity;
 import com.FitCom.fitcomapplication.R;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
 import com.FitCom.fitcomapplication.TrainerActivity;
@@ -21,6 +23,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Map;
 
 public class NutritionsActivity extends AppCompatActivity {
 
@@ -30,6 +38,10 @@ public class NutritionsActivity extends AppCompatActivity {
     private AdapterForNutrViewPager adapterForNutrViewPager;
     private ShareActionProvider shareActionProvider;
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser currentUser;
+    private FirebaseFirestore firebaseFirestore;
+    private String currentEMail;
+    private String acc_type;
     private int count = 0;
 
     @Override
@@ -38,6 +50,9 @@ public class NutritionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nutritions);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        handleTrainerLayout();
+
         tabLayout = findViewById(R.id.tabLayout_nutrition);
         allNutr = findViewById(R.id.tab_all_nutrition);
         myNutr = findViewById(R.id.tab_my_nutrition);
@@ -80,7 +95,11 @@ public class NutritionsActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.trainer:
-                        startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                        if(acc_type.equals("1")){
+                            startActivity(new Intent(getApplicationContext(), InsertDataActivity.class));
+                        }else if(acc_type.equals("0")){
+                            startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                        }
                         overridePendingTransition(0, 0);
                         return true;
 
@@ -106,7 +125,11 @@ public class NutritionsActivity extends AppCompatActivity {
                         break;
 
                     case R.id.trainer:
-                        startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                        if(acc_type.equals("1")){
+                            startActivity(new Intent(getApplicationContext(), InsertDataActivity.class));
+                        }else if(acc_type.equals("0")){
+                            startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                        }
                         overridePendingTransition(0, 0);
                         break;
 
@@ -149,6 +172,25 @@ public class NutritionsActivity extends AppCompatActivity {
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT,text);
         shareActionProvider.setShareIntent(intent);
+    }
+
+    private void handleTrainerLayout(){
+        currentUser = firebaseAuth.getCurrentUser();
+        currentEMail = currentUser.getEmail();
+
+        CollectionReference collectionReference = firebaseFirestore.collection("Users");
+        collectionReference.whereEqualTo("email",currentEMail).addSnapshotListener((value, error) -> {
+            if(error != null)
+                Toast.makeText(this, error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+
+            if(value != null){
+                for(DocumentSnapshot snapshot : value.getDocuments()) {
+
+                    Map<String,Object> data = snapshot.getData();
+                    acc_type = (String) data.get("trainer");
+                }
+            }
+        });
     }
 
     public void onBackPressed() {}

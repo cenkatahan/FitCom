@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/insertdata_graph"
+    app:startDestination="@id/insertListFragment">
+
+    <fragment
+        android:id="@+id/insertArticleFragment"
+        android:name="com.FitCom.fitcomapplication.TrainerScreen.InsertArticleFragment"
+        android:label="fragment_insert_article"
+        tools:layout="@layout/fragment_insert_article" >
+        <action
+            android:id="@+id/action_insertArticleFragment_to_insertListFragment"
+            app:destination="@id/insertListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertListFragment"
+        android:name="com.FitCom.fitcomapplication.TrainerScreen.InsertListFragment"
+        android:label="fragment_insert_list"
+        tools:layout="@layout/fragment_insert_list" >
+        <action
+            android:id="@+id/action_insertListFragment_to_insertArticleFragment"
+            app:destination="@id/insertArticleFragment" />
+        <action
+            android:id="@+id/action_insertListFragment_to_insertRecipeFragment"
+            app:destination="@id/insertRecipeFragment" />
+        <action
+            android:id="@+id/action_insertListFragment_to_insertExerciseFragment"
+            app:destination="@id/insertExerciseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertExerciseFragment"
+        android:name="com.FitCom.fitcomapplication.TrainerScreen.InsertExerciseFragment"
+        android:label="fragment_insert_exercise"
+        tools:layout="@layout/fragment_insert_exercise" >
+        <action
+            android:id="@+id/action_insertExerciseFragment_to_insertListFragment"
+            app:destination="@id/insertListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertRecipeFragment"
+        android:name="com.FitCom.fitcomapplication.TrainerScreen.InsertRecipeFragment"
+        android:label="fragment_insert_recipe"
+        tools:layout="@layout/fragment_insert_recipe" >
+        <action
+            android:id="@+id/action_insertRecipeFragment_to_insertListFragment"
+            app:destination="@id/insertListFragment" />
+    </fragment>
+</navigation>
