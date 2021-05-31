@@ -5,14 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrainerActivity">
+    tools:context=".TraineeScreen.TrainerActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textTrainer"
-        android:layout_centerInParent="true"
-        android:text="ONLY FOR TRAINEE"/>
+    <fragment
+        android:id="@+id/fragment6"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="541dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/trainers_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

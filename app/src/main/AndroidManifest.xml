@@ -3,6 +3,7 @@
     package="com.FitCom.fitcomapplication">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitComApplication">
         <activity android:name=".TrainerScreen.InsertDataActivity"></activity>
-        <activity android:name=".TrainerActivity" />
+        <activity android:name=".TraineeScreen.TrainerActivity" />
         <activity
             android:name=".SettingScreen.SettingActivity"
             android:parentActivityName=".HomePageActivity">

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/trainers_graph"
+    app:startDestination="@id/trainersListFragment">
+
+    <fragment
+        android:id="@+id/trainersListFragment"
+        android:name="com.FitCom.fitcomapplication.TraineeScreen.TrainersListFragment"
+        android:label="fragment_trainers_list"
+        tools:layout="@layout/fragment_trainers_list" />
+</navigation>

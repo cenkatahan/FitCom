@@ -18,7 +18,7 @@ import com.FitCom.fitcomapplication.TrainerScreen.InsertDataActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.FitCom.fitcomapplication.R;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
-import com.FitCom.fitcomapplication.TrainerActivity;
+import com.FitCom.fitcomapplication.TraineeScreen.TrainerActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;

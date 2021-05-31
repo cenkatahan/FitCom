@@ -16,6 +16,7 @@ import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.FitCom.fitcomapplication.Registery.MainActivity;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
+import com.FitCom.fitcomapplication.TraineeScreen.TrainerActivity;
 import com.FitCom.fitcomapplication.TrainerScreen.InsertDataActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;

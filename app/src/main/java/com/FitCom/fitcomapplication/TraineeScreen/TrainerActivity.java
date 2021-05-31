@@ -1,4 +1,4 @@
-package com.FitCom.fitcomapplication;
+package com.FitCom.fitcomapplication.TraineeScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,9 @@ import androidx.core.view.MenuItemCompat;
 
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
+import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
+import com.FitCom.fitcomapplication.R;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
@@ -40,7 +42,6 @@ public class TrainerActivity extends AppCompatActivity {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         //email = findViewById(R.id.emailbox);
-        trainer =findViewById(R.id.textTrainer);
         mails = new ArrayList<>();
         train = new ArrayList<>();
         String finalmail="";
