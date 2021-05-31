@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
@@ -63,7 +64,7 @@ public class InsertExerciseFragment extends Fragment {
     private ImageView destImg;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
-    private Bitmap imgChosen;
+    private Bitmap imgChosen, defaultImg;
     SaveBitmap saveBitmap;
     Uri imageData;
     private static final String NAME = "saveBitmap";
@@ -115,6 +116,8 @@ public class InsertExerciseFragment extends Fragment {
             Navigation.findNavController(view).navigate(direction);
         });
 
+        defaultImg = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.temp);
+        destImg.setImageBitmap(defaultImg);
         startSavedBitmapFragment();
         loadBitmap();
     }
@@ -123,7 +126,7 @@ public class InsertExerciseFragment extends Fragment {
         if (imageData != null) {
             //universal unique id
             UUID uuid = UUID.randomUUID();
-            final String imageName = "images/" + uuid + ".jpg";
+            final String imageName = "images/exercise-images" + uuid + ".jpg";
 
             storageReference.child(imageName).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -134,7 +137,7 @@ public class InsertExerciseFragment extends Fragment {
                         public void onSuccess(Uri uri) {
 
                             String downloadUrl = uri.toString();
-                            HashMap<String, Object> postData = new HashMap<>();;
+                            HashMap<String, Object> postData = new HashMap<>();
                             postData.put("imgUrl",downloadUrl);
                             postData.put("description", et_desc.getText().toString());
                             postData.put("id", newId);
@@ -246,8 +249,7 @@ public class InsertExerciseFragment extends Fragment {
                     //noinspection deprecation
                     imgChosen = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), imageData);
                 else {
-                    //  when user tries to save a record without selecting a picture, I used have error caused empty uri(address of data in device.
-
+                    //  when user tries to save a record without selecting a picture, I used to have error caused empty uri(address of data in device).
                     ImageDecoder.Source source = ImageDecoder.createSource(requireActivity().getContentResolver(), imageData);
                     imgChosen = ImageDecoder.decodeBitmap(source);
                 }
