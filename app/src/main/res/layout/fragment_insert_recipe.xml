@@ -41,14 +41,47 @@
         app:layout_constraintStart_toStartOf="@+id/editText_recipe_title"
         app:layout_constraintTop_toBottomOf="@+id/editText_recipe_title" />
 
+    <EditText
+        android:id="@+id/editText_recipe_calorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_margin="6dp"
+        android:ems="10"
+        android:hint="calorie"
+        android:gravity="start|top"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/editText_recipe_title"
+        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc" />
+
+    <Button
+        android:id="@+id/button_select_img_rec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:text="select image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_send_recipe"
+        />
+
     <Button
         android:id="@+id/button_send_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="36dp"
         android:text="@string/button_str_send_recipe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc" />
+        app:layout_constraintBottom_toTopOf="@+id/editText_recipe_title" />
+
+    <ImageView
+        android:id="@+id/imageViewRecipe"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_calorie"
+        tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,7 @@ import java.util.Map;
 public class MealListFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore;
     private RecAdaptorMeal recAdaptorMeal;
-    private ArrayList<String> titles;
+    private ArrayList<String> titles, calories, imgUrls;
     private RecyclerView recyclerView;
 
     public MealListFragment() {
@@ -52,16 +52,22 @@ public class MealListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         titles = new ArrayList<>();
+        calories = new ArrayList<>();
+        imgUrls = new ArrayList<>();
+
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
+        fetchDataFromFB();
+
         recyclerView = view.findViewById(R.id.rec_view_meal) ;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recAdaptorMeal = new RecAdaptorMeal(titles);
+        recAdaptorMeal = new RecAdaptorMeal(titles,calories,imgUrls);
         recyclerView.setAdapter(recAdaptorMeal);
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        fetchDataFromFB();
+
 
     }
 
@@ -80,11 +86,16 @@ public class MealListFragment extends Fragment {
                         Map<String,Object> data = snapshot.getData();
 
                         String name = (String) data.get("title");
+                        String calorie = (String) data.get("calorie");
+                        String imgUrl = (String) data.get("imgUrl");
+
                         titles.add(name);
+                        calories.add(calorie);
+                        imgUrls.add(imgUrl);
+
                         recAdaptorMeal.notifyDataSetChanged();
                     }
                 }}
         });
-
-        }
+    }
 }
