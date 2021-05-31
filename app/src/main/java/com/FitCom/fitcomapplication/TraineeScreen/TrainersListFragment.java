@@ -84,10 +84,9 @@ public class TrainersListFragment extends Fragment {
                         Map<String, Object> data = snapshot.getData();
 
                         String email = (String) data.get("email");
-
-                        //name must be implemented
-
+                        String fullName = (String) data.get("fullName");
                         emails.add(email);
+                        names.add(fullName);
                         recAdaptorTrainers.notifyDataSetChanged();
                     }
                 }

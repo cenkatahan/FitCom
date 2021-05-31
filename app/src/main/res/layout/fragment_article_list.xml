@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/menulong"
     tools:context=".BlogScreen.ArticleListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_blog_list"
         android:layout_width="match_parent"
-        android:layout_height="490dp" />
+        android:layout_gravity="center|top"
+        android:layout_height="520dp" />
 </FrameLayout>
