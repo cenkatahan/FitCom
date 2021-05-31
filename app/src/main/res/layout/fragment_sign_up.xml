@@ -7,22 +7,61 @@
     android:layout_height="match_parent"
     tools:context=".Registery.SignUpFragment">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="603dp"
+        android:src="@drawable/login_background"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="520dp"
+        android:layout_gravity="center"
+        android:id="@+id/rectangle"
+        android:src="@drawable/rectangle"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="44dp">
 
         <EditText
-            android:id="@+id/editTextSignUpEmail"
+            android:id="@+id/editTextFullName"
             android:layout_width="303dp"
             android:layout_height="50dp"
-            android:layout_marginTop="84dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:ems="10"
-            android:hint="@string/hint_str_email"
+            android:hint="full name"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/editTextSignUpEmail"
+            android:layout_width="303dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:hint="@string/hint_str_email"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextFullName" />
 
         <EditText
             android:id="@+id/editTextAge"
@@ -31,6 +70,9 @@
             android:ems="10"
             android:hint="@string/hint_str_age"
             android:inputType="number"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpEmail"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/editTextSignUpEmail"
@@ -43,6 +85,9 @@
             android:layout_marginTop="4dp"
             android:ems="10"
             android:hint="@string/hint_str_password"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpEmail"
             app:layout_constraintHorizontal_bias="1.0"
@@ -56,6 +101,9 @@
             android:layout_marginTop="4dp"
             android:ems="10"
             android:hint="@string/hint_str_password"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpEmail"
             app:layout_constraintHorizontal_bias="1.0"
@@ -67,6 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textColor="@color/white"
             android:text="@string/str_terms"
             app:layout_constraintEnd_toEndOf="@id/editTextSignUpEmail"
             app:layout_constraintEnd_toStartOf="@id/editTextSignUpEmail"
@@ -77,6 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/str_account_type"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpPassword"
             app:layout_constraintStart_toStartOf="@id/editTextSignUpEmail"
             app:layout_constraintTop_toBottomOf="@+id/termsCheckBox" />
@@ -102,4 +152,5 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonSignUp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 </ScrollView>

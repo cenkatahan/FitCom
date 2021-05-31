@@ -26,12 +26,12 @@ import com.google.firebase.firestore.DocumentReference;
 import java.util.HashMap;
 
 public class SignUpFragment extends Fragment {
-    private EditText eMailField, passwordField, passwordField2, age;
+    private EditText eMailField, passwordField, passwordField2, age, fullName;
     private Button buttonSignUp, button_nav_to_sign_in;
     private CheckBox terms,trainer;
     private User user;
     private HashMap<String, Object> postData;
-    private String eMail, password,password2, theAge;
+    private String eMail, password,password2, theAge, name;
     private boolean termsAndConditions,trainercheckbox;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
@@ -61,6 +61,7 @@ public class SignUpFragment extends Fragment {
         passwordField2 = view.findViewById(R.id.editTextSignUpPassword2);
         age = view.findViewById(R.id.editTextAge);
         terms = view.findViewById(R.id.termsCheckBox);
+        fullName = view.findViewById(R.id.editTextFullName);
         trainer=view.findViewById(R.id.checkBoxAccountType);
         buttonSignUp = view.findViewById(R.id.buttonSignUp);
         button_nav_to_sign_in = view.findViewById(R.id.button_nav_to_sign_in);
@@ -84,8 +85,9 @@ public class SignUpFragment extends Fragment {
         theAge = age.getText().toString();
         termsAndConditions = terms.isChecked();
         trainercheckbox=trainer.isChecked();
+        name = fullName.getText().toString();
 
-        if(eMail.isEmpty() || password.isEmpty() || password2.isEmpty() || theAge.isEmpty()) {
+        if(eMail.isEmpty() || password.isEmpty() || password2.isEmpty() || theAge.isEmpty() || name.isEmpty()) {
             Toast.makeText(view.getContext(), "Some fields are empty!", Toast.LENGTH_SHORT).show();
         }else if(Integer.parseInt(theAge) < 18){
             Toast.makeText(view.getContext(), "You must be at least 18!", Toast.LENGTH_SHORT).show();
@@ -106,18 +108,20 @@ public class SignUpFragment extends Fragment {
                 }
             });
             if(trainercheckbox) {
-                user = new User(eMail, theAge, "1");
+                user = new User(eMail, theAge, "1", name);
                 postData = new HashMap<>();
                 postData.put("email", eMail);
                 postData.put("age", theAge);
                 postData.put("trainer", "1");
+                postData.put("fullName",name);
             }
             else{
-                user = new User(eMail, theAge, "0");
+                user = new User(eMail, theAge, "0", name);
                 postData = new HashMap<>();
                 postData.put("email", eMail);
                 postData.put("age", theAge);
                 postData.put("trainer", "0");
+                postData.put("fullName",name);
             }
             firebaseFirestore.collection("Users").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>(){
 

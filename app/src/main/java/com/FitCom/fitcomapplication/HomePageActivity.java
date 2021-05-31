@@ -29,7 +29,6 @@ import java.util.Map;
 
 public class HomePageActivity extends AppCompatActivity {
 
-    private Button goToExercise, goToNutrition, signOut;
     private BottomNavigationView bnv;
     private ShareActionProvider shareActionProvider;
     private FirebaseAuth firebaseAuth;
@@ -46,30 +45,6 @@ public class HomePageActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         handleTrainerLayout();
-
-        goToExercise = findViewById(R.id.button_to_exercise);
-        goToExercise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ExerciseActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        goToNutrition = findViewById(R.id.button_to_nutrition);
-        goToNutrition.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), NutritionsActivity.class);
-            startActivity(intent);
-        });
-
-        signOut = findViewById(R.id.button_to_signOut);
-        signOut.setOnClickListener(v -> {
-            firebaseAuth.signOut();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            finish();
-            startActivity(intent);
-            Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
-        });
 
         bnv = findViewById(R.id.bottom_nav_View);
         bnv.setSelectedItemId(R.id.home);
