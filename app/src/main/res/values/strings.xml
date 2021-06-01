@@ -7,7 +7,7 @@
     <string name="button_str_exit">SIGN OUT</string>
     <string name="button_str_sign_in">SIGN IN</string>
     <string name="button_str_nav_to_sign_up">CREATE A NEW USER</string>
-    <string name="button_str_nav_to_sign_in">TAKE ME TO SIGN IN</string>
+    <string name="button_str_nav_to_sign_in">Already Have An Account?</string>
     <string name="button_str_sign_up">SIGN UP</string>
     <string name="button_str_send_recipe">SEND RECIPE</string>
     <string name="button_str_send_article">SEND ARTICLE</string>
@@ -27,15 +27,18 @@
     <string name="hint_str_exercise_name">EXERCISE NAME</string>
     <string name="hint_str_exercise_desc">EXERCISE DESCRIPTION</string>
     <string name="hint_str_exercise_category">EXERCISE CATEGORY</string>
+    <string name="hint_str_fullName">name surname</string>
 
     <!--STRINGS-->
     <string name="str_article_name">NAME</string>
     <string name="str_article_desc">DESCRIPTION</string>
-    <string name="str_terms">TERMS AND CONDITIONS</string>
+    <string name="str_terms"><u>TERMS AND CONDITIONS</u></string>
     <string name="str_account_type">TRAINER</string>
     <string name="str_carb">Carbs: </string>
     <string name="str_fat">Fat: </string>
     <string name="str_protein">Protein: </string>
+    <string name="str_motto">Join our community to access loads of exercises and recipes.</string>
+    <string name="str_fitcom" translatable="false">FITCOM</string>
 
     <!--TAB ITEMS-->
     <string name="tab_item_all_exercises">EXERCISES</string>
@@ -52,6 +55,7 @@
     <string name="tab_trainer">TRAINER</string>
 
     <string name="lang">LANGUAGES</string>
-    <string name="abc"><u>Forget your password?</u></string>
+    <string name="forget_pass"><u>Forget your password?</u></string>
+    <string name="rights">2021 FitCom Inc. All Rights Are Resereved.</string>
 
 </resources>

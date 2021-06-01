@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="500dp"
+    android:background="@drawable/menulong"
     tools:context=".ExerciseScreen.ExerciseDetailFragment">
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -28,10 +28,11 @@
 
             <ImageView
                 android:id="@+id/exercise_image"
-                android:layout_width="300dp"
+                android:layout_width="350dp"
                 android:layout_height="200dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="72dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars[2]" />
@@ -40,12 +41,14 @@
                 android:id="@+id/detail_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="30dp"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/exercise_image"
-                app:layout_constraintTop_toBottomOf="@+id/exercise_image" />
+                android:textColor="@color/white"
+                android:fontFamily="@font/uni_sans_heavy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/exercise_image" />
 
             <TextView
                 android:id="@+id/detail_description"
@@ -53,18 +56,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/detail_name"
-                app:layout_constraintHorizontal_bias="0.309"
-                app:layout_constraintStart_toStartOf="@+id/detail_name"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detail_name" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/EmptytextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="69dp"
-                android:layout_marginTop="308dp"
+                android:layout_marginTop="30dp"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detail_description" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

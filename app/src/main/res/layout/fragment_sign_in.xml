@@ -20,8 +20,8 @@
 
         <ImageView
             android:layout_width="350dp"
-            android:layout_height="370dp"
-            android:layout_marginTop="90dp"
+            android:layout_height="336dp"
+            android:layout_marginTop="70dp"
             android:layout_gravity="center"
             android:id="@+id/rectangle"
             android:src="@drawable/rectangle"
@@ -37,10 +37,10 @@
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="50dp"
                 android:fontFamily="@font/uni_sans_heavy"
-                android:text="FITCOM"
+                android:text="@string/str_fitcom"
                 android:textColor="@color/white"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -60,11 +60,11 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/bebas_neue_regular"
-                android:text="Join out community to access loads of exercises and recipes."
+                android:fontFamily="@font/roboto_regular"
+                android:text="@string/str_motto"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line" />
@@ -73,7 +73,7 @@
                 android:id="@+id/editTextSignInEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="90dp"
                 android:backgroundTint="@color/white"
                 android:ems="10"
                 android:hint="@string/hint_str_email"
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/abc"
+                android:text="@string/forget_pass"
                 android:textAlignment="textStart"
                 android:textColor="@color/white"
                 android:typeface="normal"
@@ -119,7 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="36dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="44dp"
                 android:layout_marginRight="36dp"
                 android:text="@string/button_str_sign_in"
                 app:layout_constraintEnd_toEndOf="@+id/editTextSignInPassword"
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="36dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="36dp"
                 android:text="@string/button_str_nav_to_sign_up"
                 app:layout_constraintEnd_toEndOf="@+id/buttonSignIn"
@@ -139,51 +139,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/buttonSignIn" />
 
             <TextView
-                android:id="@+id/login"
+                android:id="@+id/rights"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginTop="10dp"
-                android:text="Login With:"
+                android:layout_marginTop="60dp"
+                android:text="@string/rights"
                 android:textAlignment="textStart"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:typeface="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/buttonToSignUp" />
-
-            <ImageButton
-                android:id="@+id/login_google"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/gmail"
-                app:layout_constraintEnd_toStartOf="@+id/login_facebook"
-                app:layout_constraintTop_toBottomOf="@id/login" />
-
-            <ImageButton
-                android:id="@+id/login_facebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/facebook"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/login" />
-
-            <ImageButton
-                android:id="@+id/login_twitter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/twitter"
-                app:layout_constraintStart_toEndOf="@+id/login_facebook"
-                app:layout_constraintTop_toBottomOf="@+id/login" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </ScrollView>
