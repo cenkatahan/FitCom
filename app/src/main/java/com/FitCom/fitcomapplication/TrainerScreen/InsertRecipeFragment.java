@@ -110,31 +110,13 @@ public class InsertRecipeFragment extends Fragment {
         loadBitMap();
     }
 
-    private void sendRecipe(View view){
-        postData = new HashMap<>();
-        postData.put("desc", et_desc.getText().toString());
-        postData.put("id", newId);
-        postData.put("title", et_title.getText().toString());
-
-        firebaseFirestore.collection("Meals").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>(){
-
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(view.getContext(), "Recipe add", Toast.LENGTH_SHORT).show();
-
-                NavDirections directions = InsertArticleFragmentDirections.actionInsertArticleFragmentToInsertListFragment();
-                Navigation.findNavController(view).navigate(directions);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(view.getContext(), "Recipe error", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     public void uploadToFB(View view){
-        if(imgData != null){
+        if(imgData != null ||
+                !et_title.getText().toString().isEmpty() ||
+                !et_desc.getText().toString().isEmpty() ||
+                !et_calorie.getText().toString().isEmpty()){
+
             UUID uuid = UUID.randomUUID();
             final String imageName = "images/nutrition-images" + uuid + ".jpeg";
             storageReference.child(imageName).putFile(imgData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -155,14 +137,14 @@ public class InsertRecipeFragment extends Fragment {
                             firebaseFirestore.collection("Meals").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(view.getContext(), "Meal Added", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(view.getContext(), getString(R.string.str_successful), Toast.LENGTH_SHORT).show();
                                     NavDirections directions = InsertRecipeFragmentDirections.actionInsertRecipeFragmentToInsertListFragment();
                                     Navigation.findNavController(view).navigate(directions);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(view.getContext(),"Meal Failed!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(view.getContext(),getString(R.string.error_error), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -171,9 +153,11 @@ public class InsertRecipeFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(view.getContext(), "Meal image error",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), getString(R.string.error_error),Toast.LENGTH_SHORT).show();
                 }
             });
+        }else {
+            Toast.makeText(getContext(), getString(R.string.error_fields), Toast.LENGTH_LONG).show();
         }
     }
 

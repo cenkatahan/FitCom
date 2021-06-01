@@ -4,17 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
+
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
-import com.FitCom.fitcomapplication.Registery.MainActivity;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
 import com.FitCom.fitcomapplication.TraineeScreen.TrainerActivity;
 import com.FitCom.fitcomapplication.TrainerScreen.InsertDataActivity;
@@ -151,7 +150,7 @@ public class HomePageActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.home_menu,menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
         shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-        setShareActionIntent("Download the Fitcom Application!");
+        setShareActionIntent(getString(R.string.str_download));
         return super.onCreateOptionsMenu(menu);
     }
 

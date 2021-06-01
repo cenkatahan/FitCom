@@ -10,5 +10,6 @@
         android:id="@+id/recycler_blog_list"
         android:layout_width="match_parent"
         android:layout_gravity="center|top"
-        android:layout_height="520dp" />
+        android:layout_height="match_parent" />
+
 </FrameLayout>

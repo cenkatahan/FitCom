@@ -18,61 +18,70 @@
 
     <EditText
         android:id="@+id/editText_exercise_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="@string/hint_str_exercise_name"
         android:inputType="textPersonName"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_send_exercise" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.367" />
 
     <EditText
         android:id="@+id/editText_exercise_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/hint_str_exercise_desc"
         android:inputType="textMultiLine"
-        android:maxLines="6"
+        android:maxLines="4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editText_exercise_category"
         app:layout_constraintTop_toBottomOf="@+id/editText_exercise_category" />
 
     <EditText
         android:id="@+id/editText_exercise_category"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/hint_str_exercise_category"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/editText_exercise_name"
-        app:layout_constraintTop_toBottomOf="@+id/editText_exercise_name" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_exercise_name"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:maxLines="1"/>
 
     <Button
         android:id="@+id/button_send_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="36dp"
         android:text="@string/button_str_send_exercise"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button_select_img"
+        app:layout_constraintTop_toBottomOf="@+id/button_select_img"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button_select_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="select image"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="36dp"
-        app:layout_constraintBottom_toTopOf="@id/button_send_exercise"/>
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_exercise_desc"
+        app:layout_constraintVertical_bias="0.312" />
 
     <ImageView
         android:id="@+id/imageViewExercise"
@@ -80,8 +89,10 @@
         android:layout_height="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_exercise_desc"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077"
         tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

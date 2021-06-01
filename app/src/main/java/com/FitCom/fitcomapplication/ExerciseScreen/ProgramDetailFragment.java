@@ -100,9 +100,6 @@ public class ProgramDetailFragment extends Fragment {
         });
     }
 
-
-
-
     private void goProgramList(View view){
         NavDirections actionToSignIn = ProgramDetailFragmentDirections.actionProgramDetailFragmentToProgramListFragment();
         Navigation.findNavController(view).navigate(actionToSignIn);

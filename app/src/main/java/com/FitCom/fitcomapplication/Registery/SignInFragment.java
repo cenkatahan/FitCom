@@ -71,7 +71,7 @@ public class SignInFragment extends Fragment {
         password = passwordField.getText().toString();
 
         if(eMail.isEmpty() || password.isEmpty()){
-            Toast.makeText(view.getContext(), "Some fields are empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), getString(R.string.error_fields), Toast.LENGTH_SHORT).show();
         }else {
             firebaseAuth.signInWithEmailAndPassword(eMail, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override

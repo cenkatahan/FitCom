@@ -12,26 +12,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitComApplication">
-        <activity android:name=".TrainerScreen.InsertDataActivity"></activity>
-        <activity android:name=".TraineeScreen.TrainerActivity" />
+
+        <activity
+            android:name=".TrainerScreen.InsertDataActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".TraineeScreen.TrainerActivity"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".SettingScreen.SettingActivity"
-            android:parentActivityName=".HomePageActivity">
+            android:parentActivityName=".HomePageActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePageActivity" />
         </activity>
-        <activity android:name=".BlogScreen.BlogActivity" />
-        <activity android:name=".NutritionScreen.NutritionsActivity" />
-        <activity android:name=".ExerciseScreen.ExerciseActivity" />
-        <activity android:name=".HomePageActivity" />
-        <activity android:name=".Registery.MainActivity">
+
+        <activity
+            android:name=".BlogScreen.BlogActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".NutritionScreen.NutritionsActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ExerciseScreen.ExerciseActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".HomePageActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".Registery.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

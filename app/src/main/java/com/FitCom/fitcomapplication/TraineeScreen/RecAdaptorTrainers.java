@@ -1,6 +1,5 @@
 package com.FitCom.fitcomapplication.TraineeScreen;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -9,30 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.FitCom.fitcomapplication.R;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.TrainerHolder> {
 
     private ArrayList<String> names;
     private ArrayList<String> emails;
     private View view;
-    private FirebaseFirestore firebaseFirestore;
 
     public RecAdaptorTrainers(ArrayList<String> names, ArrayList<String> emails) {
         this.names = names;
@@ -88,11 +76,8 @@ public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.
                 i.putExtra(Intent.EXTRA_SUBJECT, "Mail Subject");
                 i.putExtra(Intent.EXTRA_TEXT   , "massage");
                 i.setPackage("com.google.android.gm");
-                //ActivityManager am = (ActivityManager) view.getContext().getSystemService(Activity.ACTIVITY_SERVICE);
-                //am.killBackgroundProcesses("com.google.android.gm");
                 view.getContext().startActivity(i);
             }
-            //System.out.println("ADAPTER CLICKED");
             } catch (android.content.ActivityNotFoundException ex) {}
     }
 

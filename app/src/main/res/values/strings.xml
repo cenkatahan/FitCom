@@ -39,6 +39,8 @@
     <string name="str_protein">Protein: </string>
     <string name="str_motto">Join our community to access loads of exercises and recipes.</string>
     <string name="str_fitcom" translatable="false">FITCOM</string>
+    <string name="str_download">Download the FitCom Application!</string>
+    <string name="str_successful">Successful</string>
 
     <!--TAB ITEMS-->
     <string name="tab_item_all_exercises">EXERCISES</string>
@@ -57,5 +59,14 @@
     <string name="lang">LANGUAGES</string>
     <string name="forget_pass"><u>Forget your password?</u></string>
     <string name="rights">2021 FitCom Inc. All Rights Are Resereved.</string>
+
+
+    <!--ERRORS-->
+    <string name="error_fields">Some fields are empty.</string>
+    <string name="error_age">You must be at least 18!</string>
+    <string name="error_terms">To use the app, the terms and conditions must accepted!</string>
+    <string name="error_passwor_match">Passwords does not match!</string>
+    <string name="error_email">Enter a valid email address!</string>
+    <string name="error_error">Error!</string>
 
 </resources>

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,7 +30,6 @@ public class TrainerActivity extends AppCompatActivity {
     private BottomNavigationView bnv;
     private ShareActionProvider shareActionProvider;
     private FirebaseFirestore firebaseFirestore;
-    private TextView email,trainer;
     private ArrayList<String> mails;
     private ArrayList<String> train;
 
@@ -40,12 +38,9 @@ public class TrainerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer);
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        //email = findViewById(R.id.emailbox);
+        firebaseFirestore = FirebaseFirestore.getInstance();;
         mails = new ArrayList<>();
         train = new ArrayList<>();
-        String finalmail="";
-        String finaltrain="";
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
         collectionReference.whereEqualTo("trainer","1").addSnapshotListener((value, error) -> {
             if(error != null)
@@ -62,22 +57,6 @@ public class TrainerActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        for (String em:mails
-//        ) {
-//            finalmail+=em;
-//            System.out.println(em);
-//        }
-//
-//
-//        for (String tr:train
-//        ) {
-//            finaltrain+=tr;
-//            System.out.println(tr);
-//        }
-//        //email.setText(finalmail);
-//        trainer.setText(finaltrain);
-
 
         bnv = findViewById(R.id.bottom_nav_ViewT);
         bnv.setSelectedItemId(R.id.trainer);
@@ -148,7 +127,7 @@ public class TrainerActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.home_menu,menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
         shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-        setShareActionIntent("Download the Fitcom Application!");
+        setShareActionIntent(getString(R.string.str_download));
         return super.onCreateOptionsMenu(menu);
     }
 

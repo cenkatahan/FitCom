@@ -71,7 +71,7 @@ public class TrainersListFragment extends Fragment {
 
     private void fetchFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
-        collectionReference.whereEqualTo("trainer", "1").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        collectionReference.whereEqualTo("trainer", TRAINER_KEY).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error != null) {

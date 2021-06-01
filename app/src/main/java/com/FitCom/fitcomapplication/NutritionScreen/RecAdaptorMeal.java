@@ -20,6 +20,7 @@ public class RecAdaptorMeal extends RecyclerView.Adapter<RecAdaptorMeal.MealPlac
     private ArrayList<String> meal_titles;
     private ArrayList<String> calories;
     private ArrayList<String> imgUrls;
+    private final String UNIT = " kcal";
 
     public RecAdaptorMeal(ArrayList<String> meal_titles, ArrayList<String> meal_calories, ArrayList<String> imgUrls) {
         this.meal_titles = meal_titles;
@@ -38,7 +39,7 @@ public class RecAdaptorMeal extends RecyclerView.Adapter<RecAdaptorMeal.MealPlac
     @Override
     public void onBindViewHolder(@NonNull MealPlaceHolder holder, int position) {
         holder.title.setText(meal_titles.get(position));
-        holder.calorie.setText(calories.get(position));
+        holder.calorie.setText(calories.get(position) + UNIT);
         Picasso.get().load(imgUrls.get(position)).into(holder.imageView);
         holder.itemView.setOnClickListener(v -> {
             MealListFragmentDirections.ActionMealListFragmentToMealDetailFragment navDir = MealListFragmentDirections.actionMealListFragmentToMealDetailFragment(position);

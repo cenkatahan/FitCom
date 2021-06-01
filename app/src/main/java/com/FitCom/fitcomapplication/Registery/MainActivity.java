@@ -10,12 +10,9 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ShareActionProvider;
-import androidx.core.view.MenuItemCompat;
 
 import com.FitCom.fitcomapplication.HomePageActivity;
 import com.FitCom.fitcomapplication.R;
-import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
