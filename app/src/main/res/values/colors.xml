@@ -12,5 +12,7 @@
     <color name="custom3">#4C8FB1</color>
     <color name="newVariant">#2A3132</color>
     <color name="red">#FF0000</color>
+    <color name="main_color">#90AFC5</color>
+    <color name="main_background">#2A3132</color>
 
 </resources>

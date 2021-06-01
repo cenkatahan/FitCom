@@ -5,16 +5,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
 import androidx.viewpager.widget.ViewPager;
-
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
-import com.FitCom.fitcomapplication.HomePageActivity;
+import com.FitCom.fitcomapplication.HomeScreen.HomePageActivity;
 import com.FitCom.fitcomapplication.TrainerScreen.InsertDataActivity;
 import com.FitCom.fitcomapplication.R;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
@@ -27,7 +25,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Map;
 
 public class NutritionsActivity extends AppCompatActivity {
@@ -52,12 +49,10 @@ public class NutritionsActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         handleTrainerLayout();
-
         tabLayout = findViewById(R.id.tabLayout_nutrition);
         allNutr = findViewById(R.id.tab_all_nutrition);
         myNutr = findViewById(R.id.tab_my_nutrition);
         viewPager = findViewById(R.id.viewpager_nutrition);
-
         adapterForNutrViewPager = new AdapterForNutrViewPager(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapterForNutrViewPager);
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

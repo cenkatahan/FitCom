@@ -37,6 +37,7 @@
     <string name="str_carb">Carbs: </string>
     <string name="str_fat">Fat: </string>
     <string name="str_protein">Protein: </string>
+    <string name="str_calorie">calorie</string>
     <string name="str_motto">Join our community to access loads of exercises and recipes.</string>
     <string name="str_fitcom" translatable="false">FITCOM</string>
     <string name="str_download">Download the FitCom Application!</string>
@@ -53,13 +54,24 @@
     <string name="tab_exercise">EXERCISE</string>
     <string name="tab_nutr">NUTRITION</string>
     <string name="tab_blog">BLOG</string>
-
     <string name="tab_trainer">TRAINER</string>
 
-    <string name="lang">LANGUAGES</string>
+    <!-- OTHER -->
+    <string name="lang"><u>LANGUAGES</u></string>
     <string name="forget_pass"><u>Forget your password?</u></string>
     <string name="rights">2021 FitCom Inc. All Rights Are Resereved.</string>
-
+    <string name="exit_sec"><u>SIGN OUT</u></string>
+    <string name="email_link" translatable="false"><u>fitcomapplication@gmail.com</u></string>
+    <string name="insta_link" translatable="false"><u>@fitcomapplication</u></string>
+    <string name="url" translatable="false">https://www.instagram.com/fitcomapplication/</string>
+    <string name="subj">About FitCom Personal Training</string>
+    <string name="about_sec"><u>ABOUT</u></string>
+    <string name="select_img">Select Image</string>
+    <string name="share">Share</string>
+    <string name="settings">Settings</string>
+    <string name="str_tr" translatable="false">tr</string>
+    <string name="str_en" translatable="false">en</string>
+    <string name="about">FitCom Application is developed by: \n Osman Can Cinar \n Mahmut Berke Yaylaci \n Cenk Atahan Ozbek \n Ramazan Kazali </string>
 
     <!--ERRORS-->
     <string name="error_fields">Some fields are empty.</string>

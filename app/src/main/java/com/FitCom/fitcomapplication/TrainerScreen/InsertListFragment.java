@@ -5,19 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-
 import com.FitCom.fitcomapplication.R;
 
 public class InsertListFragment extends Fragment {
 
     private Button btn_insert_exercise ,btn_insert_recipe, btn_insert_article;
-
 
     public InsertListFragment() {
         // Required empty public constructor
@@ -57,9 +54,5 @@ public class InsertListFragment extends Fragment {
             NavDirections direction = InsertListFragmentDirections.actionInsertListFragmentToInsertArticleFragment();
             Navigation.findNavController(view).navigate(direction);
         });
-
-
     }
-
-
 }

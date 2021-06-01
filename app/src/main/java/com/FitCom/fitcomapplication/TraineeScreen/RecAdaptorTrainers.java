@@ -8,23 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.FitCom.fitcomapplication.R;
-
 import java.util.ArrayList;
 
 public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.TrainerHolder> {
 
     private ArrayList<String> names;
     private ArrayList<String> emails;
+    private ArrayList<String> age;
     private View view;
 
-    public RecAdaptorTrainers(ArrayList<String> names, ArrayList<String> emails) {
+    public RecAdaptorTrainers(ArrayList<String> names, ArrayList<String> emails, ArrayList<String> age) {
         this.names = names;
         this.emails = emails;
+        this.age = age;
     }
 
     @NonNull
@@ -39,6 +38,7 @@ public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.
     public void onBindViewHolder(@NonNull TrainerHolder holder, int position) {
         holder.rec_trainer_name.setText(names.get(position));
         holder.rec_trainer_email.setText(emails.get(position));
+        holder.rec_trainer_age.setText(age.get(position));
         holder.itemView.setOnClickListener(v -> {
             clickToSendEMail(v,position);
         });
@@ -54,8 +54,7 @@ public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.
         i.setType("text/plain");
         i.setData(Uri.parse("mailto:"));
         i.putExtra(Intent.EXTRA_EMAIL  , new String[]{emails.get(position)});
-        i.putExtra(Intent.EXTRA_SUBJECT, "Mail Subject");
-        i.putExtra(Intent.EXTRA_TEXT   , "message");
+        i.putExtra(Intent.EXTRA_SUBJECT, view.getContext().getString(R.string.subj));
         i.setPackage("com.google.android.gm");
         ActivityManager am = (ActivityManager) view.getContext().getSystemService(Activity.ACTIVITY_SERVICE);
 
@@ -68,28 +67,20 @@ public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.
                     view.getContext().startActivity(i);
                 }
                 view.getContext().startActivity(i);
-            }else {
-                i.setType("text/plain");
-                i.setData(Uri.parse("mailto:"));
-                i.removeExtra(Intent.EXTRA_EMAIL);
-                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{emails.get(position)});
-                i.putExtra(Intent.EXTRA_SUBJECT, "Mail Subject");
-                i.putExtra(Intent.EXTRA_TEXT   , "massage");
-                i.setPackage("com.google.android.gm");
-                view.getContext().startActivity(i);
             }
-            } catch (android.content.ActivityNotFoundException ex) {}
+        } catch (android.content.ActivityNotFoundException ex) {}
     }
 
     public class TrainerHolder extends RecyclerView.ViewHolder{
 
-        private TextView rec_trainer_name, rec_trainer_email;
+        private TextView rec_trainer_name, rec_trainer_email, rec_trainer_age;
 
         public TrainerHolder(@NonNull View itemView) {
             super(itemView);
 
             rec_trainer_email = itemView.findViewById(R.id.rec_trainer_email);
             rec_trainer_name = itemView.findViewById(R.id.rec_trainer_name);
+            rec_trainer_age = itemView.findViewById(R.id.rec_trainer_age);
         }
     }
 }

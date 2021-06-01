@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import com.FitCom.fitcomapplication.HomePageActivity;
+import com.FitCom.fitcomapplication.HomeScreen.HomePageActivity;
 import com.FitCom.fitcomapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,10 +45,8 @@ public class SignInFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
         eMailField = view.findViewById(R.id.editTextSignInEmail);
         passwordField = view.findViewById(R.id.editTextSignInPassword);
-
         buttonSignUp = view.findViewById(R.id.buttonToSignUp);
         buttonSignUp.setOnClickListener(v -> {
             onClickToSignUp(view);
@@ -66,7 +64,6 @@ public class SignInFragment extends Fragment {
     }
 
     private void onClickToSignIn(View view){
-
         eMail = eMailField.getText().toString();
         password = passwordField.getText().toString();
 

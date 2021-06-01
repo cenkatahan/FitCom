@@ -19,7 +19,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -28,7 +27,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -43,7 +41,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +53,6 @@ public class InsertExerciseFragment extends Fragment {
     private Button btn_apply, select_img;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
-    private HashMap<String, Object> postData;
     private String newId;
     private int counter_id;
     private ImageView destImg;
@@ -70,7 +66,6 @@ public class InsertExerciseFragment extends Fragment {
     public InsertExerciseFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,7 +90,6 @@ public class InsertExerciseFragment extends Fragment {
         destImg = view.findViewById(R.id.imageViewExercise);
         select_img = view.findViewById(R.id.button_select_img);
         getExerciseId();
-
         et_title = view.findViewById(R.id.editText_exercise_name);
         et_desc = view.findViewById(R.id.editText_exercise_desc);
         et_category = view.findViewById(R.id.editText_exercise_category);
@@ -173,7 +167,6 @@ public class InsertExerciseFragment extends Fragment {
             Toast.makeText(getContext(), getString(R.string.error_fields), Toast.LENGTH_LONG).show();
         }
     }
-
 
     private void getExerciseId(){
         counter_id = 0;

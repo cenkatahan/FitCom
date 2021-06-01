@@ -9,20 +9,17 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-
 import java.util.Map;
 
 public class ProgramDetailFragment extends Fragment {
@@ -59,9 +56,7 @@ public class ProgramDetailFragment extends Fragment {
         progressBar = view.findViewById(R.id.fragment_popup_progressbar);
         id = ProgramDetailFragmentArgs.fromBundle(getArguments()).getProgramId();
         programId = String.valueOf(id);
-
         fillFromFB(view);
-
         btnToList = view.findViewById(R.id.button_programs_backToList);
         btnToList.setOnClickListener(v -> goProgramList(v));
     }

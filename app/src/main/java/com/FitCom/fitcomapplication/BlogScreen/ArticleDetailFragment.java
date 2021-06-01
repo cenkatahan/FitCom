@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -21,7 +19,6 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.Map;
 
 public class ArticleDetailFragment extends Fragment {
@@ -55,7 +52,6 @@ public class ArticleDetailFragment extends Fragment {
         id = ArticleDetailFragmentArgs.fromBundle(getArguments()).getArticleId();
         articleId = String.valueOf(id);
         fetchFromFB();
-
         btnToList = view.findViewById(R.id.button_article_backToList);
         btnToList.setOnClickListener(v -> {
             goArticleList(v);
@@ -83,7 +79,6 @@ public class ArticleDetailFragment extends Fragment {
             }
         });
     }
-
 
     private void goArticleList(View view){
         NavDirections actionToSignIn = ArticleDetailFragmentDirections.actionArticleDetailFragmentToArticleListFragment2();

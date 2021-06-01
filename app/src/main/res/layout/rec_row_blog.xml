@@ -12,7 +12,7 @@
         android:src="@drawable/article_one"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        ></ImageView>
+        />
 
     <TextView
         android:id="@+id/rec_blog_title"

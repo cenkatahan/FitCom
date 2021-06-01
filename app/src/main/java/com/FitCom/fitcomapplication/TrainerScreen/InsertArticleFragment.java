@@ -8,13 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,10 +24,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class InsertArticleFragment extends Fragment {
 
@@ -67,7 +63,6 @@ public class InsertArticleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         getArticleId();
-
         et_title = view.findViewById(R.id.editText_article_title);
         et_desc = view.findViewById(R.id.editText_article_desc);
         btn_apply = view.findViewById(R.id.button_send_article);
@@ -102,15 +97,12 @@ public class InsertArticleFragment extends Fragment {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
-
                 }
             });
-
         }else {
             Toast.makeText(getContext(), getString(R.string.error_fields), Toast.LENGTH_LONG).show();
         }
     }
-
 
     private void getArticleId(){
         counter_id = 0;
@@ -131,9 +123,7 @@ public class InsertArticleFragment extends Fragment {
                     newId = String.valueOf(counter_id);
                 }
             }
-
         });
-
     }
 
     private void goBackToList(View view){

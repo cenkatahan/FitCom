@@ -1,6 +1,5 @@
 package com.FitCom.fitcomapplication.TrainerScreen;
 
-
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import androidx.annotation.Nullable;

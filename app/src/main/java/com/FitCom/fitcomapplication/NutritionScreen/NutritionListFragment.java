@@ -50,7 +50,6 @@ public class NutritionListFragment extends Fragment {
         carbs = new ArrayList<>();
         proteins = new ArrayList<>();
         fats = new ArrayList<>();
-
         recAdaptorNutrition = new RecAdaptorNutrition(names, calories, carbs, proteins, fats);
         recyclerView = view.findViewById(R.id.recycler_nutrition_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -58,7 +57,6 @@ public class NutritionListFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(recAdaptorNutrition);
-
         firebaseFirestore = FirebaseFirestore.getInstance();
         fetchDataFromFB();
     }
@@ -74,7 +72,6 @@ public class NutritionListFragment extends Fragment {
 
                 if(value != null){
                     for (DocumentSnapshot snapshot : value.getDocuments()) {
-
                         Map<String, Object> data = snapshot.getData();
 
                         String name = (String) data.get("name");
@@ -87,7 +84,6 @@ public class NutritionListFragment extends Fragment {
                         carbs.add(carb);
                         proteins.add(protein);
                         fats.add(fat);
-
                         recAdaptorNutrition.notifyDataSetChanged();
                     }
                 }

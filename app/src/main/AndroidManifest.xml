@@ -7,55 +7,44 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_custom"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_custom_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitComApplication">
-
         <activity
             android:name=".TrainerScreen.InsertDataActivity"
-            android:screenOrientation="portrait"></activity>
-
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".TraineeScreen.TrainerActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".SettingScreen.SettingActivity"
-            android:parentActivityName=".HomePageActivity"
+            android:parentActivityName=".HomeScreen.HomePageActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomePageActivity" />
+                android:value=".HomeScreen.HomePageActivity" />
         </activity>
-
         <activity
             android:name=".BlogScreen.BlogActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".NutritionScreen.NutritionsActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".ExerciseScreen.ExerciseActivity"
             android:screenOrientation="portrait"/>
-
         <activity
-            android:name=".HomePageActivity"
+            android:name=".HomeScreen.HomePageActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".Registery.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
-
 </manifest>

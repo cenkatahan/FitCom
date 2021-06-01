@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/insertbg"
     android:layout_height="match_parent"
     tools:context=".TrainerScreen.InsertRecipeFragment">
 
@@ -57,7 +58,7 @@
         android:ems="10"
         android:maxLines="1"
         android:gravity="start|top"
-        android:hint="calorie"
+        android:hint="@string/str_calorie"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/editText_recipe_title"
         app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc"
@@ -66,9 +67,9 @@
 
     <Button
         android:id="@+id/button_select_img_rec"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="select image"
+        android:text="@string/select_img"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +78,7 @@
 
     <Button
         android:id="@+id/button_send_recipe"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/button_str_send_recipe"
         app:layout_constraintStart_toStartOf="@+id/button_select_img_rec"

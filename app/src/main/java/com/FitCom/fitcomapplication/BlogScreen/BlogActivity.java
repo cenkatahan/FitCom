@@ -5,14 +5,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
-
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
-import com.FitCom.fitcomapplication.HomePageActivity;
+import com.FitCom.fitcomapplication.HomeScreen.HomePageActivity;
 import com.FitCom.fitcomapplication.TrainerScreen.InsertDataActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.FitCom.fitcomapplication.R;
@@ -24,7 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Map;
 
 public class BlogActivity extends AppCompatActivity {
@@ -45,7 +42,6 @@ public class BlogActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         handleTrainerLayout();
-
         BottomNavigationView bnv = findViewById(R.id.bottom_nav_ViewB);
         bnv.setSelectedItemId(R.id.blog);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -149,7 +145,6 @@ public class BlogActivity extends AppCompatActivity {
 
         currentUser = firebaseAuth.getCurrentUser();
         currentEMail = currentUser.getEmail();
-
 
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
         collectionReference.whereEqualTo("email",currentEMail).addSnapshotListener((value, error) -> {

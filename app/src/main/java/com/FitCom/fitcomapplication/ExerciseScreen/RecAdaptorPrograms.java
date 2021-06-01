@@ -10,7 +10,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 import com.FitCom.fitcomapplication.R;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 public class RecAdaptorPrograms extends RecyclerView.Adapter<RecAdaptorPrograms.ProgramPlaceHolder> {
