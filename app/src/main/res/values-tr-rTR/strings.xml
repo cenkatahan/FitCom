@@ -20,6 +20,7 @@
 
     <!--HINT-->
     <string name="hint_str_email">e-mail</string>
+    <string name="hint_str_fullName">ad soyad</string>
     <string name="hint_str_password">şifre</string>
     <string name="hint_str_age">yaş</string>
     <string name="hint_str_recipe_title">TARİF ADI</string>
@@ -33,11 +34,12 @@
     <!--STRINGS-->
     <string name="str_article_name">İSİM</string>
     <string name="str_article_desc">AÇIKLAMA</string>
-    <string name="str_terms">ŞARTLAR VE KOŞULLAR</string>
+    <string name="str_terms"><u>ŞARTLAR VE KOŞULLAR</u></string>
     <string name="str_account_type">EĞİTMEN</string>
     <string name="str_carb">Karbonhidrat:: </string>
     <string name="str_fat">Yağ: </string>
     <string name="str_protein">Protein: </string>
+    <string name="str_motto">Onlarca tarif ve egzersize ulasmak icin, Toplulugumuza katil!.</string>
 
     <!--TAB ITEMS-->
     <string name="tab_item_all_exercises">EGZERSİZLER</string>
@@ -54,4 +56,7 @@
     <string name="tab_trainer">EĞITMEN</string>
 
     <string name="lang">DİLLER</string>
+
+    <string name="forget_pass"><u>Sifreni mi unuttun?</u></string>
+    <string name="rights">2021 FitCom Inc. Tum Haklari Saklidir.</string>
 </resources>
