@@ -19,7 +19,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -27,7 +26,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,12 +40,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
 
 public class InsertRecipeFragment extends Fragment {
 
@@ -57,7 +53,6 @@ public class InsertRecipeFragment extends Fragment {
     private Button btn_apply, select_image;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
-    private HashMap<String, Object> postData;
     private String newId;
     private int counter_id;
     private FirebaseStorage firebaseStorage;
@@ -91,9 +86,7 @@ public class InsertRecipeFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
-
         getRecipeId();
-
         select_image = view.findViewById(R.id.button_select_img_rec);
         select_image.setOnClickListener(this::choose_image);
         imageViewRecipe = view.findViewById(R.id.imageViewRecipe);
@@ -109,7 +102,6 @@ public class InsertRecipeFragment extends Fragment {
         startSavedBitmapFragment();
         loadBitMap();
     }
-
 
     public void uploadToFB(View view){
         if(imgData != null ||

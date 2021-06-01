@@ -7,18 +7,15 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Map;
 
 public class MealDetailFragment extends Fragment {
@@ -51,12 +48,10 @@ public class MealDetailFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
         mealId = MealDetailFragmentArgs.fromBundle(getArguments()).getMealId();
         str_mealId = String.valueOf(mealId);
-
         mealTitle = view.findViewById(R.id.meal_detail_title);
         mealDesc = view.findViewById(R.id.meal_detail_desc);
         btnBack = view.findViewById(R.id.button_meal_backToList);
         btnBack.setOnClickListener(v -> goMealList(v));
-
         fetchFromFB();
     }
 
@@ -82,6 +77,5 @@ public class MealDetailFragment extends Fragment {
     private void goMealList(View view){
         NavDirections actionToList = MealDetailFragmentDirections.actionMealDetailFragmentToMealListFragment();
         Navigation.findNavController(view).navigate(actionToList);
-
     }
 }

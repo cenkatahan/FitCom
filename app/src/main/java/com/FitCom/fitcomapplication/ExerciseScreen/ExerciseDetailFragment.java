@@ -8,19 +8,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
-
 import java.util.Map;
 
 public class ExerciseDetailFragment extends Fragment {
@@ -30,7 +27,6 @@ public class ExerciseDetailFragment extends Fragment {
     private ImageView imgExercise;
     private String exerciseId;
     private int id;
-
     private ImageButton btnBackToList;
 
     public ExerciseDetailFragment() { }
@@ -56,10 +52,8 @@ public class ExerciseDetailFragment extends Fragment {
         id = ExerciseDetailFragmentArgs.fromBundle(getArguments()).getExerciseId();
         exerciseId = String.valueOf(id);
         fillFromFB(view);
-
         btnBackToList = view.findViewById(R.id.button_exercise_backToList);
         btnBackToList.setOnClickListener(v -> goExerciseList(v));
-
     }
 
     public void fillFromFB(View view){
@@ -87,5 +81,4 @@ public class ExerciseDetailFragment extends Fragment {
         NavDirections actionToSignIn = ExerciseDetailFragmentDirections.actionExerciseDetailFragmentToExerciseListFragment();
         Navigation.findNavController(view).navigate(actionToSignIn);
     }
-
 }

@@ -7,6 +7,6 @@
 
     <item
         android:state_selected="false"
-        android:color="@android:color/holo_green_dark" />
+        android:color="@color/main_color" />
 
 </selector>

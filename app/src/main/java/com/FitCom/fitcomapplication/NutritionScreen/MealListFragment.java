@@ -5,13 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -20,7 +18,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -33,11 +30,9 @@ public class MealListFragment extends Fragment {
     public MealListFragment() {
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -54,12 +49,9 @@ public class MealListFragment extends Fragment {
         titles = new ArrayList<>();
         calories = new ArrayList<>();
         imgUrls = new ArrayList<>();
-
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-
         fetchDataFromFB();
-
         recyclerView = view.findViewById(R.id.rec_view_meal) ;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -67,10 +59,7 @@ public class MealListFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recAdaptorMeal = new RecAdaptorMeal(titles,calories,imgUrls);
         recyclerView.setAdapter(recAdaptorMeal);
-
-
     }
-
 
     private void fetchDataFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Meals");
@@ -92,7 +81,6 @@ public class MealListFragment extends Fragment {
                         titles.add(name);
                         calories.add(calorie);
                         imgUrls.add(imgUrl);
-
                         recAdaptorMeal.notifyDataSetChanged();
                     }
                 }}

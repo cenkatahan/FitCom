@@ -5,15 +5,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
 import androidx.viewpager.widget.ViewPager;
-
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
-import com.FitCom.fitcomapplication.HomePageActivity;
+import com.FitCom.fitcomapplication.HomeScreen.HomePageActivity;
 import com.FitCom.fitcomapplication.TrainerScreen.InsertDataActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
 import com.FitCom.fitcomapplication.R;
@@ -27,7 +25,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Map;
 
 public class ExerciseActivity extends AppCompatActivity {
@@ -49,7 +46,6 @@ public class ExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
-
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -178,10 +174,8 @@ public class ExerciseActivity extends AppCompatActivity {
     }
 
     private void handleTrainerLayout(){
-
         currentUser = firebaseAuth.getCurrentUser();
         currentEMail = currentUser.getEmail();
-
 
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
         collectionReference.whereEqualTo("email",currentEMail).addSnapshotListener((value, error) -> {
@@ -199,5 +193,4 @@ public class ExerciseActivity extends AppCompatActivity {
     }
 
     public void onBackPressed() {}
-
 }

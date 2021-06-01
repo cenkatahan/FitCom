@@ -1,19 +1,18 @@
-package com.FitCom.fitcomapplication;
+package com.FitCom.fitcomapplication.HomeScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
-
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
+import com.FitCom.fitcomapplication.R;
 import com.FitCom.fitcomapplication.SettingScreen.SettingActivity;
 import com.FitCom.fitcomapplication.TraineeScreen.TrainerActivity;
 import com.FitCom.fitcomapplication.TrainerScreen.InsertDataActivity;
@@ -23,7 +22,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.Map;
 
 public class HomePageActivity extends AppCompatActivity {
@@ -44,7 +42,6 @@ public class HomePageActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         handleTrainerLayout();
-
         bnv = findViewById(R.id.bottom_nav_View);
         bnv.setSelectedItemId(R.id.home);
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -121,7 +118,6 @@ public class HomePageActivity extends AppCompatActivity {
         currentUser = firebaseAuth.getCurrentUser();
         currentEMail = currentUser.getEmail();
 
-
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
         collectionReference.whereEqualTo("email",currentEMail).addSnapshotListener((value, error) -> {
             if(error != null)
@@ -135,14 +131,6 @@ public class HomePageActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void setTrainerLayout(){
-
-    }
-
-    private void setTraineeLayout(){
-
     }
 
     @Override

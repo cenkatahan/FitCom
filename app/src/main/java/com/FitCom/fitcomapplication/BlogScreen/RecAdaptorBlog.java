@@ -4,13 +4,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.FitCom.fitcomapplication.R;
-
 import java.util.ArrayList;
 
 public class RecAdaptorBlog extends RecyclerView.Adapter<RecAdaptorBlog.PlaceHolderBlog> {
@@ -32,7 +29,6 @@ public class RecAdaptorBlog extends RecyclerView.Adapter<RecAdaptorBlog.PlaceHol
     @Override
     public void onBindViewHolder(@NonNull PlaceHolderBlog holder, int position) {
         holder.title.setText(titles.get(position));
-
         holder.itemView.setOnClickListener(v -> {
             ArticleListFragmentDirections.ActionArticleListFragmentToArticleDetailFragment navigation = ArticleListFragmentDirections.actionArticleListFragmentToArticleDetailFragment(position);
             navigation.setArticleId(position);

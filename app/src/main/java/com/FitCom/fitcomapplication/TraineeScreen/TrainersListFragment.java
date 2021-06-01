@@ -5,13 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,23 +17,20 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.Map;
-
 
 public class TrainersListFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
     private RecAdaptorTrainers recAdaptorTrainers;
-    private ArrayList<String> names, emails;
+    private ArrayList<String> names, emails, age;
     private RecyclerView recyclerView;
     private final String TRAINER_KEY = "1";
 
     public TrainersListFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,16 +51,15 @@ public class TrainersListFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
         names = new ArrayList<>();
         emails = new ArrayList<>();
+        age = new ArrayList<>();
 
         recyclerView = view.findViewById(R.id.recycler_trainers_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
-
-        recAdaptorTrainers = new RecAdaptorTrainers(names, emails);
+        recAdaptorTrainers = new RecAdaptorTrainers(names, emails, age);
         recyclerView.setAdapter(recAdaptorTrainers);
-
         fetchFromFB();
     }
 
@@ -80,11 +74,12 @@ public class TrainersListFragment extends Fragment {
 
                 if(value != null){
                     for (DocumentSnapshot snapshot: value.getDocuments()){
-
                         Map<String, Object> data = snapshot.getData();
 
                         String email = (String) data.get("email");
                         String fullName = (String) data.get("fullName");
+                        String thAge= (String) data.get("age");
+                        age.add(thAge);
                         emails.add(email);
                         names.add(fullName);
                         recAdaptorTrainers.notifyDataSetChanged();
@@ -93,5 +88,4 @@ public class TrainersListFragment extends Fragment {
             }
         });
     }
-
 }

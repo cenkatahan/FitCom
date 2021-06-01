@@ -1,32 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SettingScreen.SettingActivity"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SettingScreen.SettingActivity">
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="603dp"
+        android:src="@drawable/menulong"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="580dp"
+        android:layout_gravity="center"
+        android:id="@+id/rectangle"
+        android:src="@drawable/backgroundreal"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true" />
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/lang_sec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="@string/lang"
-        android:textSize="36sp"
+        android:textColor="@color/white"
+        android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/settings_lang_tr"
         android:layout_width="50dp"
         android:layout_height="30dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/tr"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lang_sec" />
 
     <ImageButton
         android:id="@+id/settings_lang_eng"
@@ -36,18 +58,108 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/eng"
         app:layout_constraintStart_toEndOf="@+id/settings_lang_tr"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/lang_sec" />
+
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/about"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/about_sec" />
+
+    <TextView
+        android:id="@+id/about_sec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="400dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/about_sec"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageButton
+        android:id="@+id/insta_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@drawable/gmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about" />
+
+    <TextView
+        android:id="@+id/email_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/email_link"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/insta_icon"
+        app:layout_constraintTop_toBottomOf="@id/about"/>
+
+    <ImageButton
+        android:id="@+id/gmail_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="60dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:src="@drawable/instagram"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/insta_icon" />
+
+    <TextView
+        android:id="@+id/insta_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/insta_link"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/gmail_icon"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@id/insta_icon"/>
+
+    <TextView
+        android:id="@+id/exit_sec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/exit_sec"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButtonExit"
+        android:backgroundTint="#00FFFFFF"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginStart="180dp"
-        android:layout_marginTop="284dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exit_sec"
         app:srcCompat="@drawable/sign_out"
         android:background="@color/white"/>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>

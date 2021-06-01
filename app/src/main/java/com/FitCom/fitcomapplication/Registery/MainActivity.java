@@ -7,15 +7,12 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.FitCom.fitcomapplication.HomePageActivity;
+import com.FitCom.fitcomapplication.HomeScreen.HomePageActivity;
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,11 +41,9 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.lang_menu, menu);
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -88,4 +83,3 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 }
-

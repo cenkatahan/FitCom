@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_tr"
-        android:title="tr"
+        android:title="@string/str_tr"
         android:orderInCategory="1"
         android:icon="@drawable/tr_2"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_en"
-        android:title="en"
+        android:title="@string/str_en"
         android:icon="@drawable/en_2"
         android:orderInCategory="2"
         app:showAsAction="always"/>
