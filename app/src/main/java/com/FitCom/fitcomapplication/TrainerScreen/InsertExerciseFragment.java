@@ -33,7 +33,6 @@ import com.FitCom.fitcomapplication.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -45,7 +44,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -123,7 +121,11 @@ public class InsertExerciseFragment extends Fragment {
     }
 
     public void upload(View view) {
-        if (imageData != null) {
+        if (imageData != null ||
+                !et_title.getText().toString().isEmpty() ||
+                !et_desc.getText().toString().isEmpty() ||
+                !et_category.getText().toString().isEmpty()) {
+
             //universal unique id
             UUID uuid = UUID.randomUUID();
             final String imageName = "images/exercise-images" + uuid + ".jpg";
@@ -147,7 +149,7 @@ public class InsertExerciseFragment extends Fragment {
                             firebaseFirestore.collection("Exercises").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(view.getContext(), "Exercise Added", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(view.getContext(), getString(R.string.str_successful), Toast.LENGTH_SHORT).show();
 
                                     NavDirections directions = InsertExerciseFragmentDirections.actionInsertExerciseFragmentToInsertListFragment();
                                     Navigation.findNavController(view).navigate(directions);
@@ -155,7 +157,7 @@ public class InsertExerciseFragment extends Fragment {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(view.getContext(), "Exercise Error!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -164,37 +166,14 @@ public class InsertExerciseFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(view.getContext(), "Exercise Img Error!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
                 }
             });
+        }else {
+            Toast.makeText(getContext(), getString(R.string.error_fields), Toast.LENGTH_LONG).show();
         }
     }
 
-    private void sendExercise(View view){
-        postData = new HashMap<>();
-        postData.put("description", et_desc.getText().toString());
-        postData.put("id", newId);
-        postData.put("name", et_title.getText().toString());
-        postData.put("category", et_category.getText().toString());
-        postData.put("imgUrl", "add URL`s");
-
-        firebaseFirestore.collection("Exercises").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>(){
-
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(view.getContext(), "Exercise add", Toast.LENGTH_SHORT).show();
-
-                NavDirections directions = InsertExerciseFragmentDirections.actionInsertExerciseFragmentToInsertListFragment();
-                Navigation.findNavController(view).navigate(directions);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(view.getContext(), "Exercise error", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
 
     private void getExerciseId(){
         counter_id = 0;

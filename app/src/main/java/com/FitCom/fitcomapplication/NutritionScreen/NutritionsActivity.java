@@ -152,7 +152,7 @@ public class NutritionsActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.home_menu,menu);
         MenuItem menuItem = menu.findItem(R.id.action_share);
         shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-        setShareActionIntent("Download the Fitcom Application!");
+        setShareActionIntent(getString(R.string.str_download));
         return super.onCreateOptionsMenu(menu);
     }
 

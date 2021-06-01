@@ -7,9 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -88,15 +85,15 @@ public class SignUpFragment extends Fragment {
         name = fullName.getText().toString();
 
         if(eMail.isEmpty() || password.isEmpty() || password2.isEmpty() || theAge.isEmpty() || name.isEmpty()) {
-            Toast.makeText(view.getContext(), "Some fields are empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), getString(R.string.error_fields), Toast.LENGTH_SHORT).show();
         }else if(Integer.parseInt(theAge) < 18){
-            Toast.makeText(view.getContext(), "You must be at least 18!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), getString(R.string.error_age), Toast.LENGTH_SHORT).show();
         }else if(!termsAndConditions){
-            Toast.makeText(view.getContext(), "To use the app, the terms and conditions must accepted!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), getString(R.string.error_terms), Toast.LENGTH_SHORT).show();
         }else if(!password.matches(password2)){
-            Toast.makeText(view.getContext(), "Passwords does not match!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), getString(R.string.error_passwor_match), Toast.LENGTH_SHORT).show();
         }else if(!eMail.contains("@")){
-            Toast.makeText(view.getContext(), "Enter a valid email address!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), getString(R.string.error_email), Toast.LENGTH_SHORT).show();
         }else {
             firebaseAuth.createUserWithEmailAndPassword(eMail, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
@@ -127,7 +124,6 @@ public class SignUpFragment extends Fragment {
 
                 @Override
                 public void onSuccess(DocumentReference documentReference) {
-                    Toast.makeText(view.getContext(), "Enter", Toast.LENGTH_SHORT).show();
                     firebaseAuth.signOut();
 
                     SignUpFragmentDirections.ActionSignUpFragmentToSignInFragment actionToSignIn = SignUpFragmentDirections.actionSignUpFragmentToSignInFragment();
@@ -136,8 +132,6 @@ public class SignUpFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(view.getContext(), "Error!", Toast.LENGTH_SHORT).show();
-
                 }
             });
         }

@@ -79,9 +79,9 @@ public class NutritionListFragment extends Fragment {
 
                         String name = (String) data.get("name");
                         String calorie = (String) data.get("Calorie");
-                        String carb = "Carbs: " + data.get("Carb");
-                        String protein = "Protein: " + data.get("Protein");
-                        String fat = "Fat: " + data.get("Fat");
+                        String carb = getString(R.string.str_carb) + " " + data.get("Carb");
+                        String protein = getString(R.string.str_protein) + " "  + data.get("Protein");
+                        String fat = getString(R.string.str_fat) + " "  + data.get("Fat");
                         names.add(name);
                         calories.add(calorie);
                         carbs.add(carb);

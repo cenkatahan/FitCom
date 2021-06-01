@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -48,7 +47,6 @@ public class SettingActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             finish();
             startActivity(intent);
-            Toast.makeText(this,"Signed Out!",Toast.LENGTH_SHORT).show();
         });
 
         ActionBar ab = getSupportActionBar();

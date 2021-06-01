@@ -5,31 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:layout_margin="8dp"
-    android:padding="4dp">
+    android:padding="4dp"
+    android:background="@drawable/row_rec"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="7dp">
 
     <TextView
         android:id="@+id/row_meal_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="30sp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/row_meal_calorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_thin"
         android:text="150 kcal olsun"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/row_meal_tv"
         app:layout_constraintTop_toBottomOf="@+id/row_meal_tv"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintVertical_bias="0.396" />
 
     <ImageView
         android:id="@+id/imageViewMealRow"
-        android:layout_width="145dp"
-        android:layout_height="145dp"
-        tools:srcCompat="@tools:sample/avatars"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

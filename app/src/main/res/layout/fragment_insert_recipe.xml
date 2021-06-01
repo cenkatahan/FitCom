@@ -18,70 +18,80 @@
 
     <EditText
         android:id="@+id/editText_recipe_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/hint_str_recipe_title"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRecipe"
+        app:layout_constraintVertical_bias="0.126" />
 
     <EditText
         android:id="@+id/editText_recipe_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_margin="16dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="@string/hint_str_recipe_desc"
         android:gravity="start|top"
+        android:hint="@string/hint_str_recipe_desc"
         android:inputType="textMultiLine"
-        app:layout_constraintStart_toStartOf="@+id/editText_recipe_title"
-        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_title" />
+        android:maxLines="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_title"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
 
     <EditText
         android:id="@+id/editText_recipe_calorie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_margin="6dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="calorie"
+        android:maxLines="1"
         android:gravity="start|top"
+        android:hint="calorie"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/editText_recipe_title"
-        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
 
     <Button
         android:id="@+id/button_select_img_rec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
         android:text="select image"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button_send_recipe"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_calorie"
+        app:layout_constraintVertical_bias="0.348" />
 
     <Button
         android:id="@+id/button_send_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="36dp"
         android:text="@string/button_str_send_recipe"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/editText_recipe_title" />
+        app:layout_constraintStart_toStartOf="@+id/button_select_img_rec"
+        app:layout_constraintTop_toBottomOf="@+id/button_select_img_rec" />
 
     <ImageView
         android:id="@+id/imageViewRecipe"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_calorie"
+        app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

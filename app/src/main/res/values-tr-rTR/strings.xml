@@ -40,6 +40,10 @@
     <string name="str_fat">Yağ: </string>
     <string name="str_protein">Protein: </string>
     <string name="str_motto">Onlarca tarif ve egzersize ulasmak icin, Toplulugumuza katil!.</string>
+    <string name="str_download">FitCom Uygulamasını indirin!</string>
+    <string name="str_successful">Başarılı</string>
+
+
 
     <!--TAB ITEMS-->
     <string name="tab_item_all_exercises">EGZERSİZLER</string>
@@ -59,4 +63,17 @@
 
     <string name="forget_pass"><u>Sifreni mi unuttun?</u></string>
     <string name="rights">2021 FitCom Inc. Tum Haklari Saklidir.</string>
+
+    <!--ERRORS-->
+    <string name="error_fields">Bazı yerler boş kalmıştır!</string>
+    <string name="error_age">En az 18 yaşında olmalısınız!</string>
+    <string name="error_terms">Uygulamayı kullanmak için şartlar ve koşulları kabul etmelisiniz!</string>
+    <string name="error_passwor_match">Şifreler uyuşmamaktadır!</string>
+    <string name="error_email">Uygun bir e-posta girmelisiniz!</string>
+    <string name="error_error">Hata!</string>
+
+
+
+
+
 </resources>
