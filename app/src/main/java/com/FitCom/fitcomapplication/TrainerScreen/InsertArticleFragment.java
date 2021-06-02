@@ -77,8 +77,9 @@ public class InsertArticleFragment extends Fragment {
     }
 
     private void sendArticle(View view){
-
-        if (!et_title.getText().toString().isEmpty() || !et_desc.getText().toString().isEmpty()) {
+        if (et_title.getText().toString().isEmpty() || et_desc.getText().toString().isEmpty()) {
+            Toast.makeText(getContext(), getString(R.string.error_fields), Toast.LENGTH_LONG).show();
+        }else{
             postData = new HashMap<>();
             postData.put("description", et_desc.getText().toString());
             postData.put("id", newId);
@@ -99,8 +100,6 @@ public class InsertArticleFragment extends Fragment {
                     Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
                 }
             });
-        }else {
-            Toast.makeText(getContext(), getString(R.string.error_fields), Toast.LENGTH_LONG).show();
         }
     }
 
