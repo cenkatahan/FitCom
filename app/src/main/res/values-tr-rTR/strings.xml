@@ -78,6 +78,6 @@
     <string name="error_passwor_match">Şifreler uyuşmamaktadır!</string>
     <string name="error_email">Uygun bir e-posta girmelisiniz!</string>
     <string name="error_error">Hata!</string>
-
+    <string name="error_img">Resim Sec!</string>
 
 </resources>

@@ -80,5 +80,6 @@
     <string name="error_passwor_match">Passwords does not match!</string>
     <string name="error_email">Enter a valid email address!</string>
     <string name="error_error">Error!</string>
+    <string name="error_img">Choose an Image!</string>
 
 </resources>

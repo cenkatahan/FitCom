@@ -104,52 +104,53 @@ public class InsertRecipeFragment extends Fragment {
     }
 
     public void uploadToFB(View view){
-        if(imgData != null ||
-                !et_title.getText().toString().isEmpty() ||
-                !et_desc.getText().toString().isEmpty() ||
-                !et_calorie.getText().toString().isEmpty()){
 
-            UUID uuid = UUID.randomUUID();
-            final String imageName = "images/nutrition-images" + uuid + ".jpeg";
-            storageReference.child(imageName).putFile(imgData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    StorageReference storageReference1 = FirebaseStorage.getInstance().getReference(imageName);
-                    storageReference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            String downloadUrl = uri.toString();
-                            HashMap<String, Object> postData = new HashMap<>();
-                            postData.put("desc", et_desc.getText().toString());
-                            postData.put("id",newId);
-                            postData.put("title", et_title.getText().toString());
-                            postData.put("calorie", et_calorie.getText().toString());
-                            postData.put("imgUrl", downloadUrl);
+        if(et_title.getText().toString().isEmpty() || et_calorie.getText().toString().isEmpty()){
+            Toast.makeText(view.getContext(), getString(R.string.error_fields), Toast.LENGTH_SHORT).show();
+        }else{
+            if(imgData == null){
+                Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
+            }else{
+                UUID uuid = UUID.randomUUID();
+                final String imageName = "images/nutrition-images" + uuid + ".jpeg";
+                storageReference.child(imageName).putFile(imgData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        StorageReference storageReference1 = FirebaseStorage.getInstance().getReference(imageName);
+                        storageReference1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String downloadUrl = uri.toString();
+                                HashMap<String, Object> postData = new HashMap<>();
+                                postData.put("desc", et_desc.getText().toString());
+                                postData.put("id",newId);
+                                postData.put("title", et_title.getText().toString());
+                                postData.put("calorie", et_calorie.getText().toString());
+                                postData.put("imgUrl", downloadUrl);
 
-                            firebaseFirestore.collection("Meals").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                @Override
-                                public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(view.getContext(), getString(R.string.str_successful), Toast.LENGTH_SHORT).show();
-                                    NavDirections directions = InsertRecipeFragmentDirections.actionInsertRecipeFragmentToInsertListFragment();
-                                    Navigation.findNavController(view).navigate(directions);
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(view.getContext(),getString(R.string.error_error), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-                    });
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(view.getContext(), getString(R.string.error_error),Toast.LENGTH_SHORT).show();
-                }
-            });
-        }else {
-            Toast.makeText(getContext(), getString(R.string.error_fields), Toast.LENGTH_LONG).show();
+                                firebaseFirestore.collection("Meals").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(view.getContext(), getString(R.string.str_successful), Toast.LENGTH_SHORT).show();
+                                        NavDirections directions = InsertRecipeFragmentDirections.actionInsertRecipeFragmentToInsertListFragment();
+                                        Navigation.findNavController(view).navigate(directions);
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(view.getContext(),getString(R.string.error_error), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(view.getContext(), getString(R.string.error_error),Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         }
     }
 
