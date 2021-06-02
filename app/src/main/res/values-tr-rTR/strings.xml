@@ -18,8 +18,6 @@
     <string name="button_str_insert_recipe">TARİF EKLE</string>
     <string name="button_str_reset_password">ŞİFREYİ YENİLE</string>
 
-
-
     <!--HINT-->
     <string name="hint_str_email">e-posta</string>
     <string name="hint_str_fullName">ad soyad</string>
@@ -49,8 +47,6 @@
     <string name="str_main_recipe">Onlarca \nTarif</string>
     <string name="str_main_pt">Kişisel \nEğitmen</string>
 
-
-
     <!--TAB ITEMS-->
     <string name="tab_item_all_exercises">EGZERSİZLER</string>
     <string name="tab_item_my_exercises">PROGRAMLAR</string>
@@ -78,14 +74,19 @@
     <string name="str_calorie">kalori</string>
     <string name="str_reset_pass">Şifrenizi yenilemek için\n e-posta adresinizi giriniz</string>
 
-
     <!--ERRORS-->
     <string name="error_fields">Bazı alanlar boş kalmıştır!</string>
     <string name="error_age">En az 18 yaşında olmalısınız!</string>
     <string name="error_terms">Uygulamayı kullanmak için şartlar ve koşulları kabul etmelisiniz!</string>
-    <string name="error_passwor_match">Şifreler eşleşmemektedir!</string>
+    <string name="error_password_match">Şifreler eşleşmemektedir!</string>
     <string name="error_email">Uygun bir e-posta girmelisiniz!</string>
     <string name="error_error">Hata!</string>
     <string name="error_img">Resim Seç!</string>
+    <string name="check_email">Lütfen E-postanızı Kontrol Edin.</string>
+    <string name="hide">Gizle</string>
+    <string name="terms_but_detailed">Uygulamamız kullanıcalara bir çok egzersiz, beslenme programı ve spor eğitmenlerine ulaşmasını sağlar. Uygulamamız, uygulamayı kullanırken
+    gerçekleşebilecek her hangi bir sakatlığın sorumluluğunu almaz. Bu şartları kabul edildiği takdirde, uygulamamız kullanıcı ismi ve e-mail bilgilerini
+    kullanma hakkına sahip olur.</string>
+    <string name="click">(Detay İçin Tıklayın)</string>
 
 </resources>

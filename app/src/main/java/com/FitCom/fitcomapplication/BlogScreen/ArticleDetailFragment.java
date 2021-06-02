@@ -1,5 +1,7 @@
 package com.FitCom.fitcomapplication.BlogScreen;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +28,9 @@ public class ArticleDetailFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore;
     private TextView articleTitle, articleDescription;
     private int id;
-    private String articleId;
     private ImageButton btnToList;
+    private String selected_language, title, description;
+    SharedPreferences sharedPrefs;
 
     public ArticleDetailFragment() {}
 
@@ -50,7 +53,8 @@ public class ArticleDetailFragment extends Fragment {
         articleTitle = view.findViewById(R.id.article_title);
         articleDescription = view.findViewById(R.id.article_description);
         id = ArticleDetailFragmentArgs.fromBundle(getArguments()).getArticleId();
-        articleId = String.valueOf(id);
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
         fetchFromFB();
         btnToList = view.findViewById(R.id.button_article_backToList);
         btnToList.setOnClickListener(v -> {
@@ -60,7 +64,7 @@ public class ArticleDetailFragment extends Fragment {
 
     private void fetchFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Article");
-        collectionReference.whereEqualTo("id", articleId).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        collectionReference.whereEqualTo("id", id).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error != null)
@@ -70,8 +74,15 @@ public class ArticleDetailFragment extends Fragment {
                     for(DocumentSnapshot snapshot: value.getDocuments()){
 
                         Map<String, Object> data = snapshot.getData();
-                        String title = (String) data.get("title");
-                        String description = (String) data.get("description");
+
+                        if(selected_language.matches("en")) {
+                            title = (String) data.get("title");
+                            description = (String) data.get("description");
+                        }else if(selected_language.matches("tr")){
+                            title = (String) data.get("title_tr");
+                            description = (String) data.get("description_tr");
+                        }
+
                         articleTitle.setText(title);
                         articleDescription.setText(description);
                     }

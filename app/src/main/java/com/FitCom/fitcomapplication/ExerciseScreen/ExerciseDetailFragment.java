@@ -1,5 +1,7 @@
 package com.FitCom.fitcomapplication.ExerciseScreen;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +27,10 @@ public class ExerciseDetailFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore;
     private TextView exerciseName, exerciseDescription;
     private ImageView imgExercise;
-    private String exerciseId;
     private int id;
     private ImageButton btnBackToList;
+    private String selected_language, description;
+    SharedPreferences sharedPrefs;
 
     public ExerciseDetailFragment() { }
 
@@ -50,7 +53,8 @@ public class ExerciseDetailFragment extends Fragment {
         exerciseDescription = view.findViewById(R.id.detail_description);
         imgExercise = view.findViewById(R.id.exercise_image);
         id = ExerciseDetailFragmentArgs.fromBundle(getArguments()).getExerciseId();
-        exerciseId = String.valueOf(id);
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
         fillFromFB(view);
         btnBackToList = view.findViewById(R.id.button_exercise_backToList);
         btnBackToList.setOnClickListener(v -> goExerciseList(v));
@@ -58,7 +62,7 @@ public class ExerciseDetailFragment extends Fragment {
 
     public void fillFromFB(View view){
         CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
-        collectionReference.whereEqualTo("id",exerciseId).addSnapshotListener((value, error) -> {
+        collectionReference.whereEqualTo("id",id).addSnapshotListener((value, error) -> {
             if(error != null)
                 Toast.makeText(getContext(), error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
 
@@ -66,8 +70,14 @@ public class ExerciseDetailFragment extends Fragment {
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
 
                     Map<String,Object> data = snapshot.getData();
+
+                    if(selected_language.matches("en")) {
+                        description = (String) data.get("description");
+                    }else if(selected_language.matches("tr")){
+                        description = (String) data.get("description_tr");
+                    }
+
                     String name = (String) data.get("name");
-                    String description = (String) data.get("description");
                     String imgUrl = (String) data.get("imgUrl");
                     exerciseName.setText(name);
                     exerciseDescription.setText(description);

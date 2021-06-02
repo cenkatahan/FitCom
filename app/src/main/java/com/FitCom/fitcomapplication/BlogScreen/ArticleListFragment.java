@@ -1,5 +1,7 @@
 package com.FitCom.fitcomapplication.BlogScreen;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,8 @@ public class ArticleListFragment extends Fragment {
     private RecAdaptorBlog recAdaptorBlog;
     private ArrayList<String> titles;
     private RecyclerView recyclerView;
+    private String selected_language, title;
+    SharedPreferences sharedPrefs;
 
     public ArticleListFragment() {}
 
@@ -54,6 +58,8 @@ public class ArticleListFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recAdaptorBlog = new RecAdaptorBlog(titles);
         recyclerView.setAdapter(recAdaptorBlog);
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
         fetchFromFB();
     }
 
@@ -70,7 +76,11 @@ public class ArticleListFragment extends Fragment {
                     for (DocumentSnapshot snapshot: value.getDocuments()){
 
                         Map<String, Object> data = snapshot.getData();
-                        String title = (String) data.get("title");
+                        if(selected_language.matches("en")) {
+                            title = (String) data.get("title");
+                        }else if(selected_language.matches("tr")){
+                            title = (String) data.get("title_tr");
+                        }
                         titles.add(title);
                         recAdaptorBlog.notifyDataSetChanged();
                     }

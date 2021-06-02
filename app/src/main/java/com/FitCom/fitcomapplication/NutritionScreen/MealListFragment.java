@@ -1,5 +1,7 @@
 package com.FitCom.fitcomapplication.NutritionScreen;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,8 @@ public class MealListFragment extends Fragment {
     private RecAdaptorMeal recAdaptorMeal;
     private ArrayList<String> titles, calories, imgUrls;
     private RecyclerView recyclerView;
+    private String selected_language, title;
+    SharedPreferences sharedPrefs;
 
     public MealListFragment() {
     }
@@ -51,6 +55,8 @@ public class MealListFragment extends Fragment {
         imgUrls = new ArrayList<>();
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
         fetchDataFromFB();
         recyclerView = view.findViewById(R.id.rec_view_meal) ;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -74,11 +80,16 @@ public class MealListFragment extends Fragment {
                     for(DocumentSnapshot snapshot : value.getDocuments()) {
                         Map<String,Object> data = snapshot.getData();
 
-                        String name = (String) data.get("title");
+                        if(selected_language.matches("en")) {
+                            title = (String) data.get("title");
+                        }else if(selected_language.matches("tr")){
+                            title = (String) data.get("title_tr");
+                        }
+
                         String calorie = (String) data.get("calorie");
                         String imgUrl = (String) data.get("imgUrl");
 
-                        titles.add(name);
+                        titles.add(title);
                         calories.add(calorie);
                         imgUrls.add(imgUrl);
                         recAdaptorMeal.notifyDataSetChanged();

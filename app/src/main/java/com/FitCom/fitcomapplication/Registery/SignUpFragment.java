@@ -1,5 +1,6 @@
 package com.FitCom.fitcomapplication.Registery;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,6 +34,7 @@ public class SignUpFragment extends Fragment {
     private boolean termsAndConditions,trainercheckbox;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
+    private TextView termsDetail;
 
     public SignUpFragment() {}
 
@@ -53,6 +56,7 @@ public class SignUpFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        termsDetail = view.findViewById(R.id.terms_detail_text);
         eMailField = view.findViewById(R.id.editTextSignUpEmail);
         passwordField = view.findViewById(R.id.editTextSignUpPassword);
         passwordField2 = view.findViewById(R.id.editTextSignUpPassword2);
@@ -67,6 +71,10 @@ public class SignUpFragment extends Fragment {
         });
         button_nav_to_sign_in.setOnClickListener(v -> {
             nav_to_sign_in(view);
+        });
+
+        terms.setOnClickListener(v -> {
+          showTerms(view);
         });
     }
 
@@ -91,7 +99,7 @@ public class SignUpFragment extends Fragment {
         }else if(!termsAndConditions){
             Toast.makeText(view.getContext(), getString(R.string.error_terms), Toast.LENGTH_SHORT).show();
         }else if(!password.matches(password2)){
-            Toast.makeText(view.getContext(), getString(R.string.error_passwor_match), Toast.LENGTH_SHORT).show();
+            Toast.makeText(view.getContext(), getString(R.string.error_password_match), Toast.LENGTH_SHORT).show();
         }else if(!eMail.contains("@")){
             Toast.makeText(view.getContext(), getString(R.string.error_email), Toast.LENGTH_SHORT).show();
         }else {
@@ -135,5 +143,13 @@ public class SignUpFragment extends Fragment {
                 }
             });
         }
+    }
+
+    public void showTerms(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(getString(R.string.str_terms));
+        builder.setMessage(view.getResources().getString(R.string.terms_but_detailed));
+        builder.setNegativeButton(view.getResources().getString(R.string.hide), null);
+        builder.show();
     }
 }

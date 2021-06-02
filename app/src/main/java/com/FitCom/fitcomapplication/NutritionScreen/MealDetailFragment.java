@@ -1,5 +1,7 @@
 package com.FitCom.fitcomapplication.NutritionScreen;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +26,8 @@ public class MealDetailFragment extends Fragment {
     private TextView mealTitle, mealDesc;
     private ImageButton btnBack;
     private int mealId;
-    private String str_mealId;
+    private String selected_language, title, description;
+    SharedPreferences sharedPrefs;
 
     public MealDetailFragment() {
     }
@@ -47,17 +50,18 @@ public class MealDetailFragment extends Fragment {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         mealId = MealDetailFragmentArgs.fromBundle(getArguments()).getMealId();
-        str_mealId = String.valueOf(mealId);
         mealTitle = view.findViewById(R.id.meal_detail_title);
         mealDesc = view.findViewById(R.id.meal_detail_desc);
         btnBack = view.findViewById(R.id.button_meal_backToList);
         btnBack.setOnClickListener(v -> goMealList(v));
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
         fetchFromFB();
     }
 
     private void fetchFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Meals");
-        collectionReference.whereEqualTo("id",str_mealId).addSnapshotListener((value, error) -> {
+        collectionReference.whereEqualTo("id",mealId).addSnapshotListener((value, error) -> {
             if(error != null)
                 Toast.makeText(getContext(), error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
 
@@ -65,9 +69,16 @@ public class MealDetailFragment extends Fragment {
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
 
                     Map<String,Object> data = snapshot.getData();
-                    String name = (String) data.get("title");
-                    String description = (String) data.get("desc");
-                    mealTitle.setText(name);
+
+                    if(selected_language.matches("en")) {
+                        title = (String) data.get("title");
+                        description = (String) data.get("desc");
+                    }else if(selected_language.matches("tr")){
+                        title = (String) data.get("title_tr");
+                        description = (String) data.get("desc_tr");
+                    }
+
+                    mealTitle.setText(title);
                     mealDesc.setText(description);
                 }
             }

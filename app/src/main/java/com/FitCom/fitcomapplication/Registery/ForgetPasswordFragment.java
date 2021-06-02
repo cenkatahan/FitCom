@@ -31,8 +31,6 @@ public class ForgetPasswordFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,23 +68,28 @@ public class ForgetPasswordFragment extends Fragment {
 
     private void resetEMailFromFB(View view){
         String email_str = eMail.getText().toString();
-        //FirebaseAuth.getInstance().setLanguageCode("en") // Set to English
 
-        firebaseAuth.sendPasswordResetEmail(email_str)
-                .addOnCompleteListener(new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getContext(), "check email", Toast.LENGTH_SHORT).show();
+        if(email_str.isEmpty()){
+            Toast.makeText(getContext(),view.getContext().getString(R.string.error_fields), Toast.LENGTH_SHORT).show();
+        }else{
+            firebaseAuth.sendPasswordResetEmail(email_str)
+                    .addOnCompleteListener(new OnCompleteListener() {
+                        @Override
+                        public void onComplete(@NonNull Task task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getContext(), "check email", Toast.LENGTH_SHORT).show();
 
-                        } else {
-                            Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), view.getContext().getString(R.string.error_error), Toast.LENGTH_SHORT).show();
 
+                            }
                         }
-                    }
-        });
+                    });
 
-        goBackSignIn(view);
+            goBackSignIn(view);
+        }
+
+
     }
 
 }
