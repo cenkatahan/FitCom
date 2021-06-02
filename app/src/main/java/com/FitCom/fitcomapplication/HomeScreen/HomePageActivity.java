@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
+
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.NutritionScreen.NutritionsActivity;
@@ -22,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Map;
 
 public class HomePageActivity extends AppCompatActivity {
@@ -33,6 +37,9 @@ public class HomePageActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private String acc_type;
     private String currentEMail;
+    private TextView tvWelcome;
+    private String userName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,7 @@ public class HomePageActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        tvWelcome = findViewById(R.id.textView_welcome);
         handleTrainerLayout();
         bnv = findViewById(R.id.bottom_nav_View);
         bnv.setSelectedItemId(R.id.home);
@@ -112,7 +120,10 @@ public class HomePageActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
+
+
 
     private void handleTrainerLayout(){
         currentUser = firebaseAuth.getCurrentUser();
@@ -128,9 +139,16 @@ public class HomePageActivity extends AppCompatActivity {
 
                     Map<String,Object> data = snapshot.getData();
                     acc_type = (String) data.get("trainer");
+                    userName = (String) data.get("fullName");
+                    setWelcomeScreen();
                 }
             }
         });
+
+    }
+
+    private void setWelcomeScreen(){
+        tvWelcome.setText(getString(R.string.str_welcome) + ",\n" + userName);
     }
 
     @Override

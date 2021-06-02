@@ -17,6 +17,9 @@
             android:name="eMail"
             app:argType="string"
             android:defaultValue="ARGUMENT" />
+        <action
+            android:id="@+id/action_signInFragment_to_forgetPasswordFragment2"
+            app:destination="@id/forgetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -25,6 +28,15 @@
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.FitCom.fitcomapplication.Registery.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_signInFragment2"
             app:destination="@id/signInFragment" />
     </fragment>
 </navigation>

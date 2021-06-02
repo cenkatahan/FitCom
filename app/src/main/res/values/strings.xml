@@ -12,21 +12,22 @@
     <string name="button_str_send_recipe">SEND RECIPE</string>
     <string name="button_str_send_article">SEND ARTICLE</string>
     <string name="button_str_insert_article">INSERT ARTICLE</string>
-    <string name="button_str_insert_exercise">INSERT EXERCISE</string>
-    <string name="button_str_insert_recipe">INSERT RECIPE</string>
-    <string name="button_str_send_exercise">SEND EXERCISE</string>
+    <string name="button_str_insert_exercise">ADD EXERCISE</string>
+    <string name="button_str_insert_recipe">ADD RECIPE</string>
+    <string name="button_str_send_exercise">ADD EXERCISE</string>
+    <string name="button_str_reset_password">RESET PASSWORD</string>
 
     <!--HINT-->
     <string name="hint_str_email">e-mail</string>
     <string name="hint_str_password">password</string>
     <string name="hint_str_age">age</string>
-    <string name="hint_str_recipe_title">RECIPE TITLE</string>
-    <string name="hint_str_recipe_desc">RECIPE DESCRIPTION</string>
-    <string name="hint_str_article_title">ARTICLE TITLE</string>
-    <string name="hint_str_article_desc">ARTICLE CONTENT</string>
-    <string name="hint_str_exercise_name">EXERCISE NAME</string>
-    <string name="hint_str_exercise_desc">EXERCISE DESCRIPTION</string>
-    <string name="hint_str_exercise_category">EXERCISE CATEGORY</string>
+    <string name="hint_str_recipe_title">recipe title</string>
+    <string name="hint_str_recipe_desc">recipe description</string>
+    <string name="hint_str_article_title">article title</string>
+    <string name="hint_str_article_desc">article content</string>
+    <string name="hint_str_exercise_name">exercise name</string>
+    <string name="hint_str_exercise_desc">exercise description</string>
+    <string name="hint_str_exercise_category">exercise category</string>
     <string name="hint_str_fullName">name surname</string>
 
     <!--STRINGS-->
@@ -38,10 +39,14 @@
     <string name="str_fat">Fat: </string>
     <string name="str_protein">Protein: </string>
     <string name="str_calorie">calorie</string>
-    <string name="str_motto">Join our community to access loads of exercises and recipes.</string>
+    <string name="str_motto">Join our community to access exercises and recipes.</string>
     <string name="str_fitcom" translatable="false">FITCOM</string>
     <string name="str_download">Download the FitCom Application!</string>
     <string name="str_successful">Successful</string>
+    <string name="str_welcome">Welcome to FitCom</string>
+    <string name="str_main_exercise">Plenty of \nExercises</string>
+    <string name="str_main_recipe">Plenty of \nRecipes</string>
+    <string name="str_main_pt">Personal \nTrainers</string>
 
     <!--TAB ITEMS-->
     <string name="tab_item_all_exercises">EXERCISES</string>
@@ -72,6 +77,7 @@
     <string name="str_tr" translatable="false">tr</string>
     <string name="str_en" translatable="false">en</string>
     <string name="about">FitCom Application is developed by: \n Osman Can Cinar \n Mahmut Berke Yaylaci \n Cenk Atahan Ozbek \n Ramazan Kazali </string>
+    <string name="str_reset_pass">In order to reset your password,\n enter your e-mail</string>
 
     <!--ERRORS-->
     <string name="error_fields">Some fields are empty.</string>
@@ -81,5 +87,6 @@
     <string name="error_email">Enter a valid email address!</string>
     <string name="error_error">Error!</string>
     <string name="error_img">Choose an Image!</string>
+
 
 </resources>

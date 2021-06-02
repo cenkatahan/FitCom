@@ -13,35 +13,41 @@
     <string name="button_str_send_recipe">TARİFİ GÖNDER</string>
     <string name="button_str_send_article">MAKALEYİ GÖNDER</string>
     <string name="button_str_send_exercise">EGZERSİZİ GÖNDER</string>
-    <string name="button_str_insert_article">MAKALE GİR</string>
-    <string name="button_str_insert_exercise">EGZERSİZ GİR</string>
-    <string name="button_str_insert_recipe">TARİF GİR</string>
+    <string name="button_str_insert_article">MAKALE EKLE</string>
+    <string name="button_str_insert_exercise">EGZERSİZ EKLE</string>
+    <string name="button_str_insert_recipe">TARİF EKLE</string>
+    <string name="button_str_reset_password">ŞİFREYİ YENİLE</string>
+
 
 
     <!--HINT-->
-    <string name="hint_str_email">e-mail</string>
+    <string name="hint_str_email">e-posta</string>
     <string name="hint_str_fullName">ad soyad</string>
     <string name="hint_str_password">şifre</string>
     <string name="hint_str_age">yaş</string>
-    <string name="hint_str_recipe_title">TARİF ADI</string>
-    <string name="hint_str_recipe_desc">YAPILIŞ</string>
-    <string name="hint_str_article_title">MAKALE ADI</string>
-    <string name="hint_str_article_desc">MAKALE İÇERİĞİ</string>
-    <string name="hint_str_exercise_name">EGZERSİZ ADI</string>
-    <string name="hint_str_exercise_desc">EGZERSİZ AÇIKLAMASI</string>
-    <string name="hint_str_exercise_category">EGZERSİZ KATEGORİ</string>
+    <string name="hint_str_recipe_title">tarif adı</string>
+    <string name="hint_str_recipe_desc">yapılış</string>
+    <string name="hint_str_article_title">makale adı</string>
+    <string name="hint_str_article_desc">makale içeriği</string>
+    <string name="hint_str_exercise_name">egzersiz adı</string>
+    <string name="hint_str_exercise_desc">egzersiz açıklaması</string>
+    <string name="hint_str_exercise_category">egzersiz kategorisi</string>
 
     <!--STRINGS-->
     <string name="str_article_name">İSİM</string>
     <string name="str_article_desc">AÇIKLAMA</string>
     <string name="str_terms"><u>ŞARTLAR VE KOŞULLAR</u></string>
     <string name="str_account_type">EĞİTMEN</string>
-    <string name="str_carb">Karbonhidrat:: </string>
+    <string name="str_carb">Karbonhidrat: </string>
     <string name="str_fat">Yağ: </string>
     <string name="str_protein">Protein: </string>
-    <string name="str_motto">Onlarca tarif ve egzersize ulasmak icin, Toplulugumuza katil!.</string>
+    <string name="str_motto">Tariflere ve egzersizlere ulaşmak icin topluluğumuza katılın!.</string>
     <string name="str_download">FitCom Uygulamasını indirin!</string>
     <string name="str_successful">Başarılı</string>
+    <string name="str_welcome">FitCom`a Hoşgeldin</string>
+    <string name="str_main_exercise">Onlarca \nEgzersiz</string>
+    <string name="str_main_recipe">Onlarca \nTarif</string>
+    <string name="str_main_pt">Kişisel \nEğitmen</string>
 
 
 
@@ -54,30 +60,32 @@
     <!--TABS-->
     <string name="tab_hom">ANA EKRAN</string>
     <string name="tab_exercise">EGZERSİZLER</string>
-    <string name="tab_nutr">BESINLER</string>
+    <string name="tab_nutr">BESİNLER</string>
     <string name="tab_blog">BLOG</string>
-    <string name="tab_trainer">EĞITMEN</string>
+    <string name="tab_trainer">EĞİTMEN</string>
 
     <!-- DIGER -->
     <string name="lang"><u>DİLLER</u></string>
-    <string name="forget_pass"><u>Sifreni mi unuttun?</u></string>
-    <string name="rights">2021 FitCom Inc. Tum Haklari Saklidir.</string>
-    <string name="exit_sec"><u>CIKIS YAP</u></string>
+    <string name="forget_pass"><u>Şifreni mi unuttun?</u></string>
+    <string name="rights">2021 FitCom AŞ. Tüm Haklari Saklıdır.</string>
+    <string name="exit_sec"><u>ÇIKIŞ YAP</u></string>
     <string name="about_sec"><u>HAKKINDA</u></string>
-    <string name="about">FitCom uygulamasini gelistirenler: \n Osman Can Cinar \n Mahmut Berke Yaylaci \n Cenk Atahan Ozbek \n Ramazan Kazali</string>
-    <string name="subj">Fitcom Bireysel Egitmenlik Hk</string>
-    <string name="select_img">Resim Sec</string>
-    <string name="share">Paylas</string>
+    <string name="about">FitCom uygulamasını geliştirenler: \n Osman Can Çınar \n Mahmut Berke Yaylacı \n Cenk Atahan Özbek \n Ramazan Kazalı</string>
+    <string name="subj">Fitcom Bireysel Eğitmenlik Hakkında</string>
+    <string name="select_img">Resim Seç</string>
+    <string name="share">Paylaş</string>
     <string name="settings">Ayarlar</string>
     <string name="str_calorie">kalori</string>
+    <string name="str_reset_pass">Şifrenizi yenilemek için\n e-posta adresinizi giriniz</string>
+
 
     <!--ERRORS-->
-    <string name="error_fields">Bazı yerler boş kalmıştır!</string>
+    <string name="error_fields">Bazı alanlar boş kalmıştır!</string>
     <string name="error_age">En az 18 yaşında olmalısınız!</string>
     <string name="error_terms">Uygulamayı kullanmak için şartlar ve koşulları kabul etmelisiniz!</string>
-    <string name="error_passwor_match">Şifreler uyuşmamaktadır!</string>
+    <string name="error_passwor_match">Şifreler eşleşmemektedir!</string>
     <string name="error_email">Uygun bir e-posta girmelisiniz!</string>
     <string name="error_error">Hata!</string>
-    <string name="error_img">Resim Sec!</string>
+    <string name="error_img">Resim Seç!</string>
 
 </resources>

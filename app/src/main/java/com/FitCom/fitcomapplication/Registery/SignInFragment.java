@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ public class SignInFragment extends Fragment {
     private EditText eMailField, passwordField;
     private String eMail, password;
     private FirebaseAuth firebaseAuth;
+    private TextView passwordForget;
 
     public SignInFragment() {}
 
@@ -56,6 +58,11 @@ public class SignInFragment extends Fragment {
         buttonSignIn.setOnClickListener(v -> {
             onClickToSignIn(view);
         });
+
+        passwordForget = view.findViewById(R.id.forget_link);
+        passwordForget.setOnClickListener(v -> {
+            goForgetPasswordFrg(v);
+        });
     }
 
     private void onClickToSignUp(View view){
@@ -84,5 +91,10 @@ public class SignInFragment extends Fragment {
                 }
             });
         }
+    }
+
+    private void goForgetPasswordFrg(View view){
+        NavDirections goForgetFrg = SignInFragmentDirections.actionSignInFragmentToForgetPasswordFragment2();
+        Navigation.findNavController(view).navigate(goForgetFrg);
     }
 }

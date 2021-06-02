@@ -124,7 +124,7 @@ public class InsertExerciseFragment extends Fragment {
             final String imageName = "images/exercise-images" + uuid + ".jpg";
 
             if (imageData == null) {
-                Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), getString(R.string.error_img), Toast.LENGTH_SHORT).show();
             } else {
                 storageReference.child(imageName).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
