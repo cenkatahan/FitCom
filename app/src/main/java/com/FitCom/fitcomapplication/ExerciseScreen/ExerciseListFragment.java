@@ -1,5 +1,7 @@
 package com.FitCom.fitcomapplication.ExerciseScreen;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,8 @@ public class ExerciseListFragment extends Fragment {
     private RecAdaptorExercises adapter;
     private ArrayList<String> exercises;
     private ArrayList<String> categories;
+    private String selected_language, category;
+    SharedPreferences sharedPrefs;
 
     public ExerciseListFragment() {}
 
@@ -55,6 +59,9 @@ public class ExerciseListFragment extends Fragment {
         adapter = new RecAdaptorExercises(exercises,categories);
         recyclerView.setAdapter(adapter);
         firebaseFirestore = FirebaseFirestore.getInstance();
+
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
         fetchDataFromFB();
     }
 
@@ -72,7 +79,14 @@ public class ExerciseListFragment extends Fragment {
                         Map <String,Object> data = snapshot.getData();
 
                         String name = (String) data.get("name");
-                        String category = (String) data.get("category");
+                        System.out.println(selected_language);
+
+                        if(selected_language.matches("en")){
+                            category = (String) data.get("category");
+                        }else if(selected_language.matches("tr")){
+                            category = (String) data.get("category_tr");
+                        }
+
                         categories.add(category);
                         exercises.add(name);
                         adapter.notifyDataSetChanged();

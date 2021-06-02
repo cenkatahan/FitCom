@@ -11,7 +11,7 @@
     <string name="button_str_sign_up">SIGN UP</string>
     <string name="button_str_send_recipe">SEND RECIPE</string>
     <string name="button_str_send_article">SEND ARTICLE</string>
-    <string name="button_str_insert_article">INSERT ARTICLE</string>
+    <string name="button_str_insert_article">ADD ARTICLE</string>
     <string name="button_str_insert_exercise">ADD EXERCISE</string>
     <string name="button_str_insert_recipe">ADD RECIPE</string>
     <string name="button_str_send_exercise">ADD EXERCISE</string>
@@ -83,10 +83,15 @@
     <string name="error_fields">Some fields are empty.</string>
     <string name="error_age">You must be at least 18!</string>
     <string name="error_terms">To use the app, the terms and conditions must accepted!</string>
-    <string name="error_passwor_match">Passwords does not match!</string>
+    <string name="error_password_match">Passwords does not match!</string>
     <string name="error_email">Enter a valid email address!</string>
     <string name="error_error">Error!</string>
     <string name="error_img">Choose an Image!</string>
-
+    <string name="check_email">Check Your Email Please.</string>
+    <string name="hide">Hide</string>
+    <string name="terms_but_detailed">Our application is served users to access exercises, nutrition and personal trainers. Our application does not accepts
+    any responsibility about injuries while using the app. By accepting these terms, our application has the rights to
+    use your name and e-mail.</string>
+    <string name="click">(Click to see in detail)</string>
 
 </resources>

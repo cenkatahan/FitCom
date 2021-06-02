@@ -17,13 +17,11 @@ public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.
 
     private ArrayList<String> names;
     private ArrayList<String> emails;
-    private ArrayList<String> age;
     private View view;
 
-    public RecAdaptorTrainers(ArrayList<String> names, ArrayList<String> emails, ArrayList<String> age) {
+    public RecAdaptorTrainers(ArrayList<String> names, ArrayList<String> emails) {
         this.names = names;
         this.emails = emails;
-        this.age = age;
     }
 
     @NonNull
@@ -38,7 +36,6 @@ public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.
     public void onBindViewHolder(@NonNull TrainerHolder holder, int position) {
         holder.rec_trainer_name.setText(names.get(position));
         holder.rec_trainer_email.setText(emails.get(position));
-        holder.rec_trainer_age.setText(age.get(position));
         holder.itemView.setOnClickListener(v -> {
             clickToSendEMail(v,position);
         });
@@ -73,14 +70,13 @@ public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.
 
     public class TrainerHolder extends RecyclerView.ViewHolder{
 
-        private TextView rec_trainer_name, rec_trainer_email, rec_trainer_age;
+        private TextView rec_trainer_name, rec_trainer_email;
 
         public TrainerHolder(@NonNull View itemView) {
             super(itemView);
 
             rec_trainer_email = itemView.findViewById(R.id.rec_trainer_email);
             rec_trainer_name = itemView.findViewById(R.id.rec_trainer_name);
-            rec_trainer_age = itemView.findViewById(R.id.rec_trainer_age);
         }
     }
 }

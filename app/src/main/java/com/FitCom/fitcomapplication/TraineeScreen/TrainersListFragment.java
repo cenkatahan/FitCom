@@ -24,7 +24,7 @@ public class TrainersListFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
     private RecAdaptorTrainers recAdaptorTrainers;
-    private ArrayList<String> names, emails, age;
+    private ArrayList<String> names, emails;
     private RecyclerView recyclerView;
     private final String TRAINER_KEY = "1";
 
@@ -51,14 +51,13 @@ public class TrainersListFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
         names = new ArrayList<>();
         emails = new ArrayList<>();
-        age = new ArrayList<>();
 
         recyclerView = view.findViewById(R.id.recycler_trainers_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recAdaptorTrainers = new RecAdaptorTrainers(names, emails, age);
+        recAdaptorTrainers = new RecAdaptorTrainers(names, emails);
         recyclerView.setAdapter(recAdaptorTrainers);
         fetchFromFB();
     }
@@ -78,8 +77,6 @@ public class TrainersListFragment extends Fragment {
 
                         String email = (String) data.get("email");
                         String fullName = (String) data.get("fullName");
-                        String thAge= (String) data.get("age");
-                        age.add(thAge);
                         emails.add(email);
                         names.add(fullName);
                         recAdaptorTrainers.notifyDataSetChanged();

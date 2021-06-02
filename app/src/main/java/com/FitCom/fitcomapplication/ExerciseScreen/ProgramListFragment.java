@@ -1,5 +1,7 @@
 package com.FitCom.fitcomapplication.ExerciseScreen;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,8 @@ public class ProgramListFragment extends Fragment {
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private ArrayList<String> titles, imgs;
+    private String title, selected_language;
+    SharedPreferences sharedPrefs;
 
     public ProgramListFragment() {}
 
@@ -54,10 +58,13 @@ public class ProgramListFragment extends Fragment {
         gridLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(recAdaptorPrograms);
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
         fetchDataFromFB();
     }
 
     private void fetchDataFromFB(){
+
         CollectionReference collectionReference = firebaseFirestore.collection("Programs");
         collectionReference.orderBy("id", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -70,10 +77,16 @@ public class ProgramListFragment extends Fragment {
                     for(DocumentSnapshot snapshot : value.getDocuments()) {
 
                         Map<String,Object> data = snapshot.getData();
-                        String title = (String) data.get("title");
+                        if(selected_language.matches("en")) {
+                            title = (String) data.get("title");
+                        }else if(selected_language.matches("tr")){
+                            title = (String) data.get("title_tr");
+                        }
+
                         String url = (String) data.get("img_src");
                         titles.add(title);
                         imgs.add(url);
+
                         recAdaptorPrograms.notifyDataSetChanged();
                     }
                 }

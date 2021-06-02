@@ -1,5 +1,7 @@
 package com.FitCom.fitcomapplication.ExerciseScreen;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,11 +28,12 @@ public class ProgramDetailFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
     private TextView programName, programDescription;
-    private String programId;
     private int id;
     private ProgressBar progressBar;
     private ImageButton btnToList;
     private ImageView programImg;
+    private String title, selected_language;
+    SharedPreferences sharedPrefs;
 
     public ProgramDetailFragment() {}
 
@@ -55,7 +58,8 @@ public class ProgramDetailFragment extends Fragment {
         programImg = view.findViewById(R.id.fragment_popup_img);
         progressBar = view.findViewById(R.id.fragment_popup_progressbar);
         id = ProgramDetailFragmentArgs.fromBundle(getArguments()).getProgramId();
-        programId = String.valueOf(id);
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
         fillFromFB(view);
         btnToList = view.findViewById(R.id.button_programs_backToList);
         btnToList.setOnClickListener(v -> goProgramList(v));
@@ -63,14 +67,18 @@ public class ProgramDetailFragment extends Fragment {
 
     public void fillFromFB(View view){
         CollectionReference collectionReference = firebaseFirestore.collection("Programs");
-        collectionReference.whereEqualTo("id",programId).addSnapshotListener((value, error) -> {
+        collectionReference.whereEqualTo("id",id).addSnapshotListener((value, error) -> {
             if(error != null)
                 Toast.makeText(getContext(), error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
 
             if(value != null){
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
                     Map<String,Object> data = snapshot.getData();
-                    String title = (String) data.get("title");
+                    if(selected_language.matches("en")) {
+                        title = (String) data.get("title");
+                    }else if(selected_language.matches("tr")){
+                        title = (String) data.get("title_tr");
+                    }
 
                     String trimmed = (String) data.get("desc");
                     String description = trimmed.replace(",","\n");

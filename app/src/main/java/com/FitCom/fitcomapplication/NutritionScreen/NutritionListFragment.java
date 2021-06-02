@@ -1,5 +1,7 @@
 package com.FitCom.fitcomapplication.NutritionScreen;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,8 @@ public class NutritionListFragment extends Fragment {
     private ArrayList<String> names, calories, carbs, proteins, fats;
     private RecAdaptorNutrition recAdaptorNutrition;
     private RecyclerView recyclerView;
+    private String selected_language, name;
+    SharedPreferences sharedPrefs;
 
     public NutritionListFragment() {}
 
@@ -58,6 +62,8 @@ public class NutritionListFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(recAdaptorNutrition);
         firebaseFirestore = FirebaseFirestore.getInstance();
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
         fetchDataFromFB();
     }
 
@@ -74,7 +80,13 @@ public class NutritionListFragment extends Fragment {
                     for (DocumentSnapshot snapshot : value.getDocuments()) {
                         Map<String, Object> data = snapshot.getData();
 
-                        String name = (String) data.get("name");
+                        if(selected_language.matches("en")) {
+                            name = (String) data.get("name");
+                        }else if(selected_language.matches("tr")){
+                            name = (String) data.get("name_tr");
+                        }
+
+
                         String calorie = (String) data.get("Calorie");
                         String carb = getString(R.string.str_carb) + " " + data.get("Carb");
                         String protein = getString(R.string.str_protein) + " "  + data.get("Protein");
