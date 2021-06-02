@@ -109,7 +109,7 @@ public class InsertRecipeFragment extends Fragment {
             Toast.makeText(view.getContext(), getString(R.string.error_fields), Toast.LENGTH_SHORT).show();
         }else{
             if(imgData == null){
-                Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), getString(R.string.error_img), Toast.LENGTH_SHORT).show();
             }else{
                 UUID uuid = UUID.randomUUID();
                 final String imageName = "images/nutrition-images" + uuid + ".jpeg";
