@@ -115,56 +115,58 @@ public class InsertExerciseFragment extends Fragment {
     }
 
     public void upload(View view) {
-        if (imageData != null ||
-                !et_title.getText().toString().isEmpty() ||
-                !et_desc.getText().toString().isEmpty() ||
-                !et_category.getText().toString().isEmpty()) {
 
+        if(et_title.getText().toString().isEmpty() || et_desc.getText().toString().isEmpty() || et_category.getText().toString().isEmpty()){
+            Toast.makeText(view.getContext(), getString(R.string.error_fields), Toast.LENGTH_SHORT).show();
+        }else{
             //universal unique id
             UUID uuid = UUID.randomUUID();
             final String imageName = "images/exercise-images" + uuid + ".jpg";
 
-            storageReference.child(imageName).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    StorageReference newReference = FirebaseStorage.getInstance().getReference(imageName);
-                    newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
+            if (imageData == null) {
+                Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
+            } else {
+                storageReference.child(imageName).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        StorageReference newReference = FirebaseStorage.getInstance().getReference(imageName);
+                        newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
 
-                            String downloadUrl = uri.toString();
-                            HashMap<String, Object> postData = new HashMap<>();
-                            postData.put("imgUrl",downloadUrl);
-                            postData.put("description", et_desc.getText().toString());
-                            postData.put("id", newId);
-                            postData.put("name", et_title.getText().toString());
-                            postData.put("category", et_category.getText().toString());
+                                String downloadUrl = uri.toString();
+                                HashMap<String, Object> postData = new HashMap<>();
+                                postData.put("imgUrl", downloadUrl);
+                                postData.put("description", et_desc.getText().toString());
+                                postData.put("id", newId);
+                                postData.put("name", et_title.getText().toString());
+                                postData.put("category", et_category.getText().toString());
 
-                            firebaseFirestore.collection("Exercises").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                @Override
-                                public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(view.getContext(), getString(R.string.str_successful), Toast.LENGTH_SHORT).show();
 
-                                    NavDirections directions = InsertExerciseFragmentDirections.actionInsertExerciseFragmentToInsertListFragment();
-                                    Navigation.findNavController(view).navigate(directions);
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        }
-                    });
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
-                }
-            });
-        }else {
-            Toast.makeText(getContext(), getString(R.string.error_fields), Toast.LENGTH_LONG).show();
+                                firebaseFirestore.collection("Exercises").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Toast.makeText(view.getContext(), getString(R.string.str_successful), Toast.LENGTH_SHORT).show();
+
+                                        NavDirections directions = InsertExerciseFragmentDirections.actionInsertExerciseFragmentToInsertListFragment();
+                                        Navigation.findNavController(view).navigate(directions);
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         }
     }
 
