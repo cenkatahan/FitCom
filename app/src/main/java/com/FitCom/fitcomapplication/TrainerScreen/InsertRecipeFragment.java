@@ -3,6 +3,7 @@ package com.FitCom.fitcomapplication.TrainerScreen;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -47,9 +48,13 @@ import java.util.UUID;
 
 public class InsertRecipeFragment extends Fragment {
 
+    private EditText et_title_tr, et_desc_tr;
+    private Button btn_translate;
+    private String selected_language;
+    SharedPreferences sharedPrefs;
     private ImageView imageViewRecipe;
     private ImageButton btn_backToList;
-    private EditText et_title, et_desc, et_calorie;
+    private EditText et_title, et_desc, et_calorie, prep_time;
     private Button btn_apply, select_image;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
@@ -81,6 +86,18 @@ public class InsertRecipeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
+        et_title_tr = view.findViewById(R.id.editText_recipe_title_tr);
+        et_desc_tr = view.findViewById(R.id.editText_recipe_desc_tr);
+        btn_translate = view.findViewById(R.id.button_translate_3);
+        btn_translate.setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url2)));
+            startActivity(browserIntent);
+            Toast.makeText(getContext(),getString(R.string.supported_langs), Toast.LENGTH_LONG).show();
+        });
+        prep_time = view.findViewById(R.id.editText_recipe_prep_time);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
@@ -104,7 +121,9 @@ public class InsertRecipeFragment extends Fragment {
 
     public void uploadToFB(View view){
 
-        if(et_title.getText().toString().isEmpty() || et_calorie.getText().toString().isEmpty()){
+        if(et_title.getText().toString().isEmpty() || et_desc.getText().toString().isEmpty()
+            || et_calorie.getText().toString().isEmpty() || et_title_tr.getText().toString().isEmpty()
+                || et_desc_tr.getText().toString().isEmpty() || prep_time.getText().toString().isEmpty()){
             Toast.makeText(view.getContext(), getString(R.string.error_fields), Toast.LENGTH_SHORT).show();
         }else{
             if(imgData == null){
@@ -121,11 +140,24 @@ public class InsertRecipeFragment extends Fragment {
                             public void onSuccess(Uri uri) {
                                 String downloadUrl = uri.toString();
                                 HashMap<String, Object> postData = new HashMap<>();
-                                postData.put("desc", et_desc.getText().toString());
+
                                 postData.put("id",counter_id);
-                                postData.put("title", et_title.getText().toString());
                                 postData.put("calorie", et_calorie.getText().toString());
                                 postData.put("imgUrl", downloadUrl);
+                                postData.put("prep_time",prep_time.getText().toString());
+
+                                //osman
+                                if(selected_language.matches("en")){
+                                    postData.put("desc", et_desc.getText().toString());
+                                    postData.put("title", et_title.getText().toString());
+                                    postData.put("desc_tr", et_desc_tr.getText().toString());
+                                    postData.put("title_tr", et_title_tr.getText().toString());
+                                }else if(selected_language.matches("tr")){
+                                    postData.put("desc_tr", et_desc.getText().toString());
+                                    postData.put("title_tr", et_title.getText().toString());
+                                    postData.put("desc", et_desc_tr.getText().toString());
+                                    postData.put("title", et_title_tr.getText().toString());
+                                }
 
                                 firebaseFirestore.collection("Meals").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override

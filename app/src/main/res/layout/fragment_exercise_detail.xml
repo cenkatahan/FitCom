@@ -7,13 +7,23 @@
     android:background="@drawable/menulong"
     tools:context=".ExerciseScreen.ExerciseDetailFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/rectangle"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        android:paddingBottom="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             app:layout_constraintEnd_toStartOf="@+id/detail_name"
             app:layout_constraintStart_toStartOf="@+id/detail_name">
 
@@ -25,8 +35,8 @@
                 android:src="@drawable/back_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
                 tools:ignore="ContentDescription" />
 
             <ImageView

@@ -23,10 +23,10 @@ import java.util.Map;
 public class MealDetailFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
-    private TextView mealTitle, mealDesc;
+    private TextView mealTitle, mealDesc, et_prep_time;
     private ImageButton btnBack;
     private int mealId;
-    private String selected_language, title, description;
+    private String selected_language, title, description, prep_time;
     SharedPreferences sharedPrefs;
 
     public MealDetailFragment() {
@@ -51,6 +51,7 @@ public class MealDetailFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
         mealId = MealDetailFragmentArgs.fromBundle(getArguments()).getMealId();
         mealTitle = view.findViewById(R.id.meal_detail_title);
+        et_prep_time = view.findViewById(R.id.prep_time);
         mealDesc = view.findViewById(R.id.meal_detail_desc);
         btnBack = view.findViewById(R.id.button_meal_backToList);
         btnBack.setOnClickListener(v -> goMealList(v));
@@ -69,13 +70,16 @@ public class MealDetailFragment extends Fragment {
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
 
                     Map<String,Object> data = snapshot.getData();
+                    prep_time = (String) data.get("prep_time");
 
                     if(selected_language.matches("en")) {
                         title = (String) data.get("title");
                         description = (String) data.get("desc");
+                        et_prep_time.setText(prep_time + getString(R.string.how_many_en));
                     }else if(selected_language.matches("tr")){
                         title = (String) data.get("title_tr");
                         description = (String) data.get("desc_tr");
+                        et_prep_time.setText(prep_time + getString(R.string.how_many_tr));
                     }
 
                     mealTitle.setText(title);

@@ -1,35 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/menulong"
-    tools:context=".TrainerScreen.InsertListFragment"
-    android:padding="24sp">
+    tools:context=".TrainerScreen.InsertListFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:src="@drawable/trainer_background"
+        android:scaleType="centerCrop"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24sp">
 
     <Button
         android:id="@+id/button_insert_exercise"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="196dp"
         android:text="@string/button_str_insert_exercise"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_insert_article"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/button_str_insert_article"
-        app:layout_constraintStart_toStartOf="@+id/button_insert_recipe"
+        app:layout_constraintStart_toStartOf="@+id/button_insert_exercise"
         app:layout_constraintTop_toBottomOf="@+id/button_insert_recipe" />
 
     <Button
         android:id="@+id/button_insert_recipe"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/button_str_insert_recipe"
@@ -37,3 +49,4 @@
         app:layout_constraintTop_toBottomOf="@+id/button_insert_exercise" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
