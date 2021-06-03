@@ -53,7 +53,6 @@ public class InsertExerciseFragment extends Fragment {
     private Button btn_apply, select_img;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
-    private String newId;
     private int counter_id;
     private ImageView destImg;
     private FirebaseStorage firebaseStorage;
@@ -138,7 +137,7 @@ public class InsertExerciseFragment extends Fragment {
                                 HashMap<String, Object> postData = new HashMap<>();
                                 postData.put("imgUrl", downloadUrl);
                                 postData.put("description", et_desc.getText().toString());
-                                postData.put("id", newId);
+                                postData.put("id", counter_id);
                                 postData.put("name", et_title.getText().toString());
                                 postData.put("category", et_category.getText().toString());
 
@@ -186,7 +185,6 @@ public class InsertExerciseFragment extends Fragment {
                         Map<String, Object> data = snapshot.getData();
                         counter_id++;
                     }
-                    newId = String.valueOf(counter_id);
                 }
             }
 
