@@ -29,6 +29,13 @@
     <string name="hint_str_exercise_desc">exercise description</string>
     <string name="hint_str_exercise_category">exercise category</string>
     <string name="hint_str_fullName">name surname</string>
+    <string name="hint_str_exercise_category_tr">category description in other language</string>
+    <string name="hint_str_exercise_description_tr">exercise description in other language</string>
+    <string name="hint_str_article_title_tr">article title in other language</string>
+    <string name="hint_str_article_desc_tr">article description in other language</string>
+    <string name="hint_str_recipe_title_tr">recipe title in other language</string>
+    <string name="hint_str_recipe_desc_tr">recipe description in other language</string>
+    <string name="hint_str_prep_time">preparation time</string>
 
     <!--STRINGS-->
     <string name="str_article_name">NAME</string>
@@ -78,6 +85,18 @@
     <string name="str_en" translatable="false">en</string>
     <string name="about">FitCom Application is developed by: \n Osman Can Cinar \n Mahmut Berke Yaylaci \n Cenk Atahan Ozbek \n Ramazan Kazali </string>
     <string name="str_reset_pass">In order to reset your password,\n enter your e-mail</string>
+    <string name="check_email">Check Your Email Please.</string>
+    <string name="hide">Hide</string>
+    <string name="terms_but_detailed">Our application is served users to access exercises, nutrition and personal trainers. Our application does not accepts
+    any responsibility about injuries while using the app. By accepting these terms, our application has the rights to
+    use your name and e-mail.</string>
+    <string name="click">(Click to see in detail)</string>
+    <string name="to_translate">Take me to translate</string>
+    <string name="url2" translatable="false">https://translate.google.com/</string>
+    <string name="supported_langs">Currently we are only supporting Turkish and English languages.</string>
+    <string name="for_how_many" translatable="false">1-2</string>
+    <string name="how_many_tr" translatable="false">dk</string>
+    <string name="how_many_en" translatable="false">min</string>
 
     <!--ERRORS-->
     <string name="error_fields">Some fields are empty.</string>
@@ -87,11 +106,4 @@
     <string name="error_email">Enter a valid email address!</string>
     <string name="error_error">Error!</string>
     <string name="error_img">Choose an Image!</string>
-    <string name="check_email">Check Your Email Please.</string>
-    <string name="hide">Hide</string>
-    <string name="terms_but_detailed">Our application is served users to access exercises, nutrition and personal trainers. Our application does not accepts
-    any responsibility about injuries while using the app. By accepting these terms, our application has the rights to
-    use your name and e-mail.</string>
-    <string name="click">(Click to see in detail)</string>
-
 </resources>

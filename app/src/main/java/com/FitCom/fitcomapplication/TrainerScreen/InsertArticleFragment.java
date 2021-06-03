@@ -1,5 +1,9 @@
 package com.FitCom.fitcomapplication.TrainerScreen;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +32,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InsertArticleFragment extends Fragment {
+
+    //osman
+    private EditText et_title_tr, et_desc_tr;
+    private Button btn_translate;
+    private String selected_language;
+    SharedPreferences sharedPrefs;
 
     private ImageButton btn_backToList;
     private EditText et_title, et_desc;
@@ -61,6 +71,18 @@ public class InsertArticleFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //osman
+        sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        selected_language = sharedPrefs.getString("selected_lang" ,"");
+        et_title_tr = view.findViewById(R.id.editText_article_title_tr);
+        et_desc_tr = view.findViewById(R.id.editText_article_desc_tr);
+        btn_translate = view.findViewById(R.id.button_translate_2);
+        btn_translate.setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url2)));
+            startActivity(browserIntent);
+            Toast.makeText(getContext(),getString(R.string.supported_langs), Toast.LENGTH_LONG).show();
+        });
+
         getArticleId();
         et_title = view.findViewById(R.id.editText_article_title);
         et_desc = view.findViewById(R.id.editText_article_desc);
@@ -76,13 +98,25 @@ public class InsertArticleFragment extends Fragment {
     }
 
     private void sendArticle(View view){
-        if (et_title.getText().toString().isEmpty() || et_desc.getText().toString().isEmpty()) {
+        if (et_title.getText().toString().isEmpty() || et_desc.getText().toString().isEmpty()
+            || et_title_tr.getText().toString().isEmpty() || et_desc_tr.getText().toString().isEmpty()) {
             Toast.makeText(getContext(), getString(R.string.error_fields), Toast.LENGTH_LONG).show();
         }else{
             postData = new HashMap<>();
-            postData.put("description", et_desc.getText().toString());
             postData.put("id", counter_id);
-            postData.put("title", et_title.getText().toString());
+
+            //osman
+            if(selected_language.matches("en")){
+                postData.put("description", et_desc.getText().toString());
+                postData.put("title", et_title.getText().toString());
+                postData.put("description_tr", et_desc_tr.getText().toString());
+                postData.put("title_tr", et_title_tr.getText().toString());
+            }else if(selected_language.matches("tr")){
+                postData.put("description_tr", et_desc.getText().toString());
+                postData.put("title_tr", et_title.getText().toString());
+                postData.put("description", et_desc_tr.getText().toString());
+                postData.put("title", et_title_tr.getText().toString());
+            }
 
             firebaseFirestore.collection("Article").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>(){
 

@@ -111,23 +111,22 @@
 
         <CheckBox
             android:id="@+id/termsCheckBox"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textColor="@color/white"
             android:text="@string/str_terms"
-            app:layout_constraintEnd_toEndOf="@id/editTextSignUpEmail"
-            app:layout_constraintEnd_toStartOf="@id/editTextSignUpEmail"
+            app:layout_constraintStart_toStartOf="@id/editTextSignUpEmail"
             app:layout_constraintTop_toBottomOf="@id/editTextSignUpPassword2" />
 
         <TextView
             android:id="@+id/terms_detail_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/termsCheckBox"
             app:layout_constraintBottom_toBottomOf="@id/termsCheckBox"
             android:layout_marginBottom="15dp"
-            android:layout_marginEnd="27dp"
+            android:layout_marginStart="5dp"
             android:textColor="@color/white"
             android:textSize="10sp"
             android:text="@string/click"/>

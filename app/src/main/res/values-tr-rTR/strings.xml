@@ -30,6 +30,13 @@
     <string name="hint_str_exercise_name">egzersiz adı</string>
     <string name="hint_str_exercise_desc">egzersiz açıklaması</string>
     <string name="hint_str_exercise_category">egzersiz kategorisi</string>
+    <string name="hint_str_exercise_category_tr">diğer dilde kategori açıklaması </string>
+    <string name="hint_str_exercise_description_tr">diğer dilde egzersiz açıklaması</string>
+    <string name="hint_str_article_title_tr">diğer dilde makale adı</string>
+    <string name="hint_str_article_desc_tr">diğer dilde makale içeriği</string>
+    <string name="hint_str_recipe_title_tr">diğer dilde tarif adı</string>
+    <string name="hint_str_recipe_desc_tr">diğer dilde tarif yapılışı</string>
+    <string name="hint_str_prep_time">hazırlama süresi</string>
 
     <!--STRINGS-->
     <string name="str_article_name">İSİM</string>
@@ -73,8 +80,16 @@
     <string name="settings">Ayarlar</string>
     <string name="str_calorie">kalori</string>
     <string name="str_reset_pass">Şifrenizi yenilemek için\n e-posta adresinizi giriniz</string>
+    <string name="check_email">Lütfen E-postanızı Kontrol Edin.</string>
+    <string name="hide">Gizle</string>
+    <string name="terms_but_detailed">Uygulamamız kullanıcalara bir çok egzersiz, beslenme programı ve spor eğitmenlerine ulaşmasını sağlar. Uygulamamız, uygulamayı kullanırken
+    gerçekleşebilecek her hangi bir sakatlığın sorumluluğunu almaz. Bu şartları kabul edildiği takdirde, uygulamamız kullanıcı ismi ve e-mail bilgilerini
+    kullanma hakkına sahip olur.</string>
+    <string name="click">(Detay İçin Tıklayın)</string>
+    <string name="to_translate">Çeveriye Git</string>
+    <string name="supported_langs">Şuan için sadece Türkçe ve İngilizce dillerini destekliyoruz.</string>
 
-    <!--ERRORS-->
+    <!--Hatalar-->
     <string name="error_fields">Bazı alanlar boş kalmıştır!</string>
     <string name="error_age">En az 18 yaşında olmalısınız!</string>
     <string name="error_terms">Uygulamayı kullanmak için şartlar ve koşulları kabul etmelisiniz!</string>
@@ -82,11 +97,4 @@
     <string name="error_email">Uygun bir e-posta girmelisiniz!</string>
     <string name="error_error">Hata!</string>
     <string name="error_img">Resim Seç!</string>
-    <string name="check_email">Lütfen E-postanızı Kontrol Edin.</string>
-    <string name="hide">Gizle</string>
-    <string name="terms_but_detailed">Uygulamamız kullanıcalara bir çok egzersiz, beslenme programı ve spor eğitmenlerine ulaşmasını sağlar. Uygulamamız, uygulamayı kullanırken
-    gerçekleşebilecek her hangi bir sakatlığın sorumluluğunu almaz. Bu şartları kabul edildiği takdirde, uygulamamız kullanıcı ismi ve e-mail bilgilerini
-    kullanma hakkına sahip olur.</string>
-    <string name="click">(Detay İçin Tıklayın)</string>
-
 </resources>

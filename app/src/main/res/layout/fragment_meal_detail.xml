@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="500dp"
     tools:context=".NutritionScreen.MealDetailFragment"
     android:background="@drawable/menulong">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/rectangle"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="15dp" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:paddingTop="15dp"
+        android:layout_marginHorizontal="10dp"
+        android:paddingBottom="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_marginBottom="15dp"
+            android:layout_height="wrap_content">
 
             <ImageButton
                 android:id="@+id/button_meal_backToList"
@@ -27,6 +38,48 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/person_img"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_person_24_"
+                app:layout_constraintStart_toEndOf="@id/button_meal_backToList"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"/>
+
+            <TextView
+                android:text="@string/for_how_many"
+                android:textColor="@color/white"
+                android:fontFamily="@font/uni_sans_heavy_italic"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/person_img"
+                app:layout_constraintBottom_toBottomOf="@id/person_img"
+                android:layout_marginStart="5dp"/>
+
+            <ImageView
+                android:id="@+id/clock_img"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_access_alarms_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/person_img"
+                android:layout_marginEnd="120dp"
+                />
+
+            <TextView
+                android:id="@+id/prep_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="@font/uni_sans_heavy_italic"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/clock_img"
+                app:layout_constraintBottom_toBottomOf="@id/clock_img"
+                android:layout_marginStart="5dp"/>
 
             <TextView
                 android:id="@+id/meal_detail_title"
@@ -68,4 +121,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-</LinearLayout>
+</FrameLayout>
