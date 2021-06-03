@@ -20,6 +20,7 @@
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textSize="36sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textAlignment="center"/>
 
 </FrameLayout>

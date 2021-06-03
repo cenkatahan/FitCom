@@ -35,7 +35,6 @@ public class InsertArticleFragment extends Fragment {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
     private HashMap<String, Object> postData;
-    private String newId;
     private int counter_id;
 
     public InsertArticleFragment() {
@@ -82,7 +81,7 @@ public class InsertArticleFragment extends Fragment {
         }else{
             postData = new HashMap<>();
             postData.put("description", et_desc.getText().toString());
-            postData.put("id", newId);
+            postData.put("id", counter_id);
             postData.put("title", et_title.getText().toString());
 
             firebaseFirestore.collection("Article").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>(){
@@ -119,7 +118,6 @@ public class InsertArticleFragment extends Fragment {
                         Map<String, Object> data = snapshot.getData();
                         counter_id++;
                     }
-                    newId = String.valueOf(counter_id);
                 }
             }
         });

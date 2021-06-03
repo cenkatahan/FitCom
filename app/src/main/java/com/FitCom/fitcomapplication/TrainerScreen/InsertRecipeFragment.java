@@ -53,7 +53,6 @@ public class InsertRecipeFragment extends Fragment {
     private Button btn_apply, select_image;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
-    private String newId;
     private int counter_id;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
@@ -123,7 +122,7 @@ public class InsertRecipeFragment extends Fragment {
                                 String downloadUrl = uri.toString();
                                 HashMap<String, Object> postData = new HashMap<>();
                                 postData.put("desc", et_desc.getText().toString());
-                                postData.put("id",newId);
+                                postData.put("id",counter_id);
                                 postData.put("title", et_title.getText().toString());
                                 postData.put("calorie", et_calorie.getText().toString());
                                 postData.put("imgUrl", downloadUrl);
@@ -229,7 +228,6 @@ public class InsertRecipeFragment extends Fragment {
                         Map<String, Object> data = snapshot.getData();
                         counter_id++;
                     }
-                    newId = String.valueOf(counter_id);
                 }
             }
         });
