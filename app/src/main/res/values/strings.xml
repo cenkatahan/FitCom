@@ -88,8 +88,11 @@
     <string name="url2" translatable="false">https://translate.google.com/</string>
     <string name="supported_langs">Currently we are only supporting Turkish and English languages.</string>
     <string name="for_how_many" translatable="false">1-2</string>
-    <string name="how_many_tr" translatable="false">dk</string>
-    <string name="how_many_en" translatable="false">min</string>
+    <string name="how_many_tr" translatable="false"> dk</string>
+    <string name="how_many_en" translatable="false"> min</string>
+    <string name="channel_name" translatable="false">fitcom</string>
+    <string name="channel_description" translatable="false">fitcom channel</string>
+    <string name="notification_msg">Welcome, make your exercise count!</string>
 
     <!--ERRORS-->
     <string name="error_fields">Some fields are empty.</string>
@@ -99,7 +102,6 @@
     <string name="error_email">Enter a valid email address!</string>
     <string name="error_error">Error!</string>
     <string name="error_img">Choose an Image!</string>
-
-
     <string name="str_todo" translatable="false">TODO</string>
+    <string name="str_check">Please Check Your E-mail!</string>
 </resources>
