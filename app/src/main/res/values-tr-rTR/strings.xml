@@ -81,6 +81,7 @@
     <string name="click">(Detay İçin Tıklayın)</string>
     <string name="to_translate">Çeveriye Git</string>
     <string name="supported_langs">Şuan için sadece Türkçe ve İngilizce dillerini destekliyoruz.</string>
+    <string name="notification_msg">Hoşgeldin, idmanın hakkını ver!</string>
 
     <!--Hatalar-->
     <string name="error_fields">Bazı alanlar boş kalmıştır!</string>
@@ -90,4 +91,5 @@
     <string name="error_email">Uygun bir e-posta girmelisiniz!</string>
     <string name="error_error">Hata!</string>
     <string name="error_img">Resim Seç!</string>
+    <string name="str_check">Lütfen e-postanızı kontrol ediniz!</string>
 </resources>

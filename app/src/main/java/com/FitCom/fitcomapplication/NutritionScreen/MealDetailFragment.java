@@ -78,11 +78,11 @@ public class MealDetailFragment extends Fragment {
                     if(selected_language.matches("en")) {
                         title = (String) data.get("title");
                         description = (String) data.get("desc");
-                        et_prep_time.setText(prep_time + getString(R.string.how_many_en));
+                        et_prep_time.setText(prep_time + " " + getString(R.string.how_many_en));
                     }else if(selected_language.matches("tr")){
                         title = (String) data.get("title_tr");
                         description = (String) data.get("desc_tr");
-                        et_prep_time.setText(prep_time + getString(R.string.how_many_tr));
+                        et_prep_time.setText(prep_time + " " + getString(R.string.how_many_tr));
                     }
 
                     mealTitle.setText(title);

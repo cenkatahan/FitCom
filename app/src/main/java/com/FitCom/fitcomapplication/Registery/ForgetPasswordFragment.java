@@ -69,7 +69,7 @@ public class ForgetPasswordFragment extends Fragment {
             firebaseAuth.sendPasswordResetEmail(email_str)
                     .addOnCompleteListener((OnCompleteListener) task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getContext(), "check email", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(),getString(R.string.str_check), Toast.LENGTH_SHORT).show();
 
                         } else {
                             Toast.makeText(getContext(), view.getContext().getString(R.string.error_error), Toast.LENGTH_SHORT).show();
@@ -79,8 +79,5 @@ public class ForgetPasswordFragment extends Fragment {
 
             goBackSignIn(view);
         }
-
-
     }
-
 }

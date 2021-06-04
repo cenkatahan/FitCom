@@ -46,11 +46,9 @@ import java.util.UUID;
 @SuppressWarnings("ALL")
 public class InsertExerciseFragment extends Fragment {
 
-    //osman
     private EditText et_category_tr, et_desc_tr;
     private String selected_language;
     SharedPreferences sharedPrefs;
-
     private EditText et_title, et_desc, et_category;
     private FirebaseFirestore firebaseFirestore;
     private int counter_id;
@@ -81,7 +79,6 @@ public class InsertExerciseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //osman
         sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
         selected_language = sharedPrefs.getString("selected_lang" ,"");
         et_category_tr = view.findViewById(R.id.editText_exercise_category_tr);
