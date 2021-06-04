@@ -36,7 +36,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.279" />
+        app:layout_constraintVertical_bias="0.279"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/editText_article_title_tr"
@@ -51,7 +52,8 @@
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_article_title" />
+        app:layout_constraintTop_toBottomOf="@id/editText_article_title"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/editText_article_desc"
@@ -65,7 +67,8 @@
         android:maxLines="6"
         android:inputType="textMultiLine"
         app:layout_constraintStart_toStartOf="@+id/editText_article_title"
-        app:layout_constraintTop_toBottomOf="@+id/editText_article_title_tr" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_article_title_tr"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/editText_article_desc_tr"
@@ -79,7 +82,8 @@
         android:maxLines="6"
         android:inputType="textMultiLine"
         app:layout_constraintStart_toStartOf="@+id/editText_article_title"
-        app:layout_constraintTop_toBottomOf="@+id/editText_article_desc" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_article_desc"
+        tools:ignore="Autofill" />
 
     <Button
         android:id="@+id/button_send_article"

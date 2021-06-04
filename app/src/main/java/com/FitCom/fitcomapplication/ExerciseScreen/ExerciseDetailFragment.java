@@ -21,14 +21,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 import java.util.Map;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class ExerciseDetailFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
     private TextView exerciseName, exerciseDescription;
     private ImageView imgExercise;
     private int id;
-    private ImageButton btnBackToList;
     private String selected_language, description;
     SharedPreferences sharedPrefs;
 
@@ -52,19 +53,19 @@ public class ExerciseDetailFragment extends Fragment {
         exerciseName = view.findViewById(R.id.detail_name);
         exerciseDescription = view.findViewById(R.id.detail_description);
         imgExercise = view.findViewById(R.id.exercise_image);
-        id = ExerciseDetailFragmentArgs.fromBundle(getArguments()).getExerciseId();
+        id = ExerciseDetailFragmentArgs.fromBundle(Objects.requireNonNull(getArguments())).getExerciseId();
         sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
         selected_language = sharedPrefs.getString("selected_lang" ,"");
         fillFromFB(view);
-        btnBackToList = view.findViewById(R.id.button_exercise_backToList);
-        btnBackToList.setOnClickListener(v -> goExerciseList(v));
+        ImageButton btnBackToList = view.findViewById(R.id.button_exercise_backToList);
+        btnBackToList.setOnClickListener(this::goExerciseList);
     }
 
     public void fillFromFB(View view){
         CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
         collectionReference.whereEqualTo("id",id).addSnapshotListener((value, error) -> {
             if(error != null)
-                Toast.makeText(getContext(), error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), Objects.requireNonNull(error.getLocalizedMessage()).toString(),Toast.LENGTH_LONG).show();
 
             if(value != null){
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
@@ -72,12 +73,12 @@ public class ExerciseDetailFragment extends Fragment {
                     Map<String,Object> data = snapshot.getData();
 
                     if(selected_language.matches("en")) {
-                        description = (String) data.get("description");
+                        description = (String) Objects.requireNonNull(data).get("description");
                     }else if(selected_language.matches("tr")){
-                        description = (String) data.get("description_tr");
+                        description = (String) Objects.requireNonNull(data).get("description_tr");
                     }
 
-                    String name = (String) data.get("name");
+                    String name = (String) Objects.requireNonNull(data).get("name");
                     String imgUrl = (String) data.get("imgUrl");
                     exerciseName.setText(name);
                     exerciseDescription.setText(description);

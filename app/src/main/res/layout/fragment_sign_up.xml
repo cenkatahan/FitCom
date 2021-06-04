@@ -23,7 +23,6 @@
         android:layout_width="350dp"
         android:layout_height="520dp"
         android:layout_gravity="center"
-        android:id="@+id/rectangle"
         android:src="@drawable/rectangle"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
@@ -46,7 +45,8 @@
             android:textColorHint="@color/white"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="Autofill" />
 
 
         <EditText
@@ -60,7 +60,8 @@
             android:textColorHint="@color/white"
             android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editTextFullName" />
+            app:layout_constraintTop_toBottomOf="@id/editTextFullName"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editTextAge"
@@ -75,7 +76,8 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpEmail"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/editTextSignUpEmail"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSignUpEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextSignUpEmail"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editTextSignUpPassword"
@@ -91,7 +93,8 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpEmail"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/editTextSignUpEmail"
-            app:layout_constraintTop_toBottomOf="@+id/editTextAge" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextAge"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editTextSignUpPassword2"
@@ -107,7 +110,8 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextSignUpEmail"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/editTextSignUpEmail"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSignUpPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextSignUpPassword"
+            tools:ignore="Autofill" />
 
         <CheckBox
             android:id="@+id/termsCheckBox"
@@ -129,7 +133,8 @@
             android:layout_marginStart="5dp"
             android:textColor="@color/white"
             android:textSize="10sp"
-            android:text="@string/click"/>
+            android:text="@string/click"
+            tools:ignore="SmallSp" />
 
         <CheckBox
             android:id="@+id/checkBoxAccountType"

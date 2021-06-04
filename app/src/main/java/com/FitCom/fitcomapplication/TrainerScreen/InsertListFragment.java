@@ -14,8 +14,6 @@ import com.FitCom.fitcomapplication.R;
 
 public class InsertListFragment extends Fragment {
 
-    private Button btn_insert_exercise ,btn_insert_recipe, btn_insert_article;
-
     public InsertListFragment() {
         // Required empty public constructor
     }
@@ -36,9 +34,9 @@ public class InsertListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btn_insert_exercise = view.findViewById(R.id.button_insert_exercise);
-        btn_insert_recipe = view.findViewById(R.id.button_insert_recipe);
-        btn_insert_article = view.findViewById(R.id.button_insert_article);
+        Button btn_insert_exercise = view.findViewById(R.id.button_insert_exercise);
+        Button btn_insert_recipe = view.findViewById(R.id.button_insert_recipe);
+        Button btn_insert_article = view.findViewById(R.id.button_insert_article);
 
         btn_insert_exercise.setOnClickListener(v -> {
             NavDirections direction = InsertListFragmentDirections.actionInsertListFragmentToInsertExerciseFragment();

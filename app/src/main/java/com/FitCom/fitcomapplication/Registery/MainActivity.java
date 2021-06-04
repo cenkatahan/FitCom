@@ -17,17 +17,14 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getCurrentLanguage();
         setContentView(R.layout.activity_main);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseUser != null) {
 

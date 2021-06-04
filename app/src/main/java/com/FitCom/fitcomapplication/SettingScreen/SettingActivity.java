@@ -17,10 +17,9 @@ import com.FitCom.fitcomapplication.Registery.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import java.util.Locale;
 
+@SuppressWarnings("ALL")
 public class SettingActivity extends AppCompatActivity {
 
-    private ImageButton lang_tr, lang_eng, exit, gmail, insta;
-    private TextView gmail_link, insta_link;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -30,13 +29,13 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        lang_tr = findViewById(R.id.settings_lang_tr);
-        lang_eng = findViewById(R.id.settings_lang_eng);
-        exit = findViewById(R.id.imageButtonExit);
-        gmail = findViewById(R.id.insta_icon);
-        insta = findViewById(R.id.gmail_icon);
-        gmail_link = findViewById(R.id.email_link);
-        insta_link = findViewById(R.id.insta_link);
+        ImageButton lang_tr = findViewById(R.id.settings_lang_tr);
+        ImageButton lang_eng = findViewById(R.id.settings_lang_eng);
+        ImageButton exit = findViewById(R.id.imageButtonExit);
+        ImageButton gmail = findViewById(R.id.insta_icon);
+        ImageButton insta = findViewById(R.id.gmail_icon);
+        TextView gmail_link = findViewById(R.id.email_link);
+        TextView insta_link = findViewById(R.id.insta_link);
 
         gmail_link.setOnClickListener(v -> {
           clickToSendEMail();

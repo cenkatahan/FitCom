@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.FitCom.fitcomapplication.R;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class RecAdaptorNutrition extends RecyclerView.Adapter<RecAdaptorNutrition.NutritionPlaceHolder> {
 
     private ArrayList<String> nutrition_names;

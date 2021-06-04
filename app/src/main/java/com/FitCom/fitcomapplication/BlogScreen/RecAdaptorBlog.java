@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.FitCom.fitcomapplication.R;
 import java.util.ArrayList;
 
+@SuppressWarnings({"ALL", "FieldMayBeFinal", "CanBeFinal"})
 public class RecAdaptorBlog extends RecyclerView.Adapter<RecAdaptorBlog.PlaceHolderBlog> {
 
+    @SuppressWarnings("FieldMayBeFinal")
     private ArrayList<String> titles;
 
     public RecAdaptorBlog(ArrayList<String> titles) {
@@ -41,6 +43,7 @@ public class RecAdaptorBlog extends RecyclerView.Adapter<RecAdaptorBlog.PlaceHol
         return titles.size();
     }
 
+    @SuppressWarnings("CanBeFinal")
     public class PlaceHolderBlog extends RecyclerView.ViewHolder{
 
         private TextView title;

@@ -7,27 +7,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class MealListFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore;
     private RecAdaptorMeal recAdaptorMeal;
     private ArrayList<String> titles, calories, imgUrls;
-    private RecyclerView recyclerView;
     private String selected_language, title;
     SharedPreferences sharedPrefs;
 
@@ -58,7 +58,7 @@ public class MealListFragment extends Fragment {
         sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
         selected_language = sharedPrefs.getString("selected_lang" ,"");
         fetchDataFromFB();
-        recyclerView = view.findViewById(R.id.rec_view_meal) ;
+        RecyclerView recyclerView = view.findViewById(R.id.rec_view_meal);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true);
@@ -67,34 +67,32 @@ public class MealListFragment extends Fragment {
         recyclerView.setAdapter(recAdaptorMeal);
     }
 
+    @SuppressWarnings("StringOperationCanBeSimplified")
     private void fetchDataFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Meals");
-        collectionReference.orderBy("id", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error != null) {
-                    Toast.makeText(getContext(), error.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
-                }
+        collectionReference.orderBy("id", Query.Direction.ASCENDING).addSnapshotListener((value, error) -> {
+            if(error != null) {
+                Toast.makeText(getContext(), Objects.requireNonNull(error.getLocalizedMessage()).toString(), Toast.LENGTH_LONG).show();
+            }
 
-                if(value != null){
-                    for(DocumentSnapshot snapshot : value.getDocuments()) {
-                        Map<String,Object> data = snapshot.getData();
+            if(value != null){
+                for(DocumentSnapshot snapshot : value.getDocuments()) {
+                    Map<String,Object> data = snapshot.getData();
 
-                        if(selected_language.matches("en")) {
-                            title = (String) data.get("title");
-                        }else if(selected_language.matches("tr")){
-                            title = (String) data.get("title_tr");
-                        }
-
-                        String calorie = (String) data.get("calorie");
-                        String imgUrl = (String) data.get("imgUrl");
-
-                        titles.add(title);
-                        calories.add(calorie);
-                        imgUrls.add(imgUrl);
-                        recAdaptorMeal.notifyDataSetChanged();
+                    if(selected_language.matches("en")) {
+                        title = (String) Objects.requireNonNull(data).get("title");
+                    }else if(selected_language.matches("tr")){
+                        title = (String) Objects.requireNonNull(data).get("title_tr");
                     }
-                }}
-        });
+
+                    String calorie = (String) Objects.requireNonNull(data).get("calorie");
+                    String imgUrl = (String) data.get("imgUrl");
+
+                    titles.add(title);
+                    calories.add(calorie);
+                    imgUrls.add(imgUrl);
+                    recAdaptorMeal.notifyDataSetChanged();
+                }
+            }});
     }
 }

@@ -1,5 +1,6 @@
 package com.FitCom.fitcomapplication.Registery;
 
+@SuppressWarnings("ALL")
 public class User {
     public String email, age, trainer, fullName;
 

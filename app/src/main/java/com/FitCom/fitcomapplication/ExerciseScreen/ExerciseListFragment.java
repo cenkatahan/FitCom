@@ -7,22 +7,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
+@SuppressWarnings("StringOperationCanBeSimplified")
 public class ExerciseListFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
@@ -67,31 +69,28 @@ public class ExerciseListFragment extends Fragment {
 
     public void fetchDataFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
-        collectionReference.orderBy("id", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error != null) {
-                    Toast.makeText(getContext(), error.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
-                }
+        collectionReference.orderBy("id", Query.Direction.ASCENDING).addSnapshotListener((value, error) -> {
+            if(error != null) {
+                Toast.makeText(getContext(), Objects.requireNonNull(error.getLocalizedMessage()).toString(), Toast.LENGTH_LONG).show();
+            }
 
-                if(value != null){
-                    for(DocumentSnapshot snapshot : value.getDocuments()) {
-                        Map <String,Object> data = snapshot.getData();
+            if(value != null){
+                for(DocumentSnapshot snapshot : value.getDocuments()) {
+                    Map <String,Object> data = snapshot.getData();
 
-                        String name = (String) data.get("name");
-                        System.out.println(selected_language);
+                    String name = (String) Objects.requireNonNull(data).get("name");
+                    System.out.println(selected_language);
 
-                        if(selected_language.matches("en")){
-                            category = (String) data.get("category");
-                        }else if(selected_language.matches("tr")){
-                            category = (String) data.get("category_tr");
-                        }
-
-                        categories.add(category);
-                        exercises.add(name);
-                        adapter.notifyDataSetChanged();
+                    if(selected_language.matches("en")){
+                        category = (String) data.get("category");
+                    }else if(selected_language.matches("tr")){
+                        category = (String) data.get("category_tr");
                     }
-                }}
-        });
+
+                    categories.add(category);
+                    exercises.add(name);
+                    adapter.notifyDataSetChanged();
+                }
+            }});
     }
 }

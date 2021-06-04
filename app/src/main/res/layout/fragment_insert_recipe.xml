@@ -34,7 +34,8 @@
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewRecipe" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRecipe"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/editText_recipe_title_tr"
@@ -49,7 +50,8 @@
         android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_title" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_title"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/editText_recipe_desc"
@@ -64,7 +66,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_recipe_title_tr"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="16dp"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/editText_recipe_desc_tr"
@@ -79,7 +82,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="16dp"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/editText_recipe_calorie"
@@ -92,7 +96,8 @@
         android:hint="@string/str_calorie"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/editText_recipe_title"
-        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc_tr" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc_tr"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/editText_recipe_prep_time"
@@ -105,7 +110,8 @@
         android:hint="@string/hint_str_prep_time"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/editText_recipe_desc_tr"
-        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc_tr" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc_tr"
+        tools:ignore="Autofill" />
 
     <Button
         android:id="@+id/button_select_img_rec"

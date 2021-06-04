@@ -2,9 +2,6 @@
     <string name="app_name">FitCom Application</string>
 
     <!--BUTTON STRINGS-->
-    <string name="button_str_exercise">EXERCISE</string>
-    <string name="button_str_nutrition">NUTRITION</string>
-    <string name="button_str_exit">SIGN OUT</string>
     <string name="button_str_sign_in">SIGN IN</string>
     <string name="button_str_nav_to_sign_up">CREATE A NEW USER</string>
     <string name="button_str_nav_to_sign_in">Already Have An Account?</string>
@@ -38,8 +35,6 @@
     <string name="hint_str_prep_time">preparation time</string>
 
     <!--STRINGS-->
-    <string name="str_article_name">NAME</string>
-    <string name="str_article_desc">DESCRIPTION</string>
     <string name="str_terms"><u>TERMS AND CONDITIONS</u></string>
     <string name="str_account_type">TRAINER</string>
     <string name="str_carb">Carbs: </string>
@@ -66,7 +61,6 @@
     <string name="tab_exercise">EXERCISE</string>
     <string name="tab_nutr">NUTRITION</string>
     <string name="tab_blog">BLOG</string>
-    <string name="tab_trainer">TRAINER</string>
 
     <!-- OTHER -->
     <string name="lang"><u>LANGUAGES</u></string>
@@ -85,7 +79,6 @@
     <string name="str_en" translatable="false">en</string>
     <string name="about">FitCom Application is developed by: \n Osman Can Cinar \n Mahmut Berke Yaylaci \n Cenk Atahan Ozbek \n Ramazan Kazali </string>
     <string name="str_reset_pass">In order to reset your password,\n enter your e-mail</string>
-    <string name="check_email">Check Your Email Please.</string>
     <string name="hide">Hide</string>
     <string name="terms_but_detailed">Our application is served users to access exercises, nutrition and personal trainers. Our application does not accepts
     any responsibility about injuries while using the app. By accepting these terms, our application has the rights to
@@ -106,4 +99,7 @@
     <string name="error_email">Enter a valid email address!</string>
     <string name="error_error">Error!</string>
     <string name="error_img">Choose an Image!</string>
+
+
+    <string name="str_todo" translatable="false">TODO</string>
 </resources>

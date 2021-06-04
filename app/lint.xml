@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconColors">
+        <ignore path="src/main/res/drawable-v24/en_2.png" />
+        <ignore path="src/main/res/drawable-v24/tr_2.png" />
+    </issue>
+</lint>

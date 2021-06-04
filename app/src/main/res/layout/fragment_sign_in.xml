@@ -20,7 +20,6 @@
         android:layout_height="336dp"
         android:layout_marginTop="70dp"
         android:layout_gravity="center"
-        android:id="@+id/rectangle"
         android:src="@drawable/rectangle"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
@@ -82,7 +81,8 @@
             android:textColorHint="@color/white"
             android:textColorLink="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/desc" />
+            app:layout_constraintTop_toBottomOf="@id/desc"
+            tools:ignore="Autofill,TextFields" />
 
         <EditText
             android:id="@+id/editTextSignInPassword"
@@ -98,7 +98,8 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextSignInEmail"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/editTextSignInEmail"
-            app:layout_constraintTop_toBottomOf="@+id/editTextSignInEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextSignInEmail"
+            tools:ignore="Autofill" />
 
         <TextView
             android:id="@+id/forget_link"
@@ -138,7 +139,6 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonSignIn" />
 
         <TextView
-            android:id="@+id/rights"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

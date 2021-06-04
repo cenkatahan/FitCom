@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/image_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/article_one"
@@ -17,16 +15,16 @@
 
     <TextView
         android:id="@+id/rec_blog_title"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="150dp"
+        android:layout_gravity="top|start"
         android:layout_marginStart="15dp"
-        android:textSize="44sp"
-        android:textAlignment="textStart"
         android:fontFamily="@font/uni_sans_heavy"
         android:padding="4dp"
+        android:textAlignment="textStart"
         android:textColor="@color/white"
-        android:layout_gravity="top|start"
-        />
+        android:textSize="40sp"
+        android:layout_marginTop="12dp"/>
 
 
 </FrameLayout>
