@@ -1,5 +1,6 @@
 package com.FitCom.fitcomapplication.NutritionScreen;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +13,12 @@ import com.FitCom.fitcomapplication.R;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class RecAdaptorMeal extends RecyclerView.Adapter<RecAdaptorMeal.MealPlaceHolder>{
 
     private ArrayList<String> meal_titles;
     private ArrayList<String> calories;
     private ArrayList<String> imgUrls;
-    private final String UNIT = " kcal";
 
     public RecAdaptorMeal(ArrayList<String> meal_titles, ArrayList<String> meal_calories, ArrayList<String> imgUrls) {
         this.meal_titles = meal_titles;
@@ -33,9 +34,11 @@ public class RecAdaptorMeal extends RecyclerView.Adapter<RecAdaptorMeal.MealPlac
         return new MealPlaceHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MealPlaceHolder holder, int position) {
         holder.title.setText(meal_titles.get(position));
+        String UNIT = " kcal";
         holder.calorie.setText(calories.get(position) + UNIT);
         Picasso.get().load(imgUrls.get(position)).into(holder.imageView);
         holder.itemView.setOnClickListener(v -> {
@@ -50,6 +53,7 @@ public class RecAdaptorMeal extends RecyclerView.Adapter<RecAdaptorMeal.MealPlac
         return meal_titles.size();
     }
 
+    @SuppressWarnings("FieldMayBeFinal")
     class MealPlaceHolder extends RecyclerView.ViewHolder{
 
         private TextView title, calorie;

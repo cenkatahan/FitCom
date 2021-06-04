@@ -1,5 +1,6 @@
 package com.FitCom.fitcomapplication.NutritionScreen;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,12 +20,13 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Map;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class MealDetailFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
     private TextView mealTitle, mealDesc, et_prep_time;
-    private ImageButton btnBack;
     private int mealId;
     private String selected_language, title, description, prep_time;
     SharedPreferences sharedPrefs;
@@ -49,28 +51,29 @@ public class MealDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        mealId = MealDetailFragmentArgs.fromBundle(getArguments()).getMealId();
+        mealId = MealDetailFragmentArgs.fromBundle(Objects.requireNonNull(getArguments())).getMealId();
         mealTitle = view.findViewById(R.id.meal_detail_title);
         et_prep_time = view.findViewById(R.id.prep_time);
         mealDesc = view.findViewById(R.id.meal_detail_desc);
-        btnBack = view.findViewById(R.id.button_meal_backToList);
-        btnBack.setOnClickListener(v -> goMealList(v));
+        ImageButton btnBack = view.findViewById(R.id.button_meal_backToList);
+        btnBack.setOnClickListener(this::goMealList);
         sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
         selected_language = sharedPrefs.getString("selected_lang" ,"");
         fetchFromFB();
     }
 
+    @SuppressLint("SetTextI18n")
     private void fetchFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Meals");
         collectionReference.whereEqualTo("id",mealId).addSnapshotListener((value, error) -> {
             if(error != null)
-                Toast.makeText(getContext(), error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), Objects.requireNonNull(error.getLocalizedMessage()).toString(),Toast.LENGTH_LONG).show();
 
             if(value != null){
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
 
                     Map<String,Object> data = snapshot.getData();
-                    prep_time = (String) data.get("prep_time");
+                    prep_time = (String) Objects.requireNonNull(data).get("prep_time");
 
                     if(selected_language.matches("en")) {
                         title = (String) data.get("title");

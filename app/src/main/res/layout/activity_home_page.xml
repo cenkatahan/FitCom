@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreen.HomePageActivity"
     android:orientation="vertical"
-    android:background="@drawable/menulong">
+    android:background="@drawable/menulong"
+    tools:ignore="Overdraw">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,7 +36,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="@string/str_welcome"
             android:textColor="@color/white"
-            android:textSize="28dp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.296"
@@ -44,7 +45,6 @@
             app:layout_constraintVertical_bias="0.069" />
 
         <TextView
-            android:id="@+id/textView_exercise"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
@@ -59,7 +59,6 @@
             app:layout_constraintVertical_bias="0.379" />
 
         <TextView
-            android:id="@+id/textView_nutr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
@@ -74,7 +73,6 @@
             app:layout_constraintVertical_bias="0.688" />
 
         <TextView
-            android:id="@+id/textView_trainers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"

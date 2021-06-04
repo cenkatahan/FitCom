@@ -13,7 +13,8 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:src="@drawable/trainer_background"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        tools:ignore="ContentDescription" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
+
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.HomeScreen.HomePageActivity;
@@ -19,14 +21,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class TrainerActivity extends AppCompatActivity {
 
-    private BottomNavigationView bnv;
     private ShareActionProvider shareActionProvider;
-    private FirebaseFirestore firebaseFirestore;
     private ArrayList<String> mails;
     private ArrayList<String> train;
 
@@ -35,86 +38,80 @@ public class TrainerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer);
 
-        firebaseFirestore = FirebaseFirestore.getInstance();;
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
         mails = new ArrayList<>();
         train = new ArrayList<>();
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
         collectionReference.whereEqualTo("trainer","1").addSnapshotListener((value, error) -> {
             if(error != null)
-                Toast.makeText(this, error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(this, Objects.requireNonNull(error.getLocalizedMessage()).toString(),Toast.LENGTH_LONG).show();
 
             if(value != null){
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
 
                     Map<String,Object> data = snapshot.getData();
-                    String em = (String) data.get("email");
-                    String tr = (String) data.get("trainer");;
+                    String em = (String) Objects.requireNonNull(data).get("email");
+                    String tr = (String) data.get("trainer");
                     train.add(tr);
                     mails.add(em);
                 }
             }
         });
 
-        bnv = findViewById(R.id.bottom_nav_ViewT);
+        BottomNavigationView bnv = findViewById(R.id.bottom_nav_ViewT);
         bnv.setSelectedItemId(R.id.trainer);
-        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nutrition:
-                        startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+        bnv.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nutrition:
+                    startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.exercise:
-                        startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                case R.id.exercise:
+                    startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.blog:
-                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                case R.id.blog:
+                    startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                case R.id.home:
+                    startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.trainer:
-                        return true;
-                }
-                return false;
+                case R.id.trainer:
+                    return true;
             }
+            return false;
         });
 
-        bnv.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
-            @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nutrition:
-                        startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+        bnv.setOnNavigationItemReselectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nutrition:
+                    startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.exercise:
-                        startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+                case R.id.exercise:
+                    startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.blog:
-                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+                case R.id.blog:
+                    startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+                case R.id.home:
+                    startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.trainer:
-                        break;
-                }
+                case R.id.trainer:
+                    break;
             }
         });
     }

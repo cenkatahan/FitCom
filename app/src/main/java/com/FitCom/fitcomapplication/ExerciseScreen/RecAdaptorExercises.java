@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.FitCom.fitcomapplication.R;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class RecAdaptorExercises extends RecyclerView.Adapter<RecAdaptorExercises.PlaceHolder> {
 
     ArrayList<String> exercises;
@@ -45,6 +46,7 @@ public class RecAdaptorExercises extends RecyclerView.Adapter<RecAdaptorExercise
         return exercises.size();
     }
 
+    @SuppressWarnings("FieldMayBeFinal")
     class PlaceHolder extends RecyclerView.ViewHolder{
 
         private TextView category, title;

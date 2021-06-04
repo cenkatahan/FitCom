@@ -17,14 +17,12 @@ import androidx.navigation.Navigation;
 
 import com.FitCom.fitcomapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+@SuppressWarnings({"ALL", "rawtypes"})
 public class ForgetPasswordFragment extends Fragment {
 
     private EditText eMail;
-    private ImageButton btn_back;
-    private Button btn_reset;
     private FirebaseAuth firebaseAuth;
 
     public ForgetPasswordFragment() {
@@ -50,15 +48,11 @@ public class ForgetPasswordFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
 
         eMail = view.findViewById(R.id.editText_reset_email);
-        btn_back = view.findViewById(R.id.button_reset_toSignIn);
-        btn_back.setOnClickListener(v -> {
-            goBackSignIn(v);
-        });
+        ImageButton btn_back = view.findViewById(R.id.button_reset_toSignIn);
+        btn_back.setOnClickListener(this::goBackSignIn);
 
-        btn_reset = view.findViewById(R.id.button_to_sign_in);
-        btn_reset.setOnClickListener(v -> {
-            resetEMailFromFB(v);
-        });
+        Button btn_reset = view.findViewById(R.id.button_to_sign_in);
+        btn_reset.setOnClickListener(this::resetEMailFromFB);
     }
 
     private void goBackSignIn(View view){
@@ -73,16 +67,13 @@ public class ForgetPasswordFragment extends Fragment {
             Toast.makeText(getContext(),view.getContext().getString(R.string.error_fields), Toast.LENGTH_SHORT).show();
         }else{
             firebaseAuth.sendPasswordResetEmail(email_str)
-                    .addOnCompleteListener(new OnCompleteListener() {
-                        @Override
-                        public void onComplete(@NonNull Task task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(getContext(), "check email", Toast.LENGTH_SHORT).show();
+                    .addOnCompleteListener((OnCompleteListener) task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getContext(), "check email", Toast.LENGTH_SHORT).show();
 
-                            } else {
-                                Toast.makeText(getContext(), view.getContext().getString(R.string.error_error), Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getContext(), view.getContext().getString(R.string.error_error), Toast.LENGTH_SHORT).show();
 
-                            }
                         }
                     });
 

@@ -10,31 +10,25 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+
 import com.FitCom.fitcomapplication.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.DocumentReference;
+
 import java.util.HashMap;
 
+@SuppressWarnings("ALL")
 public class SignUpFragment extends Fragment {
     private EditText eMailField, passwordField, passwordField2, age, fullName;
-    private Button buttonSignUp, button_nav_to_sign_in;
     private CheckBox terms,trainer;
-    private User user;
-    private HashMap<String, Object> postData;
-    private String eMail, password,password2, theAge, name;
-    private boolean termsAndConditions,trainercheckbox;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
-    private TextView termsDetail;
 
     public SignUpFragment() {}
 
@@ -51,12 +45,13 @@ public class SignUpFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_sign_up, container, false);
     }
 
+    @SuppressWarnings("CodeBlock2Expr")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        termsDetail = view.findViewById(R.id.terms_detail_text);
+        TextView termsDetail = view.findViewById(R.id.terms_detail_text);
         eMailField = view.findViewById(R.id.editTextSignUpEmail);
         passwordField = view.findViewById(R.id.editTextSignUpPassword);
         passwordField2 = view.findViewById(R.id.editTextSignUpPassword2);
@@ -64,8 +59,8 @@ public class SignUpFragment extends Fragment {
         terms = view.findViewById(R.id.termsCheckBox);
         fullName = view.findViewById(R.id.editTextFullName);
         trainer=view.findViewById(R.id.checkBoxAccountType);
-        buttonSignUp = view.findViewById(R.id.buttonSignUp);
-        button_nav_to_sign_in = view.findViewById(R.id.button_nav_to_sign_in);
+        Button buttonSignUp = view.findViewById(R.id.buttonSignUp);
+        Button button_nav_to_sign_in = view.findViewById(R.id.button_nav_to_sign_in);
         buttonSignUp.setOnClickListener(v -> {
             SignUp(view);
         });
@@ -84,13 +79,13 @@ public class SignUpFragment extends Fragment {
     }
 
     private void SignUp(View view){
-        eMail = eMailField.getText().toString();
-        password = passwordField.getText().toString();
-        password2 = passwordField2.getText().toString();
-        theAge = age.getText().toString();
-        termsAndConditions = terms.isChecked();
-        trainercheckbox=trainer.isChecked();
-        name = fullName.getText().toString();
+        String eMail = eMailField.getText().toString();
+        String password = passwordField.getText().toString();
+        String password2 = passwordField2.getText().toString();
+        String theAge = age.getText().toString();
+        boolean termsAndConditions = terms.isChecked();
+        boolean trainercheckbox = trainer.isChecked();
+        String name = fullName.getText().toString();
 
         if(eMail.isEmpty() || password.isEmpty() || password2.isEmpty() || theAge.isEmpty() || name.isEmpty()) {
             Toast.makeText(view.getContext(), getString(R.string.error_fields), Toast.LENGTH_SHORT).show();
@@ -103,22 +98,16 @@ public class SignUpFragment extends Fragment {
         }else if(!eMail.contains("@")){
             Toast.makeText(view.getContext(), getString(R.string.error_email), Toast.LENGTH_SHORT).show();
         }else {
-            firebaseAuth.createUserWithEmailAndPassword(eMail, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {}
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(view.getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            firebaseAuth.createUserWithEmailAndPassword(eMail, password).addOnSuccessListener(authResult -> {}).addOnFailureListener(e -> Toast.makeText(view.getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show());
+            HashMap<String, Object> postData;
+            User user;
             if(trainercheckbox) {
                 user = new User(eMail, theAge, "1", name);
                 postData = new HashMap<>();
                 postData.put("email", eMail);
                 postData.put("age", theAge);
                 postData.put("trainer", "1");
-                postData.put("fullName",name);
+                postData.put("fullName", name);
             }
             else{
                 user = new User(eMail, theAge, "0", name);
@@ -126,21 +115,14 @@ public class SignUpFragment extends Fragment {
                 postData.put("email", eMail);
                 postData.put("age", theAge);
                 postData.put("trainer", "0");
-                postData.put("fullName",name);
+                postData.put("fullName", name);
             }
-            firebaseFirestore.collection("Users").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>(){
+            firebaseFirestore.collection("Users").add(postData).addOnSuccessListener(documentReference -> {
+                firebaseAuth.signOut();
 
-                @Override
-                public void onSuccess(DocumentReference documentReference) {
-                    firebaseAuth.signOut();
-
-                    SignUpFragmentDirections.ActionSignUpFragmentToSignInFragment actionToSignIn = SignUpFragmentDirections.actionSignUpFragmentToSignInFragment();
-                    Navigation.findNavController(view).navigate(actionToSignIn);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                }
+                SignUpFragmentDirections.ActionSignUpFragmentToSignInFragment actionToSignIn = SignUpFragmentDirections.actionSignUpFragmentToSignInFragment();
+                Navigation.findNavController(view).navigate(actionToSignIn);
+            }).addOnFailureListener(e -> {
             });
         }
     }

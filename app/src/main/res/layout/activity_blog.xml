@@ -18,7 +18,8 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/all_blog_graph" />
+        app:navGraph="@navigation/all_blog_graph"
+        tools:ignore="FragmentTagUsage" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"

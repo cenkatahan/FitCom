@@ -1,5 +1,6 @@
 package com.FitCom.fitcomapplication.HomeScreen;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,16 +28,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class HomePageActivity extends AppCompatActivity {
 
-    private BottomNavigationView bnv;
     private ShareActionProvider shareActionProvider;
     private FirebaseAuth firebaseAuth;
-    private FirebaseUser currentUser;
     private FirebaseFirestore firebaseFirestore;
     private String acc_type;
-    private String currentEMail;
     private TextView tvWelcome;
     private String userName;
 
@@ -50,74 +50,68 @@ public class HomePageActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         tvWelcome = findViewById(R.id.textView_welcome);
         handleTrainerLayout();
-        bnv = findViewById(R.id.bottom_nav_View);
+        BottomNavigationView bnv = findViewById(R.id.bottom_nav_View);
         bnv.setSelectedItemId(R.id.home);
-        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nutrition:
-                        startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+        bnv.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nutrition:
+                    startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.exercise:
-                        startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                case R.id.exercise:
+                    startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.blog:
-                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                case R.id.blog:
+                    startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.trainer:
-                        if(acc_type.equals("1")){
-                            startActivity(new Intent(getApplicationContext(), InsertDataActivity.class));
-                        }else if(acc_type.equals("0")){
-                            startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
-                        }
-                        overridePendingTransition(0, 0);
-                        return true;
+                case R.id.trainer:
+                    if(acc_type.equals("1")){
+                        startActivity(new Intent(getApplicationContext(), InsertDataActivity.class));
+                    }else if(acc_type.equals("0")){
+                        startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                    }
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.home:
-                        return true;
-                }
-                return false;
+                case R.id.home:
+                    return true;
             }
+            return false;
         });
 
-        bnv.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
-            @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nutrition:
-                        startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+        bnv.setOnNavigationItemReselectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nutrition:
+                    startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.trainer:
-                        if(acc_type.equals("1")){
-                            startActivity(new Intent(getApplicationContext(), InsertDataActivity.class));
-                        }else if(acc_type.equals("0")){
-                            startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
-                        }
-                        overridePendingTransition(0, 0);
-                        break;
+                case R.id.trainer:
+                    if(acc_type.equals("1")){
+                        startActivity(new Intent(getApplicationContext(), InsertDataActivity.class));
+                    }else if(acc_type.equals("0")){
+                        startActivity(new Intent(getApplicationContext(), TrainerActivity.class));
+                    }
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.exercise:
-                        startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+                case R.id.exercise:
+                    startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.blog:
-                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+                case R.id.blog:
+                    startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.home:
-                        break;
-                }
+                case R.id.home:
+                    break;
             }
         });
 
@@ -126,19 +120,19 @@ public class HomePageActivity extends AppCompatActivity {
 
 
     private void handleTrainerLayout(){
-        currentUser = firebaseAuth.getCurrentUser();
-        currentEMail = currentUser.getEmail();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        String currentEMail = Objects.requireNonNull(currentUser).getEmail();
 
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
-        collectionReference.whereEqualTo("email",currentEMail).addSnapshotListener((value, error) -> {
+        collectionReference.whereEqualTo("email", currentEMail).addSnapshotListener((value, error) -> {
             if(error != null)
-                Toast.makeText(this, error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(this, Objects.requireNonNull(error.getLocalizedMessage()).toString(),Toast.LENGTH_LONG).show();
 
             if(value != null){
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
 
                     Map<String,Object> data = snapshot.getData();
-                    acc_type = (String) data.get("trainer");
+                    acc_type = (String) Objects.requireNonNull(data).get("trainer");
                     userName = (String) data.get("fullName");
                     setWelcomeScreen();
                 }
@@ -147,6 +141,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void setWelcomeScreen(){
         tvWelcome.setText(getString(R.string.str_welcome) + ",\n" + userName);
     }

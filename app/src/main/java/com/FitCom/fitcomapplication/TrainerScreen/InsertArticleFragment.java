@@ -31,10 +31,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings({"ALL", "FieldCanBeLocal"})
 public class InsertArticleFragment extends Fragment {
 
     //osman
     private EditText et_title_tr, et_desc_tr;
+    @SuppressWarnings("FieldCanBeLocal")
     private Button btn_translate;
     private String selected_language;
     SharedPreferences sharedPrefs;
@@ -105,7 +107,6 @@ public class InsertArticleFragment extends Fragment {
             postData = new HashMap<>();
             postData.put("id", counter_id);
 
-            //osman
             if(selected_language.matches("en")){
                 postData.put("description", et_desc.getText().toString());
                 postData.put("title", et_title.getText().toString());

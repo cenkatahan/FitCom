@@ -13,7 +13,8 @@
         android:src="@drawable/rectangle"
         android:layout_marginTop="10dp"
         android:paddingHorizontal="15dp"
-        android:layout_marginBottom="75dp"/>
+        android:layout_marginBottom="75dp"
+        tools:ignore="ContentDescription" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,7 +26,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_marginBottom="15dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:ignore="ScrollViewSize">
 
 
             <ImageButton
@@ -85,9 +87,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="8dp"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/roboto_regular"
@@ -95,10 +97,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_popup_title"
                 android:maxLines="4"
-                android:minLines="1"/>
+                android:minLines="1"
+                tools:ignore="RtlCompat" />
 
             <TextView
-                android:id="@+id/EmptytextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"

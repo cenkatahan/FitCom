@@ -1,13 +1,16 @@
 package com.FitCom.fitcomapplication.TrainerScreen;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
+
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
 import com.FitCom.fitcomapplication.ExerciseScreen.ExerciseActivity;
 import com.FitCom.fitcomapplication.HomeScreen.HomePageActivity;
@@ -18,74 +21,68 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class InsertDataActivity extends AppCompatActivity {
 
-    private BottomNavigationView bnv;
     private ShareActionProvider shareActionProvider;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_data);
 
-        bnv = findViewById(R.id.bottom_nav_View_INS);
+        BottomNavigationView bnv = findViewById(R.id.bottom_nav_View_INS);
         bnv.setSelectedItemId(R.id.trainer);
-        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nutrition:
-                        startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+        bnv.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nutrition:
+                    startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.exercise:
-                        startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                case R.id.exercise:
+                    startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.blog:
-                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                case R.id.blog:
+                    startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                case R.id.home:
+                    startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
 
-                    case R.id.trainer:
-                        return true;
-                }
-                return false;
+                case R.id.trainer:
+                    return true;
             }
+            return false;
         });
 
-        bnv.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
-            @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nutrition:
-                        startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+        bnv.setOnNavigationItemReselectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nutrition:
+                    startActivity(new Intent(getApplicationContext(), NutritionsActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.exercise:
-                        startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+                case R.id.exercise:
+                    startActivity(new Intent(getApplicationContext(), ExerciseActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.blog:
-                        startActivity(new Intent(getApplicationContext(), BlogActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+                case R.id.blog:
+                    startActivity(new Intent(getApplicationContext(), BlogActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-                        overridePendingTransition(0, 0);
-                        break;
+                case R.id.home:
+                    startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
+                    overridePendingTransition(0, 0);
+                    break;
 
-                    case R.id.trainer:
-                        break;
-                }
+                case R.id.trainer:
+                    break;
             }
         });
     }

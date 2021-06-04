@@ -13,5 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/all_nutritions_graph" />
+        app:navGraph="@navigation/all_nutritions_graph"
+        tools:ignore="FragmentTagUsage" />
 </FrameLayout>

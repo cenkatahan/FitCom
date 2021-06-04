@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -28,43 +29,34 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+
 import com.FitCom.fitcomapplication.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+@SuppressWarnings("ALL")
 public class InsertExerciseFragment extends Fragment {
 
     //osman
     private EditText et_category_tr, et_desc_tr;
-    private Button btn_translate;
     private String selected_language;
     SharedPreferences sharedPrefs;
 
-    private ImageButton btn_backToList;
     private EditText et_title, et_desc, et_category;
-    private Button btn_apply, select_img;
-    private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
     private int counter_id;
     private ImageView destImg;
-    private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
-    private Bitmap imgChosen, defaultImg;
+    private Bitmap imgChosen;
     SaveBitmap saveBitmap;
     Uri imageData;
     private static final String NAME = "saveBitmap";
@@ -94,39 +86,37 @@ public class InsertExerciseFragment extends Fragment {
         selected_language = sharedPrefs.getString("selected_lang" ,"");
         et_category_tr = view.findViewById(R.id.editText_exercise_category_tr);
         et_desc_tr = view.findViewById(R.id.editText_exercise_desc_tr);
-        btn_translate = view.findViewById(R.id.button_translate);
+        Button btn_translate = view.findViewById(R.id.button_translate);
         btn_translate.setOnClickListener(v -> {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url2)));
             startActivity(browserIntent);
             Toast.makeText(getContext(),getString(R.string.supported_langs), Toast.LENGTH_LONG).show();
         });
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        firebaseStorage = FirebaseStorage.getInstance();
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
         destImg = view.findViewById(R.id.imageViewExercise);
-        select_img = view.findViewById(R.id.button_select_img);
+        Button select_img = view.findViewById(R.id.button_select_img);
         getExerciseId();
         et_title = view.findViewById(R.id.editText_exercise_name);
         et_desc = view.findViewById(R.id.editText_exercise_desc);
         et_category = view.findViewById(R.id.editText_exercise_category);
-        btn_apply = view.findViewById(R.id.button_send_exercise);
-        btn_apply.setOnClickListener(v -> {
-            upload(v);
-        });
+        Button btn_apply = view.findViewById(R.id.button_send_exercise);
+        btn_apply.setOnClickListener(this::upload);
 
         select_img.setOnClickListener(v -> {
             chooseFromGallery();
         });
 
-        btn_backToList = view.findViewById(R.id.button_insertExer_backToList);
+        ImageButton btn_backToList = view.findViewById(R.id.button_insertExer_backToList);
         btn_backToList.setOnClickListener(v -> {
             NavDirections direction = InsertExerciseFragmentDirections.actionInsertExerciseFragmentToInsertListFragment();
             Navigation.findNavController(view).navigate(direction);
         });
 
-        defaultImg = BitmapFactory.decodeResource(getContext().getResources(),R.drawable.temp);
+        Bitmap defaultImg = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.temp);
         destImg.setImageBitmap(defaultImg);
         startSavedBitmapFragment();
         loadBitmap();
@@ -146,56 +136,36 @@ public class InsertExerciseFragment extends Fragment {
             if (imageData == null) {
                 Toast.makeText(view.getContext(), getString(R.string.error_img), Toast.LENGTH_SHORT).show();
             } else {
-                storageReference.child(imageName).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        StorageReference newReference = FirebaseStorage.getInstance().getReference(imageName);
-                        newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
+                storageReference.child(imageName).putFile(imageData).addOnSuccessListener(taskSnapshot -> {
+                    StorageReference newReference = FirebaseStorage.getInstance().getReference(imageName);
+                    newReference.getDownloadUrl().addOnSuccessListener(uri -> {
 
-                                String downloadUrl = uri.toString();
-                                HashMap<String, Object> postData = new HashMap<>();
-                                postData.put("imgUrl", downloadUrl);
-                                postData.put("id", counter_id);
-                                postData.put("name", et_title.getText().toString());
+                        String downloadUrl = uri.toString();
+                        HashMap<String, Object> postData = new HashMap<>();
+                        postData.put("imgUrl", downloadUrl);
+                        postData.put("id", counter_id);
+                        postData.put("name", et_title.getText().toString());
 
-                                //osman
-                                if(selected_language.matches("en")){
-                                    postData.put("category", et_category.getText().toString());
-                                    postData.put("description", et_desc.getText().toString());
-                                    postData.put("description_tr", et_desc_tr.getText().toString());
-                                    postData.put("category_tr", et_category_tr.getText().toString());
-                                }else if(selected_language.matches("tr")){
-                                    postData.put("description_tr", et_desc.getText().toString());
-                                    postData.put("category_tr", et_category.getText().toString());
-                                    postData.put("category", et_category_tr.getText().toString());
-                                    postData.put("description", et_desc_tr.getText().toString());
-                                }
+                        if (selected_language.matches("en")) {
+                            postData.put("category", et_category.getText().toString());
+                            postData.put("description", et_desc.getText().toString());
+                            postData.put("description_tr", et_desc_tr.getText().toString());
+                            postData.put("category_tr", et_category_tr.getText().toString());
+                        } else if (selected_language.matches("tr")) {
+                            postData.put("description_tr", et_desc.getText().toString());
+                            postData.put("category_tr", et_category.getText().toString());
+                            postData.put("category", et_category_tr.getText().toString());
+                            postData.put("description", et_desc_tr.getText().toString());
+                        }
 
-                                firebaseFirestore.collection("Exercises").add(postData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Toast.makeText(view.getContext(), getString(R.string.str_successful), Toast.LENGTH_SHORT).show();
+                        firebaseFirestore.collection("Exercises").add(postData).addOnSuccessListener(documentReference -> {
+                            Toast.makeText(view.getContext(), getString(R.string.str_successful), Toast.LENGTH_SHORT).show();
 
-                                        NavDirections directions = InsertExerciseFragmentDirections.actionInsertExerciseFragmentToInsertListFragment();
-                                        Navigation.findNavController(view).navigate(directions);
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        });
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                            NavDirections directions = InsertExerciseFragmentDirections.actionInsertExerciseFragmentToInsertListFragment();
+                            Navigation.findNavController(view).navigate(directions);
+                        }).addOnFailureListener(e -> Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show());
+                    });
+                }).addOnFailureListener(e -> Toast.makeText(view.getContext(), getString(R.string.error_error), Toast.LENGTH_SHORT).show());
             }
         }
     }
@@ -204,21 +174,17 @@ public class InsertExerciseFragment extends Fragment {
         counter_id = 0;
 
         CollectionReference collectionReference = firebaseFirestore.collection("Exercises");
-        collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error != null) {
-                    Toast.makeText(getContext(), error.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
-                }
-
-                if(value != null){
-                    for (DocumentSnapshot snapshot: value.getDocuments()){
-                        Map<String, Object> data = snapshot.getData();
-                        counter_id++;
-                    }
-                }
+        collectionReference.addSnapshotListener((value, error) -> {
+            if(error != null) {
+                Toast.makeText(getContext(), error.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
             }
 
+            if(value != null){
+                for (DocumentSnapshot snapshot: value.getDocuments()){
+                    Map<String, Object> data = snapshot.getData();
+                    counter_id++;
+                }
+            }
         });
     }
 

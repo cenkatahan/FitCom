@@ -5,28 +5,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.FitCom.fitcomapplication.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class TrainersListFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
     private RecAdaptorTrainers recAdaptorTrainers;
     private ArrayList<String> names, emails;
-    private RecyclerView recyclerView;
-    private final String TRAINER_KEY = "1";
 
     public TrainersListFragment() {
         // Required empty public constructor
@@ -52,7 +52,7 @@ public class TrainersListFragment extends Fragment {
         names = new ArrayList<>();
         emails = new ArrayList<>();
 
-        recyclerView = view.findViewById(R.id.recycler_trainers_list);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_trainers_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true);
@@ -64,23 +64,21 @@ public class TrainersListFragment extends Fragment {
 
     private void fetchFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Users");
-        collectionReference.whereEqualTo("trainer", TRAINER_KEY).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error != null) {
-                    Toast.makeText(getContext(), error.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
-                }
+        String TRAINER_KEY = "1";
+        collectionReference.whereEqualTo("trainer", TRAINER_KEY).addSnapshotListener((value, error) -> {
+            if(error != null) {
+                Toast.makeText(getContext(), Objects.requireNonNull(error.getLocalizedMessage()).toString(), Toast.LENGTH_LONG).show();
+            }
 
-                if(value != null){
-                    for (DocumentSnapshot snapshot: value.getDocuments()){
-                        Map<String, Object> data = snapshot.getData();
+            if(value != null){
+                for (DocumentSnapshot snapshot: value.getDocuments()){
+                    Map<String, Object> data = snapshot.getData();
 
-                        String email = (String) data.get("email");
-                        String fullName = (String) data.get("fullName");
-                        emails.add(email);
-                        names.add(fullName);
-                        recAdaptorTrainers.notifyDataSetChanged();
-                    }
+                    String email = (String) Objects.requireNonNull(data).get("email");
+                    String fullName = (String) data.get("fullName");
+                    emails.add(email);
+                    names.add(fullName);
+                    recAdaptorTrainers.notifyDataSetChanged();
                 }
             }
         });

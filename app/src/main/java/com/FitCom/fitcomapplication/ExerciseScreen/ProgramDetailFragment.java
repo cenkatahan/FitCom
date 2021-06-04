@@ -23,14 +23,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import java.util.Map;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class ProgramDetailFragment extends Fragment {
 
     private FirebaseFirestore firebaseFirestore;
     private TextView programName, programDescription;
     private int id;
     private ProgressBar progressBar;
-    private ImageButton btnToList;
     private ImageView programImg;
     private String title, selected_language;
     SharedPreferences sharedPrefs;
@@ -57,31 +58,31 @@ public class ProgramDetailFragment extends Fragment {
         programDescription = view.findViewById(R.id.fragment_popup_description);
         programImg = view.findViewById(R.id.fragment_popup_img);
         progressBar = view.findViewById(R.id.fragment_popup_progressbar);
-        id = ProgramDetailFragmentArgs.fromBundle(getArguments()).getProgramId();
+        id = ProgramDetailFragmentArgs.fromBundle(requireArguments()).getProgramId();
         sharedPrefs = view.getContext().getSharedPreferences("preferences", Activity.MODE_PRIVATE);
         selected_language = sharedPrefs.getString("selected_lang" ,"");
-        fillFromFB(view);
-        btnToList = view.findViewById(R.id.button_programs_backToList);
-        btnToList.setOnClickListener(v -> goProgramList(v));
+        fillFromFB();
+        ImageButton btnToList = view.findViewById(R.id.button_programs_backToList);
+        btnToList.setOnClickListener(this::goProgramList);
     }
 
-    public void fillFromFB(View view){
+    public void fillFromFB(){
         CollectionReference collectionReference = firebaseFirestore.collection("Programs");
         collectionReference.whereEqualTo("id",id).addSnapshotListener((value, error) -> {
             if(error != null)
-                Toast.makeText(getContext(), error.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), Objects.requireNonNull(error.getLocalizedMessage()),Toast.LENGTH_LONG).show();
 
             if(value != null){
                 for(DocumentSnapshot snapshot : value.getDocuments()) {
                     Map<String,Object> data = snapshot.getData();
                     if(selected_language.matches("en")) {
-                        title = (String) data.get("title");
+                        title = (String) Objects.requireNonNull(data).get("title");
                     }else if(selected_language.matches("tr")){
-                        title = (String) data.get("title_tr");
+                        title = (String) Objects.requireNonNull(data).get("title_tr");
                     }
 
-                    String trimmed = (String) data.get("desc");
-                    String description = trimmed.replace(",","\n");
+                    String trimmed = (String) Objects.requireNonNull(data).get("desc");
+                    String description = Objects.requireNonNull(trimmed).replace(",","\n");
 
                     String url = (String) data.get("img_src");
                     programName.setText(title);

@@ -3,9 +3,6 @@
     <string name="app_name">FitCom Uygulaması</string>
 
     <!--BUTTON STRINGS-->
-    <string name="button_str_exercise">EGZERSİZLER</string>
-    <string name="button_str_nutrition">BESİNLER</string>
-    <string name="button_str_exit">ÇIKIŞ YAP</string>
     <string name="button_str_sign_in">GİRİŞ YAP</string>
     <string name="button_str_nav_to_sign_up">YENİ HESAP OLUŞTUR</string>
     <string name="button_str_nav_to_sign_in">GİRİŞ SAYFASINA GÖTÜR</string>
@@ -39,8 +36,6 @@
     <string name="hint_str_prep_time">hazırlama süresi</string>
 
     <!--STRINGS-->
-    <string name="str_article_name">İSİM</string>
-    <string name="str_article_desc">AÇIKLAMA</string>
     <string name="str_terms"><u>ŞARTLAR VE KOŞULLAR</u></string>
     <string name="str_account_type">EĞİTMEN</string>
     <string name="str_carb">Karbonhidrat: </string>
@@ -65,7 +60,6 @@
     <string name="tab_exercise">EGZERSİZLER</string>
     <string name="tab_nutr">BESİNLER</string>
     <string name="tab_blog">BLOG</string>
-    <string name="tab_trainer">EĞİTMEN</string>
 
     <!-- DIGER -->
     <string name="lang"><u>DİLLER</u></string>
@@ -80,9 +74,8 @@
     <string name="settings">Ayarlar</string>
     <string name="str_calorie">kalori</string>
     <string name="str_reset_pass">Şifrenizi yenilemek için\n e-posta adresinizi giriniz</string>
-    <string name="check_email">Lütfen E-postanızı Kontrol Edin.</string>
     <string name="hide">Gizle</string>
-    <string name="terms_but_detailed">Uygulamamız kullanıcalara bir çok egzersiz, beslenme programı ve spor eğitmenlerine ulaşmasını sağlar. Uygulamamız, uygulamayı kullanırken
+    <string name="terms_but_detailed">Uygulamamız kullanıcalara birçok egzersiz, beslenme programı ve spor eğitmenlerine ulaşmasını sağlar. Uygulamamız, uygulamayı kullanırken
     gerçekleşebilecek her hangi bir sakatlığın sorumluluğunu almaz. Bu şartları kabul edildiği takdirde, uygulamamız kullanıcı ismi ve e-mail bilgilerini
     kullanma hakkına sahip olur.</string>
     <string name="click">(Detay İçin Tıklayın)</string>

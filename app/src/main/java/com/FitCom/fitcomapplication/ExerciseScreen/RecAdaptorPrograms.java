@@ -12,6 +12,7 @@ import com.FitCom.fitcomapplication.R;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class RecAdaptorPrograms extends RecyclerView.Adapter<RecAdaptorPrograms.ProgramPlaceHolder> {
 
     ArrayList<String> programTitles;
