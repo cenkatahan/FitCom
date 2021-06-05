@@ -65,7 +65,7 @@
     <!-- OTHER -->
     <string name="lang"><u>LANGUAGES</u></string>
     <string name="forget_pass"><u>Forget your password?</u></string>
-    <string name="rights">2021 FitCom Inc. All Rights Are Resereved.</string>
+    <string name="rights">2021 FitCom Inc. All Rights Are Reserved.</string>
     <string name="exit_sec"><u>SIGN OUT</u></string>
     <string name="email_link" translatable="false"><u>fitcomapplication@gmail.com</u></string>
     <string name="insta_link" translatable="false"><u>@fitcomapplication</u></string>
@@ -80,8 +80,8 @@
     <string name="about">FitCom Application is developed by: \n Osman Can Cinar \n Mahmut Berke Yaylaci \n Cenk Atahan Ozbek \n Ramazan Kazali </string>
     <string name="str_reset_pass">In order to reset your password,\n enter your e-mail</string>
     <string name="hide">Hide</string>
-    <string name="terms_but_detailed">Our application is served users to access exercises, nutrition and personal trainers. Our application does not accepts
-    any responsibility about injuries while using the app. By accepting these terms, our application has the rights to
+    <string name="terms_but_detailed">Our application is served users to access exercises, nutrition and personal trainers. Our application does not accept
+    any responsibility about injuries while using the application. By accepting these terms, our application has the rights to
     use your name and e-mail.</string>
     <string name="click">(Click to see in detail)</string>
     <string name="to_translate">Take me to translate</string>

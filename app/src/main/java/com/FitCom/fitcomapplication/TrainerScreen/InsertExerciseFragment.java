@@ -113,7 +113,7 @@ public class InsertExerciseFragment extends Fragment {
             Navigation.findNavController(view).navigate(direction);
         });
 
-        Bitmap defaultImg = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.temp);
+        Bitmap defaultImg = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.upload_icon_2);
         destImg.setImageBitmap(defaultImg);
         startSavedBitmapFragment();
         loadBitmap();
