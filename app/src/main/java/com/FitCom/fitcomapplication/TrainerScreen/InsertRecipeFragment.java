@@ -106,7 +106,7 @@ public class InsertRecipeFragment extends Fragment {
         btn_apply.setOnClickListener(this::uploadToFB);
         ImageButton btn_backToList = view.findViewById(R.id.button_insertRecipe_backToList);
         btn_backToList.setOnClickListener(this::goBackToList);
-        Bitmap defaultImg = BitmapFactory.decodeResource(Objects.requireNonNull(getContext()).getResources(), R.drawable.temp);
+        Bitmap defaultImg = BitmapFactory.decodeResource(Objects.requireNonNull(getContext()).getResources(), R.drawable.upload_icon_2);
         imageViewRecipe.setImageBitmap(defaultImg);
         startSavedBitmapFragment();
         loadBitMap();
