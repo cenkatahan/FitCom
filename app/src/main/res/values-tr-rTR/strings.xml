@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FitCom Uygulaması</string>
+    <string name="app_name">FitCom</string>
 
     <!--BUTTON STRINGS-->
     <string name="button_str_sign_in">GİRİŞ YAP</string>

@@ -1,7 +1,11 @@
 package com.FitCom.fitcomapplication.HomeScreen;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
+import androidx.core.os.ConfigurationCompat;
 import androidx.core.view.MenuItemCompat;
 
 import com.FitCom.fitcomapplication.BlogScreen.BlogActivity;
@@ -27,6 +32,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -114,10 +120,7 @@ public class HomePageActivity extends AppCompatActivity {
                     break;
             }
         });
-
     }
-
-
 
     private void handleTrainerLayout(){
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();

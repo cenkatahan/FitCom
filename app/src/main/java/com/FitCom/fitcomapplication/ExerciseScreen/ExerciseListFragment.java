@@ -79,7 +79,6 @@ public class ExerciseListFragment extends Fragment {
                     Map <String,Object> data = snapshot.getData();
 
                     String name = (String) Objects.requireNonNull(data).get("name");
-                    System.out.println(selected_language);
 
                     if(selected_language.matches("en")){
                         category = (String) data.get("category");
