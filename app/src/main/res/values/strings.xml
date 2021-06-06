@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FitCom Application</string>
+    <string name="app_name">FitCom</string>
 
     <!--BUTTON STRINGS-->
     <string name="button_str_sign_in">SIGN IN</string>

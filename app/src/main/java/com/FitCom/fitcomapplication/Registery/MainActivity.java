@@ -17,10 +17,16 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String selected_lang;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor ed;
+    Locale locale;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getCurrentLanguage();
+        xxx();
+        //getCurrentLanguage();
         setContentView(R.layout.activity_main);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -31,6 +37,28 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
             startActivity(intent);
             finish();
+        }
+    }
+
+    public void getCurrentLanguage(){
+        SharedPreferences sharedPrefs = getSharedPreferences("preferences", Activity.MODE_PRIVATE);
+        String selected_language = sharedPrefs.getString("selected_lang" ,"");
+        setNewLanguage(selected_language);
+    }
+
+    public void xxx(){
+        String newLoc = Locale.getDefault().getLanguage().toString();
+
+        sharedPref = getSharedPreferences("preferences", MODE_PRIVATE);
+        selected_lang = sharedPref.getString("selected_lang" ,"");
+
+        if(sharedPref.contains("preferences")){
+            selected_lang = sharedPref.getString("selected_lang" ,"");
+            setNewLanguage(selected_lang);
+        }else if(!sharedPref.contains("preferences")){
+            ed = sharedPref.edit();
+            ed.putString("selected_lang" ,newLoc);
+            ed.apply();
         }
     }
 
@@ -61,12 +89,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        getCurrentLanguage();
-    }
-    public void getCurrentLanguage(){
-        SharedPreferences sharedPrefs = getSharedPreferences("preferences", Activity.MODE_PRIVATE);
-        String selected_language = sharedPrefs.getString("selected_lang" ,"");
-        setNewLanguage(selected_language);
+       // getCurrentLanguage();
+        xxx();
     }
 
     public void setNewLanguage(String language){
