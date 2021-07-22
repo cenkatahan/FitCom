@@ -15,16 +15,17 @@
 
     <TextView
         android:id="@+id/rec_blog_title"
-        android:layout_width="350dp"
-        android:layout_height="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="top|start"
-        android:layout_marginStart="15dp"
         android:fontFamily="@font/uni_sans_heavy"
         android:padding="4dp"
         android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="40sp"
-        android:layout_marginTop="12dp"/>
-
+        android:layout_marginBottom="36dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="8dp"/>
 
 </FrameLayout>

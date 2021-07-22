@@ -90,11 +90,11 @@
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:maxLines="1"
         android:gravity="start|top"
-        android:maxLength="4"
         android:hint="@string/str_calorie"
         android:inputType="textPersonName"
+        android:maxLength="4"
+        android:maxLines="1"
         app:layout_constraintStart_toStartOf="@+id/editText_recipe_title"
         app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc_tr"
         tools:ignore="Autofill" />
@@ -104,18 +104,19 @@
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:maxLines="1"
         android:gravity="start|top"
-        android:maxLength="8"
         android:hint="@string/hint_str_prep_time"
         android:inputType="textPersonName"
+        android:maxLength="8"
+        android:maxLines="1"
         app:layout_constraintEnd_toEndOf="@+id/editText_recipe_desc_tr"
+        app:layout_constraintStart_toEndOf="@+id/editText_recipe_calorie"
         app:layout_constraintTop_toBottomOf="@+id/editText_recipe_desc_tr"
         tools:ignore="Autofill" />
 
     <Button
         android:id="@+id/button_select_img_rec"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/select_img"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +126,7 @@
 
     <Button
         android:id="@+id/button_send_recipe"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_str_send_recipe"
         app:layout_constraintStart_toStartOf="@+id/button_select_img_rec"
@@ -143,7 +144,7 @@
 
     <Button
         android:id="@+id/button_translate_3"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/to_translate"
         app:layout_constraintTop_toBottomOf="@id/button_send_recipe"
