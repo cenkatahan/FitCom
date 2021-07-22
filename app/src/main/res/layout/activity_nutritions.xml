@@ -12,7 +12,8 @@
         android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="55dp">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout_nutrition"

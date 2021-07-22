@@ -23,7 +23,7 @@
 
     <Button
         android:id="@+id/button_insert_exercise"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="196dp"
         android:text="@string/button_str_insert_exercise"
@@ -33,7 +33,7 @@
 
     <Button
         android:id="@+id/button_insert_article"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/button_str_insert_article"
@@ -42,7 +42,7 @@
 
     <Button
         android:id="@+id/button_insert_recipe"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/button_str_insert_recipe"

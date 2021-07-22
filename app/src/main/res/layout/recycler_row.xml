@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/rec_row_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:textSize="30sp"
@@ -21,7 +21,7 @@
 
     <TextView
         android:id="@+id/rec_row_category"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textColor="@color/white"
@@ -30,6 +30,6 @@
         app:layout_constraintEnd_toEndOf="@+id/rec_row_title"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rec_row_title"
-        app:layout_constraintTop_toBottomOf="@+id/rec_row_title" />
+        app:layout_constraintTop_toBottomOf="@+id/rec_row_title"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

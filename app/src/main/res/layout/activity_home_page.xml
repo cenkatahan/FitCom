@@ -16,7 +16,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="550dp"
+            android:layout_height="match_parent"
             android:layout_marginBottom="55dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
@@ -42,7 +42,8 @@
             app:layout_constraintHorizontal_bias="0.296"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.069" />
+            app:layout_constraintVertical_bias="0.069"
+            android:layout_margin="44dp"/>
 
         <TextView
             android:layout_width="wrap_content"
