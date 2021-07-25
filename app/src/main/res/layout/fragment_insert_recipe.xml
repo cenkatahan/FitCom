@@ -118,18 +118,19 @@
         android:id="@+id/button_select_img_rec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/select_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_calorie"
-        android:layout_marginTop="10dp" />
+        app:layout_constraintEnd_toEndOf="@+id/button_send_recipe"
+        app:layout_constraintStart_toStartOf="@+id/button_send_recipe"
+        app:layout_constraintTop_toBottomOf="@+id/editText_recipe_calorie" />
 
     <Button
         android:id="@+id/button_send_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_str_send_recipe"
-        app:layout_constraintStart_toStartOf="@+id/button_select_img_rec"
+        app:layout_constraintEnd_toEndOf="@+id/button_translate_3"
+        app:layout_constraintStart_toStartOf="@+id/button_translate_3"
         app:layout_constraintTop_toBottomOf="@+id/button_select_img_rec" />
 
     <ImageView
@@ -147,9 +148,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/to_translate"
-        app:layout_constraintTop_toBottomOf="@id/button_send_recipe"
-        app:layout_constraintStart_toStartOf="@+id/button_send_recipe" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_send_recipe" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
