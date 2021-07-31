@@ -25,154 +25,130 @@
         android:adjustViewBounds="true"
         tools:ignore="ContentDescription" />
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/lang_sec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/lang"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/lang_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/lang"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/settings_lang_tr"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
-        android:src="@drawable/tr_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lang_sec"
-        tools:ignore="ContentDescription" />
+        <ImageButton
+            android:id="@+id/settings_lang_tr"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/tr_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lang_sec"
+            tools:ignore="ContentDescription" />
 
-    <ImageButton
-        android:id="@+id/settings_lang_eng"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="true"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
-        android:src="@drawable/en_2"
-        app:layout_constraintStart_toEndOf="@+id/settings_lang_tr"
-        app:layout_constraintTop_toBottomOf="@+id/lang_sec"
-        tools:ignore="ContentDescription" />
+        <ImageButton
+            android:id="@+id/settings_lang_eng"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/en_2"
+            app:layout_constraintStart_toEndOf="@+id/settings_lang_tr"
+            app:layout_constraintTop_toBottomOf="@+id/lang_sec"
+            tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/about"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/about"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/about_sec" />
+        <TextView
+            android:id="@+id/about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/about"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/about_sec" />
 
-    <TextView
-        android:id="@+id/about_sec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="400dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/about_sec"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <ImageButton
+            android:id="@+id/gmail_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/instagram"
+            app:layout_constraintStart_toStartOf="@+id/about"
+            app:layout_constraintTop_toBottomOf="@+id/about"
+            tools:ignore="ContentDescription" />
 
-    <ImageButton
-        android:id="@+id/insta_icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="60dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:src="@drawable/gmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/about"
-        tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/about_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="428dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/about_sec"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/email_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/email_link"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@id/insta_icon"
-        app:layout_constraintTop_toBottomOf="@id/about"/>
+        <TextView
+            android:id="@+id/insta_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/insta_link"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/gmail_icon"
+            app:layout_constraintTop_toBottomOf="@+id/about" />
 
-    <ImageButton
-        android:id="@+id/gmail_icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="60dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:src="@drawable/instagram"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/insta_icon"
-        tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/exit_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/exit_sec"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/insta_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/insta_link"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@id/gmail_icon"
-        android:layout_marginStart="20dp"
-        app:layout_constraintTop_toBottomOf="@id/insta_icon"/>
+        <ImageButton
+            android:id="@+id/imageButtonExit"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@color/white"
+            android:backgroundTint="#00FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/exit_sec"
+            app:srcCompat="@drawable/sign_out"
+            tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/exit_sec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/exit_sec"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageButtonExit"
-        android:backgroundTint="#00FFFFFF"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/exit_sec"
-        app:srcCompat="@drawable/sign_out"
-        android:background="@color/white"
-        tools:ignore="ContentDescription" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

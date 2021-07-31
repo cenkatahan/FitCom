@@ -16,12 +16,23 @@
         android:paddingHorizontal="15dp"
         tools:ignore="ContentDescription" />
 
+    <ImageButton
+        android:id="@+id/button_exercise_backToList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        tools:ignore="ContentDescription"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="40dp"
-        android:layout_marginHorizontal="10dp"
-        android:paddingBottom="30dp">
+        android:layout_marginBottom="88dp"
+        android:layout_marginTop="88dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -29,18 +40,6 @@
             android:layout_marginBottom="15dp"
             app:layout_constraintEnd_toStartOf="@+id/detail_name"
             app:layout_constraintStart_toStartOf="@+id/detail_name">
-
-            <ImageButton
-                android:id="@+id/button_exercise_backToList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#00FFFFFF"
-                android:src="@drawable/back_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/exercise_image"

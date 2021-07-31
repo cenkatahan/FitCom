@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Debug;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,25 +48,13 @@ public class RecAdaptorTrainers extends RecyclerView.Adapter<RecAdaptorTrainers.
     }
 
     public void clickToSendEMail(View view, int position){
-        Intent i = new Intent(Intent.ACTION_VIEW);
+        Intent i = new Intent(Intent.ACTION_SENDTO);
         i.setType("text/plain");
         i.setData(Uri.parse("mailto:"));
         i.putExtra(Intent.EXTRA_EMAIL  , new String[]{emails.get(position)});
         i.putExtra(Intent.EXTRA_SUBJECT, view.getContext().getString(R.string.subj));
         i.setPackage("com.google.android.gm");
-        ActivityManager am = (ActivityManager) view.getContext().getSystemService(Activity.ACTIVITY_SERVICE);
-
-        try {
-            if (i.resolveActivity(view.getContext().getPackageManager()) != null) {
-                if(am != null){
-                    am.killBackgroundProcesses("com.google.android.gm");
-                    i.removeExtra(Intent.EXTRA_EMAIL);
-                    i.putExtra(Intent.EXTRA_EMAIL  , new String[]{emails.get(position)});
-                    view.getContext().startActivity(i);
-                }
-                view.getContext().startActivity(i);
-            }
-        } catch (android.content.ActivityNotFoundException ex) {}
+        view.getContext().startActivity(i);
     }
 
     public class TrainerHolder extends RecyclerView.ViewHolder{
