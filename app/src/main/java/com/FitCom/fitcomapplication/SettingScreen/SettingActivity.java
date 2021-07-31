@@ -32,18 +32,8 @@ public class SettingActivity extends AppCompatActivity {
         ImageButton lang_tr = findViewById(R.id.settings_lang_tr);
         ImageButton lang_eng = findViewById(R.id.settings_lang_eng);
         ImageButton exit = findViewById(R.id.imageButtonExit);
-        ImageButton gmail = findViewById(R.id.insta_icon);
         ImageButton insta = findViewById(R.id.gmail_icon);
-        TextView gmail_link = findViewById(R.id.email_link);
         TextView insta_link = findViewById(R.id.insta_link);
-
-        gmail_link.setOnClickListener(v -> {
-          clickToSendEMail();
-        });
-
-        gmail.setOnClickListener(v -> {
-            clickToSendEMail();
-        });
 
         insta.setOnClickListener(v -> {
             goToInsta();
@@ -78,6 +68,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         getCurrentLanguage();
     }
+
     public void getCurrentLanguage(){
         SharedPreferences sharedPrefs = getSharedPreferences("preferences", Activity.MODE_PRIVATE);
         String selected_language = sharedPrefs.getString("selected_lang" ,"");
@@ -93,27 +84,6 @@ public class SettingActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("preferences",MODE_PRIVATE).edit();
         editor.putString("selected_lang" ,language);
         editor.apply();
-    }
-
-    public void clickToSendEMail(){
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setType("text/plain");
-        i.setData(Uri.parse("mailto:"));
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{getString(R.string.email_link)});
-        i.setPackage("com.google.android.gm");
-        ActivityManager am = (ActivityManager) this.getSystemService(Activity.ACTIVITY_SERVICE);
-
-        try {
-            if (i.resolveActivity(this.getPackageManager()) != null) {
-                if(am != null){
-                    am.killBackgroundProcesses("com.google.android.gm");
-                    i.removeExtra(Intent.EXTRA_EMAIL);
-                    i.putExtra(Intent.EXTRA_EMAIL  , new String[]{getString(R.string.email_link)});
-                    this.startActivity(i);
-                }
-                this.startActivity(i);
-            }
-        } catch (android.content.ActivityNotFoundException ex) {}
     }
 
     public void goToInsta(){
